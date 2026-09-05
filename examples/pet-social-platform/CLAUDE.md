@@ -1,0 +1,109 @@
+# Pet Social Platform — Product Research Case
+
+> The public reference case inside the `casebook` workspace. Read `STATE.md` in this folder first; the workspace-level rules are in
+> the repo root `CLAUDE.md`. Run all `npm` commands from this folder.
+
+A nine-chapter Product Research & AI Strategy case for a 0→1 pet social platform, built as a Next.js site.
+Audience: product directors and interviewers. The site must read as the work of a PM who did real research.
+
+## What you are here to do
+
+Research the pet social / pet services domain step by step, gather **sourced** data, and update the site's
+content. You update **data and research notes**, not UI. The visual system is finished; do not redesign it.
+
+Start every session by reading `research/plan.md` (open questions per chapter) and `research/sources.md`.
+
+## Where content lives
+
+| Chapter | Route | Data file | What it holds |
+|---|---|---|---|
+| 01 Overview | `/` | `data/overview.ts` | thesis, three insights, opportunity summary |
+| 02 Market | `/market` | `data/market.ts` | KPIs, spend trend, need layers, value matrix, journey |
+| 03 Competitors | `/competitors` | `data/competitors.ts` | tiers, competitor cards, map coordinates |
+| 04 Content | `/content` | `data/content.ts` | content types, loop, intelligence pipeline, targets |
+| 05 Social | `/social` | `data/social.ts` | identity dimensions, ladder, funnel, match prototype, targets |
+| 06 Local | `/local` | `data/services.ts` | service categories, journey, concierge workflow, targets |
+| 07 AI Strategy | `/ai-strategy` | `data/ai.ts` | architecture, five capabilities, agent loop, trace |
+| 08 Benchmark | `/benchmark` | `data/benchmark.ts` | mechanism-transfer rows, transfer map |
+| 09 Insights | `/insights` | `data/insights.ts` | opportunity matrix, priorities, north star, roadmap |
+
+`data/research.ts` re-exports everything. Pages in `app/*/page.tsx` only render; components in `components/` only present.
+
+## Bilingual content (EN / 中文)
+
+The site is served at `/en/...` and `/zh/...` (root redirects by browser language; the sidebar toggles).
+User-visible strings in `data/` are `Text` objects `{ en, zh }` (`lib/i18n.ts`); numbers, codes, product
+names stay plain strings. **Every content change must update both `en` and `zh`** in the same object — never
+leave one language stale. Translate in the same analytical PM voice; do not paraphrase numbers differently
+between languages. UI chrome strings live inline as `t({ en, zh })` in components and are not research content.
+
+## Provenance rules (non-negotiable)
+
+Every factual number or claim carries a `Provenance` (`data/provenance.ts`):
+
+- `hypothesis` — placeholder to structure the case. Rendered as **Illustrative**. This is the default.
+- `estimate` — derived from cited sources with reasoning in `note`. Rendered as **Estimate · source**.
+- `verified` — read directly from a cited source. Rendered as **Source · source** (linked if `url`).
+- `contradicted` — a cited source points the **opposite** way from the value or claim shown. Rendered as
+  **Contradicted · source** (linked if `url`). Same evidence bar as `verified`: `source`, `url` (if one exists),
+  `retrievedAt`, and a `note` saying what the source measures and how it conflicts. Use it when the claim is kept
+  on the page for now (pending the author's decision, see `research/revisions.md`) but must not read as supported.
+
+1. Never set `estimate`, `verified` or `contradicted` without `source`, `url` (if one exists) and `retrievedAt` (ISO date).
+2. If a number cannot be found, leave it `hypothesis`. **Do not invent, round, or "reasonably assume" a figure.**
+3. Prefer primary sources: official reports, company disclosures, app-store listings, product help pages.
+   Secondary press is acceptable for `estimate`, never for `verified`.
+4. Product **targets** (match metrics, concierge metrics, understanding metrics) stay `hypothesis` unless a
+   comparable public benchmark is cited in `note` — they are goals, not observations.
+5. Competitors: verify product mechanisms and positioning from public material. Never add user counts, revenue
+   or retention figures without a source. Never fabricate details about how a competitor's ranking works.
+6. Add every source to `research/sources.md` and log what changed in the chapter's note under `research/`.
+7. A `contradicted` mark is never the end state. It must be paired with an entry in `research/revisions.md`
+   (see below) that either revises the claim or records why the author keeps it.
+
+## Conclusions may change, but only with a paper trail
+
+The core argument of the case — the thesis chain, the three insights, the five AI capabilities, the priorities
+and the north star — was written **before any research was done** (see `PROGRESS.md`: "Chapters researched:
+none yet"). It is the author's starting product judgement, not a finding. Treating it as fixed would turn the
+research into a confirmation exercise, so it is revisable — under these rules:
+
+When research turns up evidence that conflicts with a conclusion, do **not** stop. Do all three, in order:
+
+1. **Chapter note** — record the conflict in `research/NN-chapter.md` under "Evidence for / against", with the
+   source ID from `research/sources.md` and what the source actually measures.
+2. **Revision log** — append one row to `research/revisions.md`: date / original conclusion / triggering evidence
+   with source / revised conclusion, **or** "kept original judgement, because …". A row that keeps the original
+   is a valid outcome; the point is that counter-evidence was considered, not that it always wins.
+3. **Data file** — only then update `data/*.ts`: change the value or wording (both `en` and `zh`) and set the
+   provenance, or leave the claim in place with `confidence: "contradicted"` pointing at the source.
+
+An empty `research/revisions.md` after a chapter is researched means either no counter-evidence was found or
+none was looked for — say which in the chapter note. Do not rewrite a conclusion silently, and do not rewrite
+one to match a single weak source: the bar for revising is the same as for `verified`.
+
+## What not to change
+
+- UI components, design tokens, typography, layout, `app/globals.css`, `components/`. (The one sanctioned
+  exception is the `contradicted` branch already added to `ProvenanceMark` in `components/ui/Note.tsx`.)
+- Copy tone: analytical, PM-voice, English. No marketing language.
+
+## How to work
+
+1. Pick one chapter from `research/plan.md`. Answer its questions with web research.
+2. Update the chapter's data file: fill values, set `provenance`, keep types intact.
+3. Write findings, sources and open gaps in `research/NN-chapter.md`; append sources to `research/sources.md`.
+4. Run `npm run check` (typecheck, lint, production build). Fix anything it reports.
+5. Start `npm run dev` and open the chapter in both languages (`/zh/<route>` and `/en/<route>`) to confirm the
+   page renders and every changed number shows its provenance mark.
+6. Summarise: what changed, what is now verified / estimated / contradicted, what remains hypothesis and why,
+   and which rows (if any) were added to `research/revisions.md`.
+
+Work one chapter at a time. Do not commit unless asked.
+
+## Commands
+
+```bash
+npm run dev      # http://localhost:3000 → redirects to /en or /zh
+npm run check    # tsc + eslint + next build
+```

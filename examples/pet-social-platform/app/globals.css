@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-plex-sans), "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument), "Instrument Serif", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", Georgia, serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", "PingFang SC", "Noto Sans CJK SC", ui-monospace, Menlo, monospace;
+
+  --color-bg: #f6f4ee;
+  --color-surface: #fbfaf6;
+  --color-wash: #efece3;
+  --color-ink: #17160f;
+  --color-ink-2: #5a5850;
+  --color-ink-3: #8c8980;
+  --color-line: #e3e0d6;
+  --color-line-2: #cfcbbf;
+  --color-accent: #3e6e2e;
+  --color-accent-ink: #2f5723;
+  --color-accent-wash: #e6ecdd;
+  --color-accent-soft: #c9d7bb;
+  --color-series-1: #3e6e2e;
+  --color-series-2: #4a7fc1;
+  --color-series-3: #e07a45;
+  --color-series-4: #b3afa3;
+
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  color-scheme: light;
+  --rail-w: 232px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-2) transparent;
+}
+
+/* ---------- Typography scale ---------- */
+.t-h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 5.2vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.t-h3 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.t-statement {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.3vw, 2.125rem);
+  line-height: 1.18;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+.t-body {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.t-body-sm {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.t-caption {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-ink-2);
+}
+.t-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+.t-label-ink {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.t-metric {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(2.25rem, 3.4vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.t-metric-sm {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 1.75rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.t-annotation {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-ink-3);
+}
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+.t-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+/* ---------- Primitives ---------- */
+.hairline {
+  border-top: 1px solid var(--color-line);
+}
+.rule-strong {
+  border-top: 1px solid var(--color-ink);
+}
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 1.5rem;
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--color-line-2);
+  transition: text-decoration-color 160ms;
+}
+.link-underline:hover {
+  text-decoration-color: var(--color-ink);
+}
+
+/* Recharts overrides */
+.recharts-cartesian-axis-tick-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--color-ink-3);
+}
+.recharts-polar-angle-axis-tick-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--color-ink-2);
+}
+.recharts-default-legend {
+  font-size: 12px;
+}
+.recharts-surface {
+  overflow: visible;
+}
+
+/* ---------- Chinese typography ---------- */
+:lang(zh-CN) .t-h1 {
+  letter-spacing: 0.01em;
+  line-height: 1.16;
+  font-size: clamp(2.4rem, 4.4vw, 3.9rem);
+}
+:lang(zh-CN) .t-h2 {
+  letter-spacing: 0.01em;
+  line-height: 1.24;
+}
+:lang(zh-CN) .t-statement {
+  letter-spacing: 0.01em;
+  line-height: 1.42;
+}
+:lang(zh-CN) .t-h3 {
+  letter-spacing: 0;
+}
+:lang(zh-CN) body {
+  font-size: 15px;
+  line-height: 1.75;
+}
+:lang(zh-CN) .t-body,
+:lang(zh-CN) .t-body-sm {
+  line-height: 1.8;
+}
+:lang(zh-CN) .t-label,
+:lang(zh-CN) .t-label-ink {
+  letter-spacing: 0.16em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
