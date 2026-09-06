@@ -11,6 +11,7 @@ import { Tag } from "@/components/ui/Tag";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { SpendTrend } from "@/components/product/market/SpendTrend";
 import { ValueMatrix } from "@/components/product/market/ValueMatrix";
+import { Sourced } from "@/components/ui/ProvenanceHover";
 import { chart } from "@/components/charts/theme";
 import {
   marketKpis,
@@ -20,6 +21,7 @@ import {
   opportunityAreas,
   spendTrendProvenance,
   valueMatrixProvenance,
+  medicalShareShiftProvenance,
 } from "@/data/market";
 import { DEFAULT_LOCALE, isLocale, tr } from "@/lib/i18n";
 
@@ -59,7 +61,7 @@ export default async function MarketPage({ params }: { params: Promise<{ locale:
         aside={
           <Illustrative
             className="mt-4"
-            label={{ en: "Research hypothesis · illustrative figures", zh: "研究假设 · 示意数字" }}
+            label={{ en: "Value map & judgement fields · illustrative", zh: "价值矩阵与判断类字段 · 示意" }}
           />
         }
       />
@@ -69,14 +71,13 @@ export default async function MarketPage({ params }: { params: Promise<{ locale:
         <SectionHeader
           label={t({ en: "01 · Pet economy", zh: "01 · 宠物经济" })}
           title={t({
-            en: "Ownership is common, consumption is weekly, and spend is shifting toward services",
-            zh: "养宠普遍、内容消费按周计、支出正向服务转移",
+            en: "Ownership is mainstream, content lives on platforms, and spend is shifting from goods to care",
+            zh: "养宠已成主流、内容消费在平台上发生、支出正从商品转向照护",
           })}
           description={t({
-            en: "Five hypotheses that frame the case. Each is stated as a target to validate, not a market fact.",
-            zh: "构成本案例框架的五个假设。每一条都是待验证的目标，而非市场事实。",
+            en: "Five indicators that frame the case. Sourced figures carry their provenance; judgement fields stay explicitly illustrative.",
+            zh: "构成本案例框架的五个指标。有出处的数字带来源标注，判断类字段明确保持示意。",
           })}
-          right={<Illustrative />}
         />
         <Reveal className="mt-10">
           <MetricGrid
@@ -101,10 +102,20 @@ export default async function MarketPage({ params }: { params: Promise<{ locale:
           <div className="col-span-12 lg:col-span-4 lg:pt-4">
             <div className="t-label">{t({ en: "Implication", zh: "含义" })}</div>
             <p className="t-body-sm text-ink-2 mt-3">
-              {t({
-                en: "If services grow fastest, the valuable position is not the shelf but the decision: which groomer, which vet, when. Content and community are how that decision gets made today — by asking someone.",
-                zh: "如果服务增长最快，有价值的位置就不是货架，而是决策本身：选哪家美容店、哪家医院、什么时候去。今天这个决策是靠内容和社区完成的——问一个人。",
-              })}
+              {locale === "zh" ? (
+                <>
+                  支出正从商品转向照护：2019 到 2024 年，医疗在城镇宠物消费中的份额
+                  <Sourced provenance={medicalShareShiftProvenance}>从 19% 升到 28%</Sourced>
+                  。有价值的位置不是货架，而是决策本身：选哪家美容店、哪家医院、什么时候去。今天这个决策靠内容和社区完成——问一个人。
+                </>
+              ) : (
+                <>
+                  Owners are shifting spend from goods to care: medical went{" "}
+                  <Sourced provenance={medicalShareShiftProvenance}>from 19% to 28%</Sourced> of urban pet spend
+                  between 2019 and 2024. The valuable position is not the shelf but the decision: which groomer,
+                  which vet, when. Content and community are how that decision gets made today — by asking someone.
+                </>
+              )}
             </p>
             <p className="t-body-sm text-ink-2 mt-3">
               {t({

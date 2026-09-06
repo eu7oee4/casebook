@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { HYPOTHESIS, provenanceLabel, type Provenance } from "@/data/provenance";
 import { useLocale, useT } from "@/lib/locale-context";
+import { ProvenanceHover } from "./ProvenanceHover";
 import type { Str } from "@/lib/i18n";
 
 /** Marks data as illustrative — never presented as real market fact. */
@@ -18,8 +19,10 @@ export function Illustrative({ className, label }: { className?: string; label?:
 }
 
 /**
- * Shows where a number comes from. Hypothesis → "Illustrative"; estimate/verified/contradicted → source, linked when a URL exists.
+ * Shows where a number comes from. Hypothesis → "Illustrative"; estimate/verified/contradicted → source.
  * The dot colour is the status: clay = hypothesis, grey = estimate, moss = verified, blue = contradicted.
+ * Hovering (or focusing / tapping) the badge opens a card with the full provenance — source link,
+ * retrieval date and note — so the badge itself is no longer a link.
  */
 export function ProvenanceMark({
   provenance,
@@ -40,32 +43,19 @@ export function ProvenanceMark({
         : provenance.confidence === "estimate"
           ? "bg-ink-3"
           : "bg-series-3";
-  const title = [provenance.note, provenance.retrievedAt && `${locale === "zh" ? "获取于" : "Retrieved"} ${provenance.retrievedAt}`]
-    .filter(Boolean)
-    .join(" · ");
-  const body = (
-    <>
-      <span className={cn("h-1 w-1 rounded-full shrink-0", dot)} aria-hidden />
-      <span className="truncate max-w-[32ch]">{text}</span>
-    </>
-  );
-  const cls = cn(
-    "inline-flex items-center gap-1.5 font-mono text-[11px] leading-[1.4] tracking-[0.06em] border border-line-2 rounded-sm px-1.5 py-[3px] text-ink-3",
-    provenance.confidence === "hypothesis" && "uppercase tracking-[0.12em]",
-    provenance.url && "hover:text-ink hover:border-ink transition-colors",
-    className
-  );
-  if (provenance.url) {
-    return (
-      <a href={provenance.url} target="_blank" rel="noreferrer" title={title || undefined} className={cls}>
-        {body}
-      </a>
-    );
-  }
   return (
-    <span title={title || undefined} className={cls}>
-      {body}
-    </span>
+    <ProvenanceHover provenance={provenance} className={className}>
+      <span
+        className={cn(
+          "inline-flex items-center gap-1.5 min-w-0 max-w-full font-mono text-[11px] leading-[1.4] tracking-[0.06em] border border-line-2 rounded-sm px-1.5 py-[3px] text-ink-3 cursor-help",
+          provenance.confidence === "hypothesis" && "uppercase tracking-[0.12em]",
+          "hover:text-ink hover:border-ink transition-colors"
+        )}
+      >
+        <span className={cn("h-1 w-1 rounded-full shrink-0", dot)} aria-hidden />
+        <span className="truncate min-w-0 max-w-[32ch]">{text}</span>
+      </span>
+    </ProvenanceHover>
   );
 }
 

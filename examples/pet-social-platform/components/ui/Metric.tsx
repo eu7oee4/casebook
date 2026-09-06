@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import type { Provenance } from "@/data/provenance";
 import { ProvenanceMark } from "./Note";
+import { ProvenanceHover } from "./ProvenanceHover";
 
 export type MetricProps = {
   label: string;
@@ -16,10 +17,16 @@ export type MetricProps = {
 
 export function Metric({ label, value, unit, note, delta, provenance, size = "md", className }: MetricProps) {
   return (
-    <div className={cn("flex flex-col gap-2 min-w-0", className)}>
+    <div className={cn("flex h-full flex-col gap-2 min-w-0", className)}>
       <div className="t-label">{label}</div>
       <div className="flex items-baseline gap-1.5">
-        <span className={size === "lg" ? "t-metric" : "t-metric-sm"}>{value}</span>
+        {provenance ? (
+          <ProvenanceHover provenance={provenance} cue>
+            <span className={size === "lg" ? "t-metric" : "t-metric-sm"}>{value}</span>
+          </ProvenanceHover>
+        ) : (
+          <span className={size === "lg" ? "t-metric" : "t-metric-sm"}>{value}</span>
+        )}
         {unit && <span className="text-sm text-ink-3">{unit}</span>}
         {delta && (
           <span
@@ -34,7 +41,7 @@ export function Metric({ label, value, unit, note, delta, provenance, size = "md
       </div>
       {note && <div className="t-caption">{note}</div>}
       {provenance && provenance.confidence !== "hypothesis" && (
-        <div className="pt-1">
+        <div className="pt-1 mt-auto min-w-0">
           <ProvenanceMark provenance={provenance} />
         </div>
       )}
