@@ -22,6 +22,15 @@ const SERIES: ReadonlyArray<{ key: "services" | "health" | "food"; label: Text; 
   { key: "food", label: { en: "Food", zh: "食品" }, color: chart.series[2] },
 ];
 
+// Y domain follows the data: pad to the nearest tick step so the lines fill the plot instead of
+// hugging one edge (the old hard-coded [80, 260] assumed a much steeper hypothesis series).
+const yValues = spendTrend.flatMap((d) => [d.food, d.services, d.health]);
+const yLo = Math.floor((Math.min(...yValues) - 5) / 10) * 10;
+const yHi = Math.ceil((Math.max(...yValues) + 5) / 10) * 10;
+const yStep = yHi - yLo > 100 ? 50 : 10;
+const yTicks: number[] = [];
+for (let v = yLo; v <= yHi; v += yStep) yTicks.push(v);
+
 type TipProps = {
   active?: boolean;
   payload?: Array<{ dataKey?: string | number; value?: number | string; color?: string }>;
@@ -46,7 +55,7 @@ export function SpendTrend() {
       <LineChart data={spendTrend} margin={{ top: 12, right: 88, bottom: 4, left: -8 }}>
         <CartesianGrid {...gridProps} />
         <XAxis dataKey="year" {...axisProps} interval={0} />
-        <YAxis {...axisProps} axisLine={false} domain={[80, 260]} ticks={[100, 150, 200, 250]} width={40} />
+        <YAxis {...axisProps} axisLine={false} domain={[yLo, yHi]} ticks={yTicks} width={40} />
         <Tooltip content={<Tip />} cursor={{ stroke: chart.axis, strokeWidth: 1 }} />
         {SERIES.map((s) => (
           <Line
