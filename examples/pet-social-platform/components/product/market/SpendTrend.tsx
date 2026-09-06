@@ -31,6 +31,27 @@ const yStep = yHi - yLo > 100 ? 50 : 10;
 const yTicks: number[] = [];
 for (let v = yLo; v <= yHi; v += yStep) yTicks.push(v);
 
+// End-of-line labels collide when series finish near the same value (services and health both end
+// at 110). Spread colliding labels apart in value space, recentred on the group, and convert the
+// displacement to a pixel dy. Pixel scale is approximate (chart height 300 minus margins/axis).
+const lastIdx = spendTrend.length - 1;
+const PX_PER_UNIT = 254 / (yHi - yLo);
+const MIN_GAP = 13 / PX_PER_UNIT;
+const placed = SERIES.map((s) => ({ key: s.key, v: spendTrend[lastIdx][s.key], adj: 0, group: 0 }))
+  .sort((a, b) => b.v - a.v)
+  .map((f, i, arr) => {
+    const prev = i > 0 ? arr[i - 1] : undefined;
+    f.adj = prev && prev.adj - f.v < MIN_GAP ? prev.adj - MIN_GAP : f.v;
+    f.group = prev ? (prev.adj - f.v < MIN_GAP ? prev.group : prev.group + 1) : 0;
+    return f;
+  });
+for (let g = 0; g <= placed[placed.length - 1].group; g++) {
+  const members = placed.filter((p) => p.group === g);
+  const shift = members.reduce((s, m) => s + (m.v - m.adj), 0) / members.length;
+  members.forEach((m) => (m.adj += shift));
+}
+const LABEL_DY = Object.fromEntries(placed.map((p) => [p.key, Math.round((p.v - p.adj) * PX_PER_UNIT)]));
+
 type TipProps = {
   active?: boolean;
   payload?: Array<{ dataKey?: string | number; value?: number | string; color?: string }>;
@@ -77,7 +98,7 @@ export function SpendTrend() {
                 return (
                   <text
                     x={Number(x) + 10}
-                    y={Number(y) + 4}
+                    y={Number(y) + 4 + (LABEL_DY[s.key] ?? 0)}
                     fontSize={11}
                     fontFamily="var(--font-mono)"
                     fill={chart.ink2}
