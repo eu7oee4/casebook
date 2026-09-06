@@ -2,34 +2,25 @@
 
 ## Open decision — which chapters go to `verified`, which stop at `Illustrative`?
 
-**Status: undecided. The author decides this. Agents: do not pick for her, and do not start researching any
-chapter until this section names the chapters that are in scope.**
+**Status: decided by the author, 2026-09-06. End state: research case. All nine chapters are in scope.**
 
-The question: of the nine chapters, which ones must be researched until their key figures are `verified` or
-`estimate`, and which ones are accepted as staying `hypothesis` (rendered as **Illustrative**) on purpose?
-
-Why it has to be settled first: every number on the site currently carries an Illustrative mark. If the finished
-site still shows that mark across most of its surface, a reader will file it as a UI demo, not as product
-research — the provenance system makes the gap visible rather than hiding it. There are two coherent end states:
-
-- **Research case** — a small number of chapters (the natural candidates are those that depend most on external
-  fact: 02 Market, 03 Competitors, 08 Benchmark) are taken all the way to sourced figures, and the remaining
-  chapters are explicitly framed as product judgement built on that base.
-- **Design piece** — the site is repositioned as a design / prototyping portfolio item, the Illustrative marks
-  stay everywhere, and `PRODUCT.md` / the overview copy say so plainly.
-
-The worst outcome is the middle: some chapters half-sourced, the rest Illustrative, with no statement of which is
-which. That reads as research that was attempted and abandoned.
-
-To close this section, the author writes here: the chapters in scope for `verified`, the chapters accepted as
-Illustrative, and the one-line positioning that follows. Then the per-chapter tables below apply.
+- Every chapter is researched until each field is either sourced (`verified` / `estimate`) or explicitly
+  recorded as staying `hypothesis`. Product targets and judgement-type fields (map positions, matrix
+  positions, funnels with no public benchmarks) stay Illustrative **by design** — the per-chapter notes
+  below already say which; that is not the abandoned middle state, it is the declared end state.
+- Positioning line — ZH (author's wording): 「基于公开来源做过实证的产品研究；市场、竞品、机制类数字均有出处，产品目标值与判断类结论明确标注为作者假设。」
+- Positioning line — EN: "Evidence-backed product research built on public sources; market, competitor and
+  mechanism figures are sourced, while product targets and judgement-based conclusions are explicitly
+  marked as the author's hypotheses."
+- The line reaches reader-visible surfaces (01 Overview opening copy, `PRODUCT.md`) only when chapter 01
+  is updated — last, after 02–09, per the chapter-01 rule below.
 
 Status legend: ☐ not started · ◐ in progress · ☑ done (all fields either sourced or explicitly left hypothesis)
 
 Work top-down: chapters 02, 03 and 08 depend most on external facts. Chapters 04–07 and 09 are product
 judgement; research there means finding evidence for or against the argument, not rewriting it.
 
-## 02 Market — `data/market.ts` ☐
+## 02 Market — `data/market.ts` ☑ (2026-09-06 — see `research/02-market.md`; KPIs verified, spendTrend estimate, valueMatrix stays judgement)
 
 | Question | Feeds | Notes |
 |---|---|---|

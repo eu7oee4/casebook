@@ -10,49 +10,106 @@ export type MarketKpi = { label: Text; value: Text; note: Text; provenance: Prov
 
 export const marketKpis: MarketKpi[] = [
   {
-    label: { en: "Pet owners (urban, sampled)", zh: "养宠家庭（城市抽样）" },
-    value: { en: "1 in 4", zh: "1 / 4" },
-    note: { en: "households with ≥1 pet — hypothesis for tier-1/2 cities", zh: "至少养一只宠物的家庭占比，一二线城市假设" },
-    provenance: HYPOTHESIS,
+    label: { en: "Pet owners (urban)", zh: "城镇养宠人群" },
+    value: { en: "76.89M", zh: "7689 万" },
+    note: {
+      en: "urban dog & cat owners, 2024 (+2.4% YoY); dogs 36.01M, cats 40.88M",
+      zh: "2024 年城镇犬猫主人（同比 +2.4%）；犬主 3601 万、猫主 4088 万",
+    },
+    provenance: {
+      confidence: "verified",
+      source: "China Pet Industry White Paper 2025 (Petdata)",
+      url: "https://pdf.dfcfw.com/pdf/H3_AP202512111798269901_1.pdf",
+      retrievedAt: "2026-09-06",
+      note: "Excerpt PDF of the consumption report; urban dog/cat owners only, exotic pets excluded. The white paper publishes owner counts, not a household-penetration %; iResearch reports 17.8% dog / 16.4% cat household penetration for 2023 (national, secondary reprint).",
+    },
   },
   {
     label: { en: "Content consumption", zh: "内容消费" },
-    value: { en: "68%", zh: "68%" },
-    note: { en: "of owners watch or read pet content weekly", zh: "的养宠人每周看或读宠物内容" },
-    provenance: HYPOTHESIS,
+    value: { en: "53%", zh: "53%" },
+    note: {
+      en: "of core pet owners get pet information on Xiaohongshu (2024)",
+      zh: "的核心养宠人群会在小红书获取养宠信息（2024）",
+    },
+    provenance: {
+      confidence: "verified",
+      source: "Xiaohongshu × CBNData pet industry report 2024",
+      url: "https://www.cbndata.com/information/292504",
+      retrievedAt: "2026-09-06",
+      note: "Published by CBNData, the report's co-author. Single-platform information-seeking, not weekly reach across all content — no public \"x% of owners consume pet content weekly\" survey exists. Platform-side scale for context: Douyin pet content reaches 300M+ users monthly (2024, Ocean Engine, secondary).",
+    },
   },
   {
     label: { en: "Social interaction", zh: "社交互动" },
-    value: { en: "41%", zh: "41%" },
-    note: { en: "have interacted with another owner online", zh: "曾在线上与其他养宠人互动" },
-    provenance: HYPOTHESIS,
+    value: { en: "22.5%", zh: "22.5%" },
+    note: {
+      en: "of surveyed owners exchange illness & care experience in online pet communities",
+      zh: "的受访宠主会在线上宠物社区交流爱宠病情与经验",
+    },
+    provenance: {
+      confidence: "verified",
+      source: "iResearch pet health consumption white paper 2023",
+      url: "https://m.thepaper.cn/newsDetail_forward_22746944",
+      retrievedAt: "2026-09-06",
+      note: "Survey fielded 2022-12; diagnosis/treatment sub-sample N=1211 (report p.40, full PDF read page by page). Measures health-related exchange only — no survey quantifies general online owner-to-owner interaction. Skews young: TGI 133 for ages 21–25.",
+    },
   },
   {
     label: { en: "Local service use", zh: "本地服务使用" },
-    value: { en: "3.4×", zh: "3.4 次" },
-    note: { en: "service visits per pet per quarter", zh: "每只宠物每季度的服务到店次数" },
-    provenance: HYPOTHESIS,
+    value: { en: "51.4%", zh: "51.4%" },
+    note: {
+      en: "of urban owners bought grooming in 2024 (dogs 63.3%)",
+      zh: "的城镇宠主 2024 年消费过洗澡美容（犬 63.3%）",
+    },
+    provenance: {
+      confidence: "verified",
+      source: "China Pet Industry White Paper 2025 (Petdata)",
+      url: "https://pdf.dfcfw.com/pdf/H3_AP202512111798269901_1.pdf",
+      retrievedAt: "2026-09-06",
+      note: "Grooming consumption penetration, down 2.4pp vs 2023. This is penetration, not visit frequency — no authoritative visits-per-quarter figure was found; closest frequency data: 26.5% of owners do a pet check-up every 6 months (iResearch 2023, N=957).",
+    },
   },
   {
     label: { en: "Pet spending", zh: "宠物消费" },
-    value: { en: "¥4.8k", zh: "¥4.8k" },
-    note: { en: "annual spend per pet; services growing fastest", zh: "每只宠物年均支出，服务类增长最快" },
-    provenance: HYPOTHESIS,
+    value: { en: "¥2,961 / ¥2,020", zh: "¥2961 / ¥2020" },
+    note: {
+      en: "annual spend per dog / per cat, 2024; medical is the #2 category after food",
+      zh: "2024 年单只犬 / 单只猫年均消费；医疗是仅次于食品的第二大品类",
+    },
+    provenance: {
+      confidence: "verified",
+      source: "China Pet Industry White Paper 2025 (Petdata)",
+      url: "https://pdf.dfcfw.com/pdf/H3_AP202512111798269901_1.pdf",
+      retrievedAt: "2026-09-06",
+      note: "2024, urban dog/cat. Category split 2024: food 52.8%, medical 28.0%, supplies 12.4%, services 6.8%. The 2026 edition reports ¥3,006 / ¥2,085 for 2025 (via CCTV reprint of the launch, secondary).",
+    },
   },
 ];
 
 export const spendTrend = [
-  { year: "2021", food: 100, services: 100, health: 100 },
-  { year: "2022", food: 108, services: 118, health: 112 },
-  { year: "2023", food: 115, services: 141, health: 126 },
-  { year: "2024", food: 121, services: 168, health: 141 },
-  { year: "2025", food: 126, services: 199, health: 158 },
-  { year: "2026", food: 131, services: 234, health: 176 },
+  { year: "2022", food: 100, services: 100, health: 100 },
+  { year: "2024", food: 116, services: 111, health: 107 },
+  { year: "2025", food: 122, services: 110, health: 110 },
 ];
-export const spendTrendProvenance: Provenance = HYPOTHESIS;
+export const spendTrendProvenance: Provenance = {
+  confidence: "estimate",
+  source: "China Pet Industry White Papers 2023–2026 (Petdata)",
+  url: "https://pdf.dfcfw.com/pdf/H3_AP202512111798269901_1.pdf",
+  retrievedAt: "2026-09-06",
+  note: "Derived: category share × urban dog/cat market size, indexed to 2022 = 100. 2022: ¥270.6bn × (food 50.7% / services 6.8% / medical 29.1%); 2024: ¥300.2bn × (52.8% / 6.8% / 28.0%); 2025: ¥312.6bn × (53.7% / 6.5% / 27.6%). 2023 omitted — the full four-category share split for 2023 is not public. 2025 total and shares come from the CCTV reprint of the 2026 edition launch (secondary); 2022 shares via Sina reprint of the 2022 consumption report.",
+};
 export const spendTrendNote: Text = {
-  en: "Indexed to 2021 = 100. Hypothesis: services and health outgrow food as ownership matures and owners shift spend from goods to care.",
-  zh: "以 2021 年 = 100 作指数。假设：随着养宠成熟、支出从商品转向照护，服务与健康类增速高于食品。",
+  en: "Indexed to 2022 = 100, derived from white-paper category shares × urban dog-and-cat market size. Food spend has grown slightly faster than services; services' share of spend has been flat (6.5–6.8%) since 2022. The services story shows up in penetration — pet travel +4.9pp, insurance at 18.9%, care services rising — not yet in spend share.",
+  zh: "以 2022 年 = 100 作指数，由白皮书品类份额 × 城镇犬猫消费市场规模推算。食品支出增速略高于服务；服务在支出中的份额自 2022 年起基本持平（6.5–6.8%）。服务的增长体现在渗透率上——宠物出行 +4.9 个百分点、保险达 18.9%、照护类服务上升——尚未体现在支出份额上。",
+};
+
+/** Medical's share of urban dog & cat spend, 2019 → 2024. Used inline in the market page's implication copy. */
+export const medicalShareShiftProvenance: Provenance = {
+  confidence: "estimate",
+  source: "China Pet Industry White Papers (Petdata), 2019 & 2024 editions",
+  url: "https://pdf.dfcfw.com/pdf/H3_AP202512111798269901_1.pdf",
+  retrievedAt: "2026-09-06",
+  note: "Endpoint (28.0%, 2024) read first-hand from the 2025 white-paper excerpt PDF; startpoint (19.0%, 2019) via a broker research-report reprint of earlier editions (secondary) — hence estimate, not verified.",
 };
 
 export type NeedLayer = {
