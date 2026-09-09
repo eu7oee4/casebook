@@ -47,40 +47,40 @@ export function CompetitorExplorer() {
         </AnimatePresence>
       </div>
 
-      <div className="mt-10 grid-12 gap-y-10">
-        <div className="col-span-12 lg:col-span-7">
-          <ChartCard
-            title={t({ en: "Competition map", zh: "竞争地图" })}
-            question={t({
-              en: "Who owns which part of the lifecycle — and where is nobody?",
-              zh: "谁占据了生命周期的哪一段——哪里还没有人？",
-            })}
-            height={460}
-            legend={legend}
-            illustrative={false}
-            caption={t({
-              en: "Positions are research judgements. Filtering fades the other tiers rather than removing them, so positions stay comparable.",
-              zh: "位置来自研究判断。筛选时其他层级只是淡化而非移除，以保持位置可比。",
-            })}
-          >
-            <CompetitorMap competitors={competitors} activeTier={tier} />
-          </ChartCard>
-        </div>
-        <div className="col-span-12 lg:col-span-5">
-          <div className="flex items-baseline justify-between border-t border-line pt-4">
-            <div className="text-[14px] font-medium">{t({ en: "Products", zh: "产品" })}</div>
-            <div className="t-label">
-              {visible.length} {t({ en: "of", zh: "/" })} {competitors.length}
-            </div>
+      <div className="mt-10">
+        <ChartCard
+          title={t({ en: "Competition map", zh: "竞争地图" })}
+          question={t({
+            en: "Who owns which part of the lifecycle — and where is nobody?",
+            zh: "谁占据了生命周期的哪一段——哪里还没有人？",
+          })}
+          height={520}
+          legend={legend}
+          illustrative={false}
+          caption={t({
+            en: "Positions are research judgements. Filtering fades the other tiers rather than removing them, so positions stay comparable.",
+            zh: "位置来自研究判断。筛选时其他层级只是淡化而非移除，以保持位置可比。",
+          })}
+        >
+          <CompetitorMap competitors={competitors} activeTier={tier} />
+        </ChartCard>
+      </div>
+
+      <div className="mt-12">
+        <div className="flex items-baseline justify-between border-t border-line pt-4">
+          <div className="text-[14px] font-medium">{t({ en: "Products", zh: "产品" })}</div>
+          <div className="t-label">
+            {visible.length} {t({ en: "of", zh: "/" })} {competitors.length}
           </div>
-          <motion.ul layout className="mt-2">
-            <AnimatePresence initial={false} mode="popLayout">
-              {visible.map((c) => (
-                <CompetitorCard key={c.id} competitor={c} />
-              ))}
-            </AnimatePresence>
-          </motion.ul>
         </div>
+        {/* Two cards per row from md up; each card keeps its own top rule and expand state. */}
+        <motion.ul layout className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-10 items-start">
+          <AnimatePresence initial={false} mode="popLayout">
+            {visible.map((c) => (
+              <CompetitorCard key={c.id} competitor={c} />
+            ))}
+          </AnimatePresence>
+        </motion.ul>
       </div>
     </div>
   );

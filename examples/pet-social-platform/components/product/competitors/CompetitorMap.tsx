@@ -34,24 +34,10 @@ export const TIER_SHORT: Record<Tier, Text> = {
   benchmark: { en: "Benchmark", zh: "跨界参考" },
 };
 
-/** Vertical nudge for labels that would otherwise collide (px). */
+/** Vertical nudge for labels that would otherwise collide (px), keyed by competitor id. */
 const LABEL_DY: Record<string, number> = {
-  "pet-services": -9,
   meituan: 13,
-  "pet-commerce": 4,
 };
-
-const SHORT: Record<string, Text> = {
-  "pet-social-a": { en: "Pet social (feed)", zh: "宠物社交（信息流）" },
-  "pet-social-b": { en: "Breed communities", zh: "品种社群" },
-  "pet-content": { en: "Pet knowledge", zh: "宠物知识" },
-  "pet-services": { en: "Service booking", zh: "服务预订" },
-  "pet-commerce": { en: "Pet commerce", zh: "宠物电商" },
-};
-
-function short(c: Competitor): Text {
-  return SHORT[c.id] ?? c.name;
-}
 
 type TipProps = { active?: boolean; payload?: Array<{ payload: Competitor }> };
 
@@ -153,7 +139,7 @@ export function CompetitorMap({
                     fillOpacity={active ? 1 : 0.7}
                     style={{ transition: "fill 240ms" }}
                   >
-                    {t(short(c))}
+                    {t(c.name)}
                   </text>
                 );
               }}

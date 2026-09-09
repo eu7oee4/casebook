@@ -33,7 +33,7 @@ judgement; research there means finding evidence for or against the argument, no
 | Evidence for the three need layers (functional / emotional / social) | `needLayers` | interviews, surveys, qualitative reports; cite in `research/02-market.md` |
 | Which surfaces carry both functional and emotional value | `valueMatrix`, `valueMatrixProvenance` | positions stay judgement unless a survey ranks them |
 
-## 03 Competitors — `data/competitors.ts` ☐
+## 03 Competitors — `data/competitors.ts` ☑ (2026-09-10 — see `research/03-competitors.md`; 14 named products, 13 verified / 1 estimate; map positions stay judgement; breed-cohort archetype has no named standalone product)
 
 | Question | Feeds | Notes |
 |---|---|---|

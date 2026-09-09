@@ -82,7 +82,7 @@ export default async function MarketPage({ params }: { params: Promise<{ locale:
         <Reveal className="mt-10">
           <MetricGrid
             items={marketKpis.map((k) => ({ label: t(k.label), value: t(k.value), note: t(k.note), provenance: k.provenance }))}
-            columns={5}
+            columns={2}
             size="lg"
           />
         </Reveal>

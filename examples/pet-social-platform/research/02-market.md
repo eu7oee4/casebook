@@ -66,6 +66,8 @@ All in `data/market.ts`, `en` and `zh` updated together:
 | `spendTrend` | invented 2021–26 index, services → 234 | derived index 2022/24/25 from shares × market size | estimate · S01/S02/S03 |
 | `spendTrendNote` | "services and health outgrow food" | food slightly outgrows services; services flat in share, growing in penetration | — (caption) |
 
+Layout change (UI, author-requested 2026-09-10): the five-KPI `MetricGrid` in `app/[locale]/market/page.tsx` went from `columns={5}` to `columns={2}` (rows of 2 / 2 / 1) because at browser zoom the five provenance badges overlapped.
+
 Copy changes in `app/[locale]/market/page.tsx` (content, not UI): section 01 title ("shifting toward services" → "from goods to care"), section description ("five hypotheses" → "five indicators"), blanket `Illustrative` badge on section 01 removed (each KPI now carries its own mark), page-header aside reworded to point at the remaining illustrative fields, implication paragraph now cites the 19%→28% medical share shift (S15 → S01) instead of "if services grow fastest".
 
 ## Still hypothesis
