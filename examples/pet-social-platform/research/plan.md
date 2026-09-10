@@ -74,7 +74,7 @@ judgement; research there means finding evidence for or against the argument, no
 | Real-world examples of each capability in production (content understanding, matching, service agents) | `research/07-ai-strategy.md` | evidence only; the capability list and priorities stay |
 | Known limitations / risks (pet-breed misclassification, privacy of location data, agent side-effects) | `research/07-ai-strategy.md` | feeds an optional "risks" note; do not weaken the architecture |
 
-## 08 Benchmark — `data/benchmark.ts` ☐
+## 08 Benchmark — `data/benchmark.ts` ☑ (2026-09-10 — see `research/08-benchmark.md`; six rows sourced, 5 verified / 1 estimate; no example replaced)
 
 | Question | Feeds | Notes |
 |---|---|---|

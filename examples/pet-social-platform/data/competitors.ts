@@ -377,7 +377,7 @@ export const competitors: Competitor[] = [
       en: "No shared real-world context; conversations decay without an activity to meet around",
       zh: "缺少共同的现实语境；没有可以见面的活动，对话会衰减",
     },
-    mechanism: { en: "30-second 'soul test' on personality and values → compatibility → guided first conversation", zh: "30 秒基于性格与三观的「灵魂鉴定」→ 相容性 → 引导式初次对话" },
+    mechanism: { en: "30-second 'soul test' on personality and values → compatibility → low-pressure first contact (avatars, voice matching, group parties)", zh: "30 秒基于性格与三观的「灵魂鉴定」→ 相容性 → 低压力的初次接触（捏脸头像、语音匹配、群聊派对）" },
     x: 40,
     y: 84,
     provenance: {

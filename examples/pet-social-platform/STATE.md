@@ -1,10 +1,16 @@
 # STATE — pet-social-platform
 
-Last updated: 2026-09-10 (03 Competitors researched; 02 KPI grid + 03 list scroll UI edits)
+Last updated: 2026-09-10 (03 Competitors + 08 Benchmark researched; 02/03 UI edits)
 
 ## Where it stands
 - Site complete: nine chapters, EN / 中文, design system finished, `npm run check` passes.
 - Research: **in scope for all nine chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
+- **08 Benchmark done (2026-09-10)**: all six rows carry `provenance` reused from 03's sources (5 `verified`,
+  小红书 `estimate`). Two mechanism wordings corrected because nothing public documents them: Soul's "guided first
+  conversation" (also fixed in `data/competitors.ts`) and Meituan's "merchant SLAs" → platform-level refund
+  guarantees. "SLA" stays in the adaptation column / `transferMap` as the case's own design term (noted). No example
+  replaced; reasoning in `research/08-benchmark.md`. No `revisions.md` row — no insight or adaptation changed.
+  `npm run check` passes; SSR-checked by curl; not eyeballed in a browser. **Uncommitted.**
 - **03 Competitors done (2026-09-10)**: BarkHappy kept on the map (author OK, 2026-09-10); closure reason researched — none published, timeline and company facts in `research/03-competitors.md` (S40–S42). the 11 cards are now 14 named products, every one with a `provenance`
   (13 `verified`, 1 `estimate` — Xiaohongshu's search-first mechanism rests on secondary press). Direct tier:
   Petzbe, Yummypets, BarkHappy (US, app discontinued Jan 2025 — kept on the map as evidence), 宠胖胖 (CN). Industry:
@@ -51,8 +57,9 @@ Last updated: 2026-09-10 (03 Competitors researched; 02 KPI grid + 03 list scrol
   badges now truncate to their column width and bottom-align across a metric row.)
 
 ## Next steps (in order)
-1. Research 08 Benchmark next — the six benchmark mechanisms were verified in 03 (S30–S38), so 08 is mostly
-   filling `benchmarkRows[*].provenance` from the same sources; then 04–07, then 09, then 01 last.
+1. Research 04 Content next (content-type mix on pet feeds / hashtags; breed-recognition benchmarks for the
+   understanding-metrics note; examples of platforms ranking on structured understanding), then 05, 06, 07, then 09,
+   then 01 last. Chapters 04–07 are product judgement: the job is evidence for / against, not rewriting.
 2. After 02 (or 02+03) is walked through end to end, casebook v1 extraction (`packages/`, template, skills)
    can start in parallel with the remaining chapters — workspace-level decision, 2026-09-06.
 3. Review mode (in-page editing + annotations → AI applies) is planned at the casebook level, not here; wait for `packages/` to exist.
