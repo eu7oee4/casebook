@@ -1,11 +1,45 @@
 # STATE — pet-social-platform
 
-Last updated: 2026-09-16 (05 Social researched; 04 Content researched; no value changed in either;
-supply/demand subtraction retracted; AI cost wording fixed; provenance made legible at a glance — all author-decided)
+Last updated: 2026-09-16 (06 Local researched; 05 Social researched; 04 Content researched; no value changed
+in any of the three; supply/demand subtraction retracted; AI cost wording fixed; provenance made legible at a
+glance — all author-decided)
 
 ## Where it stands
 - Site complete: nine chapters, EN / 中文, design system finished, `npm run check` passes.
 - Research: **in scope for all nine chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
+- **06 Local done (2026-09-16)**: **no value changed**, and no page copy changed either — every edit is provenance
+  metadata. The five-tier model again decided most of the chapter: `serviceJourney`, the whole concierge
+  (`conciergeQuery` / `conciergeSteps` / the three fictional merchants / `booking`) and the design principles are
+  `design`, leaving `serviceCategories` and `serviceMetrics`. **Two values were changed after the author reviewed
+  the findings** — see flag 4 below; the rest of the chapter's numbers are untouched. **Frequency is not published anywhere for Chinese
+  owners** — the white papers publish *penetration* (Petdata S01; KPMG S60 publishes where owners go: 宠物店 for
+  both 洗美 and 寄养 above 50%, 医院洗美 down to 29.2%), the same gap that forced `marketKpis[3]` to become a
+  penetration metric in 02. Four of the eight rows are now bracketed from professional guidance and household
+  surveys instead: grooming against PetSmart's own "about every four-to-six weeks" (S58) and the AKC's
+  breed-dependent "weekly to every four to six weeks" (S59) — **so the row's 8-week upper bound is supported by
+  nothing found**; vet against AAHA's "semiannual-to-annual exams" (S56, 1–2 check-ups a year) and the Chinese
+  self-reported distribution (S05: 每半年 26.5%, 每年 24.9%, 每 2–3 月 24.2%, 每月 8.4%), so "2–4× / year" holds
+  only if incident visits are counted; walking against 77.9% of 276 Cheshire dogs walked at least daily, 22.1%
+  less than daily (S57); boarding against 58到家's +46% month-on-month January demand, dog boarding 6× cat
+  (S61). Training, photography, pet-friendly places and community events stay pure judgement, as does the whole
+  `trustNeed` ordering — no survey ranks the categories. Of the four targets: **repeat** is bracketed by Rover's
+  FY2021 10-K ("approximately 81% of our bookings were repeat bookings"; 86% / 84% in 2020 / 2019; 3.7 → 7.3
+  bookings per repeat customer in year one, S64) with both denominators stated and deliberately **not** divided
+  — Rover counts bookings from any returning customer, the target counts customers rebooking the same merchant
+  inside 60 days; **reviews → content** by Airbnb's control group ("68% of trips result in a guest review", S65)
+  against a looser object, so 31% reads conservative; **intent → booking** is a recorded **negative finding** —
+  Angi discloses "approximately 23 million projects" and Rover discloses bookings, neither a request → booking
+  rate (S66), and every "booking rate" league table in search traces to marketing blogs (not used); **time to
+  book** has no comparable at all. Best supporting finding: 32.8% of new vet clients first heard of their
+  practice from a fellow pet owner, ahead of every other channel, and chose on personnel over location (S63,
+  N=129, NL) — paired with 97% five-star on Rover (S64) and 74% on Airbnb (S65), that is why a stranger's rating
+  cannot carry the ranking and a followed owner's can. One `revisions.md` row: the "intent shows up in content
+  **before** search" ordering is **kept with a qualification** — nothing measures the ordering, Meituan/Dianping
+  notes grew 224% vs searches 80% (S68) but Xiaohongshu discloses 70% of MAU actively searching (S67); the
+  channel claim survives, the sequence word does not. 13 new sources (S56–S68). **All of the above is committed (b226f6a, on `main`).** Section-level marking kept on
+  the category table (per-row badges would need a `provenance` field and a `DataTable` change — author approved
+  keeping the section badge, 2026-09-16). `npm run check` passes; both locales curl-checked, all eight new
+  provenance notes present in the SSR payload. **Not eyeballed in a browser** (hover-card content only).
 - **05 Social done (2026-09-16)**: **no value changed.** The five-tier model paid off immediately — `identityDimensions`,
   `relationshipLadder`, the AI Pet Match prototype and `matchPrinciples` are all `design`, so only two blocks
   needed evidence. `ladderFunnel` stays `hypothesis`: the two nearest comparables **disagree on the shape** and
@@ -136,30 +170,50 @@ supply/demand subtraction retracted; AI cost wording fixed; provenance made legi
   3. (from 04, 2026-09-14) `contentTypesNote` copy changed in both languages — a content correction, not UI; the
      chart caption now says the mix is a design target rather than a hypothesis about an early feed. Reasoning in
      `research/04-content.md` → Data changes and the 2026-09-14 `revisions.md` row.
-  4. (from 02, 2026-09-10) KPI grid switched to 2 columns (rows 2 / 2 / 1) at the author's request after badges
+  4. (from 06, 2026-09-16 — **decided, done**) The two unsupported upper bounds were narrowed at the author's
+     instruction: grooming 「每 4–8 周」→「每 4–6 周」 (PetSmart FAQ / AKC, S58–S59) and 宠物医疗
+     「每年 2–4 次」→「每年 1–2 次 + 按需」 (AAHA check-up cadence, S56; incident visits now sit outside the
+     range). `en`+`zh` together, one `revisions.md` row, hover card carries both cited ranges. The author asked
+     for the section badge to read 估算; keeping one badge for a mixed section would have over-claimed for the
+     six unsourced rows, so on the author's instruction the marks went **row-level** instead (see flag 5).
+     **Not eyeballed in a browser after this edit.**
+  5. (from 06, 2026-09-16 — **author-approved UI change, not eyeballed in a browser**) `serviceCategories` rows
+     gained an optional `provenance`; the 美容 and 宠物医疗 rows carry their own **估算 / Estimate** badge,
+     rendered inline after the frequency value (`whitespace-nowrap`, so the marked rows keep the same height as the
+     rest — the author asked for this after seeing the badge stacked under the value), and the frequency column
+     went 20% → 22% to fit it. `DataTable` was
+     **not** touched — its `cell` render prop was already enough, so the blast radius is `data/services.ts` and
+     `app/[locale]/local/page.tsx` only. The section badge stays 示意 and its hover card now says it covers only
+     the unmarked cells (four frequencies + all eight trust needs). Recorded as a sanctioned exception in the
+     case `CLAUDE.md` → "What not to change", together with the pattern to reuse: mark a row only where it
+     departs from the section floor. Reviewed in a browser by the author 2026-09-16: hover card renders correctly
+     and is not clipped by the table's `overflow-x-auto` wrapper; the only change asked for was moving the badge
+     onto the value's line, now done.
+  6. (from 02, 2026-09-10) KPI grid switched to 2 columns (rows 2 / 2 / 1) at the author's request after badges
      overlapped at zoom; `npm run check` passes, not eyeballed in a browser (no Chrome extension in this session).
   (The `SpendTrend.tsx` hard-coded Y domain was fixed 2026-09-06 with author approval: domain/ticks are now
   computed from the data. Provenance-badge overflow with long real source names was also fixed the same day —
   badges now truncate to their column width and bottom-align across a metric row.)
 
 ## Next steps (in order)
-1. **Research 06 Local next**, then 07, then 09, then 01 last. Chapters 06–07 are product judgement: the job is
-   evidence for / against, not rewriting. Questions are in `research/plan.md` → Local; `data/services.ts`.
-   **Head start for 06, handed over from 05**: in both dog-and-neighbourhood studies the effect belongs to the
-   *walk*, not to ownership — S53 (Japan, N=3606) finds the higher activities-with-neighbours score only for dog
-   owners **who walk**, and only among young-to-middle-aged adults; S55 (US) finds owners 2.4× more likely to meet
-   neighbours but its sample is 55+ and 90% female. The walk is the social act, which bears directly on the
-   service categories and the local journey. Also note before starting: after the five-tier model (2026-09-15),
-   much of `data/services.ts` is `design` (service journey, concierge workflow and its fictional merchants) — the
-   blocks that actually assert something about the world are `serviceCategories` (frequency, trustNeed) and
-   `serviceMetrics`. Expect a small research surface, as in 05.
-   **Method that has worked twice**: Chinese white-paper PDFs use subset fonts, so plain fetching returns nothing —
-   extract text page by page with PyMuPDF (venv at the scratchpad path recorded in `research/04-content.md`).
-   medium.com and nature.com need a text proxy of the same URL; PMC needs the `pmc.ncbi.nlm.nih.gov` host, not
-   `www.ncbi.nlm.nih.gov`.
-   **Standing rule learned the hard way** (two retractions now): before comparing two figures, check they share a
-   denominator. Supply share vs multi-select demand (04) and cascade funnel vs self-reported frequency (05) both
-   look comparable and are not.
+1. **Research 07 AI Strategy next**, then 09, then 01 last. Chapter 07 is product judgement: the job is
+   evidence for / against, not rewriting. Questions are in `research/plan.md` → AI Strategy; `data/ai.ts`.
+   The open question added on 2026-09-15 is the load-bearing one: **what content understanding costs to run at
+   scale and how production systems tier it** — Pinterest P2I (S47) is in hand; no unit price goes on a page
+   without a source.
+   **Head start from 06**: `serviceMetrics[0]`'s negative finding (no marketplace publishes a request → booking
+   conversion) is the shape to expect for agent-performance targets too; and 06's evidence that ratings compress
+   at the top (97% five-star on Rover, S64) is an argument *for* the personalisation capability, worth reusing.
+   **Method that has worked three times**: Chinese white-paper PDFs use subset fonts, so plain fetching returns
+   nothing — extract text page by page with PyMuPDF (venv at the scratchpad path recorded in
+   `research/04-content.md`; it also read the KPMG and AAHA PDFs and an academic PDF in 06). medium.com,
+   nature.com, springer and pubmed need a text proxy of the same URL; PMC needs the `pmc.ncbi.nlm.nih.gov` host,
+   not `www.ncbi.nlm.nih.gov`. SEC EDGAR filing pages fetch fine but a single fetch may miss the metrics section
+   — ask for the exact phrase.
+   **Standing rule learned the hard way** (two retractions, and a third comparison refused in 06): before
+   comparing two figures, check they share a denominator. Supply share vs multi-select demand (04), cascade
+   funnel vs self-reported frequency (05), and Rover's repeat-booking share vs a same-merchant 60-day repeat
+   rate (06) all look comparable and are not.
 2. After 02 (or 02+03) is walked through end to end, casebook v1 extraction (`packages/`, template, skills)
    can start in parallel with the remaining chapters — workspace-level decision, 2026-09-06.
 3. Review mode (in-page editing + annotations → AI applies) is planned at the casebook level, not here; wait for `packages/` to exist.

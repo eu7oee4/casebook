@@ -58,14 +58,14 @@ judgement; research there means finding evidence for or against the argument, no
 | Benchmarks for match acceptance, conversation and offline conversion (dating / activity apps) | `matchMetrics` (note only) | targets stay hypothesis; cite comparables in `note` |
 | Evidence that pet identity drives owner-to-owner relationships | `research/05-social.md` | qualitative sources, forums, interviews |
 
-## 06 Local — `data/services.ts` ☐
+## 06 Local — `data/services.ts` ☑ (2026-09-16 — see `research/06-local.md`; **no value changed**. Three of the eight category frequencies now carry a public comparable (grooming 4–6 weeks per merchant and AKC guidance, vet 1–2 check-ups a year per AAHA against the Chinese self-reported distribution, walking 77.9% at least daily in a UK household survey) and boarding's holiday shape is sourced; the other four and all trust needs stay judgement. Of the four targets, repeat and reviews→content are bracketed by Rover's and Airbnb's disclosures with their denominators stated, intent→booking is a recorded negative finding (no marketplace publishes a request→booking rate), and time-to-book has no comparable at all. One `revisions.md` row: the "intent appears in content before search" ordering is kept with a qualification.)
 
 | Question | Feeds | Notes |
 |---|---|---|
-| Typical frequency per service category (grooming, vet, boarding, walking…) | `serviceCategories.frequency`, `serviceCategoriesProvenance` | industry reports or merchant guidance |
-| Where trust matters most (vet, boarding) — evidence | `serviceCategories.trustNeed` | surveys on how owners choose a vet or boarder |
-| Local-service conversion and repeat benchmarks | `serviceMetrics` (note only) | targets stay hypothesis |
-| Real merchant examples for the concierge prototype (optional) | `recommendedServices` | keep fictional unless permission to name real merchants is clear |
+| Typical frequency per service category (grooming, vet, boarding, walking…) | `serviceCategories.frequency`, `serviceCategoriesProvenance` | ☑ Chinese white papers publish penetration, not frequency (same gap as 02). Grooming, vet, walking and boarding bracketed from professional guidance and household surveys (S56–S59, S61); training, photography, pet-friendly places, community events unsourced |
+| Where trust matters most (vet, boarding) — evidence | `serviceCategories.trustNeed` | ☑ No survey ranks the categories, so the ordering stays judgement. Support: 32.8% of new vet clients arrive via a fellow owner (S63); ratings are too compressed to separate merchants (97% five-star on Rover, S64) |
+| Local-service conversion and repeat benchmarks | `serviceMetrics` (note only) | ☑ Targets stay hypothesis. Repeat: Rover 81% of bookings (S64) — different denominator. Reviews: Airbnb 68% of trips (S65). Conversion: nobody publishes one (S66) |
+| Real merchant examples for the concierge prototype (optional) | `recommendedServices` | ☑ Kept fictional — the block is `design`; no permission to name real merchants was sought |
 
 ## 07 AI Strategy — `data/ai.ts` ☐
 

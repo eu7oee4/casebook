@@ -58,7 +58,9 @@ Every factual number or claim carries a `Provenance` (`data/provenance.ts`):
 **Nothing renders unmarked.** Every block of data on a page carries a provenance — per item where the component
 supports it (`Metric`, competitor cards, benchmark rows), otherwise at the section level via `SectionHeader`'s
 `provenance` prop. A section whose items are *individually* marked takes no section badge: one badge cannot
-honestly summarise a mixed section. The badge shows only the state word; the source name, link, retrieval date
+honestly summarise a mixed section. Where only *some* items are marked — 06's category table, where two of
+eight frequencies follow cited guidance — the section badge stays, covers exactly what is unmarked, and its
+note must say which cells those are. The badge shows only the state word; the source name, link, retrieval date
 and note live in the hover card. Then, for each mark:
 
 1. Never set `estimate`, `verified` or `contradicted` without `source`, `url` (if one exists) and `retrievedAt` (ISO date).
@@ -97,9 +99,16 @@ one to match a single weak source: the bar for revising is the same as for `veri
 ## What not to change
 
 - UI components, design tokens, typography, layout, `app/globals.css`, `components/`. (Sanctioned exceptions,
-  both already made: the `contradicted` branch in `ProvenanceMark`, and the 2026-09-15 provenance-legibility
+  all already made: the `contradicted` branch in `ProvenanceMark`; the 2026-09-15 provenance-legibility
   change — the `design` tier, the dashed/solid + hollow/filled/square badge scheme, `SectionHeader`'s
-  `provenance` prop, and `Metric` no longer hiding the badge for `hypothesis`.)
+  `provenance` prop, and `Metric` no longer hiding the badge for `hypothesis`; and the 2026-09-16 row-level mark
+  in 06's category table — `serviceCategories` rows gained an optional `provenance`, and `/local` renders a
+  `ProvenanceMark` inline after the frequency value for the rows that carry one. `DataTable` itself was **not** changed:
+  its `cell` render prop was already enough, so nothing outside `/local` moved.)
+
+  **Pattern for row-level marks in a table**: set the row's optional `provenance` only where the row departs from
+  the section floor, keep the `SectionHeader` badge for everything unmarked, and say in the section note which
+  cells the section badge still covers. Repeating the section's own state on every row adds noise, not information.
 - Copy tone: analytical, PM-voice, English. No marketing language.
 
 ## How to work

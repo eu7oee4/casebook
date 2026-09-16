@@ -8,6 +8,7 @@ import { FlowDiagram } from "@/components/ui/FlowDiagram";
 import { MetricGrid } from "@/components/ui/Metric";
 import { InsightCard } from "@/components/ui/InsightCard";
 import { Tag } from "@/components/ui/Tag";
+import { ProvenanceMark } from "@/components/ui/Note";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { AgentWorkflow } from "@/components/product/local/AgentWorkflow";
 import { booking, conciergeQuery, conciergeSteps, recommendedServices, serviceCategories, serviceCategoriesProvenance, serviceJourney, serviceMetrics, trustNeedLabel, type TrustNeed, serviceJourneyProvenance, conciergeProvenance, servicePrinciplesProvenance } from "@/data/services";
@@ -80,7 +81,18 @@ export default async function LocalPage({ params }: { params: Promise<{ locale: 
             dense
             columns={[
               { key: "name", header: t({ en: "Category", zh: "类别" }), cell: (r) => <span className="font-medium">{t(r.name)}</span>, width: "22%" },
-              { key: "freq", header: t({ en: "Frequency", zh: "频次" }), cell: (r) => <span className="text-ink-2">{t(r.frequency)}</span>, width: "20%" },
+              {
+                key: "freq",
+                header: t({ en: "Frequency", zh: "频次" }),
+                // Rows whose frequency follows cited guidance carry their own badge; the rest are covered by the section mark.
+                cell: (r) => (
+                  <span className="flex items-center gap-2 whitespace-nowrap">
+                    <span className="text-ink-2">{t(r.frequency)}</span>
+                    {r.provenance ? <ProvenanceMark provenance={r.provenance} /> : null}
+                  </span>
+                ),
+                width: "22%",
+              },
               {
                 key: "trust",
                 header: t({ en: "Trust need", zh: "信任需求" }),

@@ -1,8 +1,15 @@
 import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
 import type { Str, Text } from "@/lib/i18n";
 
-/** Frequency and trust-need are judgements; replace with survey or platform data when found. */
-export const serviceCategoriesProvenance: Provenance = HYPOTHESIS;
+/** Section floor: covers every cell not marked on its own row (four frequencies + all trust needs). Grooming and vet carry row-level Estimate marks. */
+export const serviceCategoriesProvenance: Provenance = {
+  confidence: "hypothesis",
+  source: "AAHA Canine Life Stage Guidelines (2019); Westgarth et al., BMC Vet. Res. 11:116 (2015); PetSmart grooming FAQ",
+  url: "https://www.aaha.org/wp-content/uploads/globalassets/02-guidelines/canine-life-stage-2019/2019-aaha-canine-life-stage-guidelines-final.pdf",
+  retrievedAt: "2026-09-16",
+  note:
+    "This badge covers everything in the table that is not marked on its own row: the training, photography, pet-friendly-places and community-event frequencies, which nothing public sizes, and the whole trust-need ordering, which no survey ranks. The grooming and vet frequencies carry their own Estimate marks — they follow cited professional guidance (PetSmart / AKC and AAHA respectively), and the author narrowed both on 2026-09-16 from “4–8 weeks” and “2–4× / year”, whose upper bounds nothing sourced. Two further rows are bracketed but keep the author’s wording: walking — 77.9% of 276 dogs in a Cheshire (UK) household survey were walked at least once a day (29.5% once, 32.4% twice, 13.3% three times) and 22.1% less than daily; boarding — demand is holiday-shaped rather than periodic, with 58到家 reporting boarding demand up 46% month-on-month entering January 2026 and dog boarding 6× cat. On trust need, the one quantified support is that 32.8% of new veterinary clients first heard of their practice through a fellow pet owner — ahead of passing by (17.2%), Yellow Pages (14.1%) and the practice website (13.3%) — and chose it on personnel and service package more than location (N=129, Netherlands, 2009).",
+};
 export type TrustNeed = "Low" | "Medium" | "High" | "Very high";
 export const trustNeedLabel: Record<TrustNeed, Text> = {
   Low: { en: "Low", zh: "低" },
@@ -10,9 +17,36 @@ export const trustNeedLabel: Record<TrustNeed, Text> = {
   High: { en: "High", zh: "高" },
   "Very high": { en: "Very high", zh: "极高" },
 };
-export const serviceCategories: Array<{ name: Text; frequency: Text; trustNeed: TrustNeed; intentFrom: Text }> = [
-  { name: { en: "Grooming", zh: "美容" }, frequency: { en: "Every 4–8 weeks", zh: "每 4–8 周" }, trustNeed: "Medium", intentFrom: { en: "Diary posts, seasonal moments", zh: "日记内容、季节性时刻" } },
-  { name: { en: "Vet", zh: "宠物医疗" }, frequency: { en: "2–4× / year", zh: "每年 2–4 次" }, trustNeed: "Very high", intentFrom: { en: "Q&A, symptom posts", zh: "问答、症状描述" } },
+/** `provenance` is set only where a row departs from the section floor — the two cells that follow cited guidance. */
+export const serviceCategories: Array<{ name: Text; frequency: Text; trustNeed: TrustNeed; intentFrom: Text; provenance?: Provenance }> = [
+  {
+    name: { en: "Grooming", zh: "美容" },
+    frequency: { en: "Every 4–6 weeks", zh: "每 4–6 周" },
+    trustNeed: "Medium",
+    intentFrom: { en: "Diary posts, seasonal moments", zh: "日记内容、季节性时刻" },
+    provenance: {
+      confidence: "estimate",
+      source: "PetSmart grooming FAQ; AKC, “How Often Should You Wash Your Dog?”",
+      url: "https://services.petsmart.com/content/grooming-faq",
+      retrievedAt: "2026-09-16",
+      note:
+        "The interval professionals recommend, not observed booking behaviour — which is why this is an estimate rather than a sourced observation. PetSmart’s own grooming FAQ: “Grooming or bathing your pet once about every four-to-six weeks, either at home or with a professional groomer, will keep your pet happy and healthy.” The AKC adds that it is coat-dependent — “for dogs with medium-to-large coats, a bath could be needed from weekly to every four to six weeks”, hairless breeds “require weekly baths” — so 4–6 weeks is the outside interval for a full groom, not a floor. Nothing public measures how often Chinese owners actually book: the white papers publish penetration only (洗澡美容 penetration fell 2.4pp in 2024).",
+    },
+  },
+  {
+    name: { en: "Vet", zh: "宠物医疗" },
+    frequency: { en: "1–2× / year + as needed", zh: "每年 1–2 次 + 按需" },
+    trustNeed: "Very high",
+    intentFrom: { en: "Q&A, symptom posts", zh: "问答、症状描述" },
+    provenance: {
+      confidence: "estimate",
+      source: "AAHA Canine Life Stage Guidelines (2019); iResearch pet health white paper (2023)",
+      url: "https://www.aaha.org/wp-content/uploads/globalassets/02-guidelines/canine-life-stage-2019/2019-aaha-canine-life-stage-guidelines-final.pdf",
+      retrievedAt: "2026-09-16",
+      note:
+        "Guideline cadence plus a matching observed distribution, hence an estimate. AAHA: “Encourage a consultation and physical exam for young adults semiannually to annually”, “Mature adults should have semiannual-to-annual exams”, “The senior dog should have at least semiannual exams” — 1–2 check-ups a year, two for seniors. Chinese owners self-report check-ups every 6 months 26.5%, yearly 24.9%, every 2–3 months 24.2%, monthly 8.4% (iResearch 2023, N=957; 86.5% do regular check-ups), so the two largest buckets are exactly the guideline. Symptom-driven visits sit outside the range (“+ as needed”) because no source measures how many a pet makes in a year — folding them in is what made the old “2–4× / year” unsupportable.",
+    },
+  },
   { name: { en: "Training", zh: "训练" }, frequency: { en: "Episodic", zh: "阶段性" }, trustNeed: "High", intentFrom: { en: "Behaviour questions", zh: "行为问题" } },
   { name: { en: "Boarding", zh: "寄养" }, frequency: { en: "Holidays, travel", zh: "假期、出行" }, trustNeed: "Very high", intentFrom: { en: "Travel & lifestyle posts", zh: "出行与生活方式内容" } },
   { name: { en: "Photography", zh: "摄影" }, frequency: { en: "Milestones", zh: "重要时刻" }, trustNeed: "Low", intentFrom: { en: "Diary, birthdays", zh: "日记、生日" } },
@@ -231,8 +265,44 @@ export const booking: {
 export const servicePrinciplesProvenance: Provenance = DESIGN;
 
 export const serviceMetrics: Array<{ label: Text; value: string; note: Text; provenance: Provenance }> = [
-  { label: { en: "Intent → booking", zh: "意图 → 预订" }, value: "23%", note: { en: "vs 6% for search-based flow (hypothesis)", zh: "对比搜索式流程的 6%（假设）" }, provenance: HYPOTHESIS },
+  {
+    label: { en: "Intent → booking", zh: "意图 → 预订" },
+    value: "23%",
+    note: { en: "vs 6% for search-based flow (hypothesis)", zh: "对比搜索式流程的 6%（假设）" },
+    provenance: {
+      confidence: "hypothesis",
+      source: "Angi Inc. FY2023 Form 10-K; Rover Group, Inc. FY2021 Form 10-K",
+      url: "https://www.sec.gov/Archives/edgar/data/1705110/000170511024000012/angi-20231231.htm",
+      retrievedAt: "2026-09-16",
+      note:
+        "Target, not an observation, and nothing public brackets it: the local-service marketplaces that disclose operating metrics disclose volume, not conversion. Angi reports that “consumers turned to at least one of our businesses to find a service professional for approximately 23 million projects” in 2023; Rover reports bookings and repeat bookings. Neither publishes a request → booking rate, and the “booking rate” league tables that surface in search (31% vs 18% vs 12% across lead platforms) trace to marketing blogs with no stated method or sample — none used. The 6% search-flow baseline is the author's too.",
+    },
+  },
   { label: { en: "Time to book", zh: "预订耗时" }, value: "48 s", note: { en: "median, from first message", zh: "从第一条消息起的中位数" }, provenance: HYPOTHESIS },
-  { label: { en: "Repeat within 60 days", zh: "60 天内复购" }, value: "44%", note: { en: "same merchant, same pet", zh: "同一商家、同一宠物" }, provenance: HYPOTHESIS },
-  { label: { en: "Reviews → content", zh: "评价 → 内容" }, value: "31%", note: { en: "bookings that produce a post or review", zh: "产生帖子或评价的预订比例" }, provenance: HYPOTHESIS },
+  {
+    label: { en: "Repeat within 60 days", zh: "60 天内复购" },
+    value: "44%",
+    note: { en: "same merchant, same pet", zh: "同一商家、同一宠物" },
+    provenance: {
+      confidence: "hypothesis",
+      source: "Rover Group, Inc. FY2021 Form 10-K",
+      url: "https://www.sec.gov/Archives/edgar/data/1826018/000182601822000034/rovr-20211231.htm",
+      retrievedAt: "2026-09-16",
+      note:
+        "Target, not an observation; the nearest public figure is far higher and measures something else. Rover — the largest pet-care marketplace to have been publicly listed — disclosed that “approximately 81% of our bookings were repeat bookings” in 2021 (86% in 2020, 84% in 2019), and that bookings per repeat customer in year one rose from 3.7 for the January 2013 cohort to 7.3 for the January 2021 cohort. Its denominator is bookings placed by customers with more than one booking, over any interval and any provider; this target is the share of customers who rebook the same merchant for the same pet inside 60 days. The two cannot be compared — they agree only that repeat volume, not acquisition, carries a pet-services marketplace.",
+    },
+  },
+  {
+    label: { en: "Reviews → content", zh: "评价 → 内容" },
+    value: "31%",
+    note: { en: "bookings that produce a post or review", zh: "产生帖子或评价的预订比例" },
+    provenance: {
+      confidence: "hypothesis",
+      source: "Fradkin, Grewal & Holtz, Marketing Science 40(6):1013–1029 (2021)",
+      url: "https://doi.org/10.1287/mksc.2021.1311",
+      retrievedAt: "2026-09-16",
+      note:
+        "Target, not an observation. On a two-sided marketplace that prompts for reviews by email, 68% of trips result in a guest review and 72% in a host review (control group; 119,789 transactions with checkouts 2014-05-10 to 2014-06-12); Rover reported 4.9M cumulative reviews with 97% of reviewed bookings at five stars. Both count a review inside the platform's own flow, while this target counts bookings that produce a public post or review — a looser, more demanding object, which is why 31% sits well below them rather than near them. Those same figures are why the chapter argues a followed owner's rating beats a stranger's: at 97% five-star, a stranger's rating carries almost no information.",
+    },
+  },
 ];
