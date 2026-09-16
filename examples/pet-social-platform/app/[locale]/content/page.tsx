@@ -150,8 +150,8 @@ export default async function ContentPage({ params }: { params: Promise<{ locale
           label={t({ en: "Content intelligence pipeline", zh: "内容理解流水线" })}
           title={t({ en: "From one post to recommendation, matching and service intent", zh: "从一条帖子到推荐、匹配与服务意图" })}
           description={t({
-            en: "Understanding happens once, at publish time. Every downstream surface reuses the same entities instead of re-guessing from engagement.",
-            zh: "理解只在发布时发生一次。所有下游界面复用同一组实体，而不是各自从互动数据里重新猜测。",
+            en: "Understanding happens once, at publish time. Every downstream surface reuses the same entities instead of re-guessing from engagement — and because a post is understood once but read many times, doing it at write time is what makes understanding every post affordable at all.",
+            zh: "理解只在发布时发生一次。所有下游界面复用同一组实体，而不是各自从互动数据里重新猜测——而且一条帖子只被理解一次，却要被读很多次，正是放在写入时做，才让「理解每一条」在成本上站得住。",
           })}
           size="lg"
         />

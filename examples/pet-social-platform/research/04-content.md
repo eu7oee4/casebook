@@ -122,6 +122,16 @@ comparable in their provenance note, so the hover card shows what the target was
 
 No values changed. All seven `share` numbers and all four metric values are the same as before.
 
+**2026-09-15 — cost / tiering wording (author-raised, see `revisions.md`).** No value changed here either.
+
+| Field | Old → New |
+|---|---|
+| `pipeline[1].detail` (`en`+`zh`) | "Vision + language models label the post" → "A small vision + language model labels every post; only ambiguous ones escalate" |
+| pipeline section description in `app/[locale]/content/page.tsx` (`en`+`zh`) | publish-time understanding was justified on correctness alone → now also carries its cost half: a post is understood once but read many times, which is what makes understanding every post affordable |
+
+Companion edits in `data/ai.ts` (`capabilities[0].oneLiner`, `.mechanism`) are logged in the same revisions row;
+the five capabilities are author-decided, and the author decided this one on 2026-09-15.
+
 ## Still hypothesis
 
 - **`contentTypes[*].share` (all seven).** A real mix exists (S43) but measures broadcast content on a general
@@ -160,6 +170,15 @@ popularity plus time and location, with the heavy lifting done by the viewer's a
 (S48). Engagement-first ranking is still the published norm on the largest surfaces, so the chapter's approach is
 a defensible design choice rather than a settled industry standard — worth saying plainly if this ever reaches
 01 Overview.
+
+**Against, and the sharpest one — the chapter never said what it costs.** Raised by the author on 2026-09-15:
+if every post must be understood and ranking is AI too, is this not overuse? A search of `data/` and `app/` found
+every "cost / 成本" string in the case to be user-side (posting effort, acquisition, switching); the compute cost of
+the understanding layer was discussed nowhere, in any chapter. The architecture survives the challenge — Pinterest
+runs the same shape over a 200B+ Pin corpus as a daily batch job with cheap high-recall candidate generation, and
+names per-item cost as its binding constraint (S47) — but the case was written in a way that reads as one large
+multimodal call per post. Wording fixed in four places (see Data changes); the actual unit economics are now an
+open question on the 07 table, and no cost figure goes on a page until it has a source.
 
 **Not evidence, but worth carrying forward.** 71.2% of pet-content users say they actively follow creators
 (经常 43.6% + 总是 27.6%, N=500, S43 p.17), and the same page breaks down 点赞/转发 → 评论 → 加入粉丝群. That is the

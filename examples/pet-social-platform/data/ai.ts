@@ -23,7 +23,7 @@ export const capabilities: Capability[] = [
   {
     index: "01",
     name: { en: "Content Intelligence", zh: "内容理解" },
-    oneLiner: { en: "Understand every post at the pet level.", zh: "在宠物层面理解每一条内容。" },
+    oneLiner: { en: "Understand every post at the pet level, cheaply enough to do it on all of them.", zh: "在宠物层面理解每一条内容，且成本低到足以覆盖全量。" },
     problem: {
       en: "Pet content is ranked on generic engagement; the platform does not know which dog, which stage, which place, which feeling.",
       zh: "宠物内容按通用互动指标排序；平台不知道是哪只狗、哪个阶段、哪个地点、什么情绪。",
@@ -33,8 +33,8 @@ export const capabilities: Capability[] = [
       zh: "多模态分类与实体消歧：宠物、品种、年龄/阶段、地点、活动、情绪、服务时机。",
     },
     mechanism: {
-      en: "Every post is understood before it is ranked. Labels resolve to graph entities that recommendation, matching and services share.",
-      zh: "每条内容先被理解，再被排序。标签落到图谱实体上，推荐、匹配与服务共用同一套实体。",
+      en: "Every post is understood before it is ranked — once at publish time, not per impression, and mostly by a profile join or a small classifier rather than a large model; only ambiguous posts escalate. Labels resolve to graph entities that recommendation, matching and services share.",
+      zh: "每条内容先被理解，再被排序——在发布时跑一次，而不是每次曝光都跑，且主要靠档案 join 或小分类器，而不是大模型，只有判不准的内容才升级处理。标签落到图谱实体上，推荐、匹配与服务共用同一套实体。",
     },
     dataInput: [
       { en: "Photos & video", zh: "图片与视频" },

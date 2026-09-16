@@ -53,7 +53,7 @@ export const pipeline: PipelineStage[] = [
     id: "classification",
     stage: { en: "AI classification", zh: "AI 分类" },
     title: { en: "Multimodal understanding", zh: "多模态理解" },
-    detail: { en: "Vision + language models label the post", zh: "视觉与语言模型为帖子打标" },
+    detail: { en: "A small vision + language model labels every post; only ambiguous ones escalate", zh: "小型视觉与语言模型为每条帖子打标；只有判不准的才升级处理" },
     example: {
       en: "Golden retriever · ~1 yr · outdoor · beach · playful/anxious · first-time experience",
       zh: "金毛 · 约 1 岁 · 户外 · 海滩 · 兴奋/紧张 · 初次体验",

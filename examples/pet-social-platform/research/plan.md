@@ -73,6 +73,7 @@ judgement; research there means finding evidence for or against the argument, no
 |---|---|---|
 | Real-world examples of each capability in production (content understanding, matching, service agents) | `research/07-ai-strategy.md` | evidence only; the capability list and priorities stay |
 | Known limitations / risks (pet-breed misclassification, privacy of location data, agent side-effects) | `research/07-ai-strategy.md` | feeds an optional "risks" note; do not weaken the architecture |
+| What content understanding actually costs to run at scale, and how production systems tier it | `capabilities[0]`, 04 pipeline copy, `research/07-ai-strategy.md` | Raised by the author 2026-09-15 (see `revisions.md`); wording already fixed, the numbers are not. Find sourced unit economics — batch vs realtime, small classifier vs multimodal LLM per item — and at least one documented cascade. Pinterest P2I (S47: daily batch over 200B+ Pins, cheap high-recall candidate generation, per-item cost as the binding constraint) is already in hand. **No unit price goes on a page without a source**; if none is findable, say so and keep the argument structural. |
 
 ## 08 Benchmark — `data/benchmark.ts` ☑ (2026-09-10 — see `research/08-benchmark.md`; six rows sourced, 5 verified / 1 estimate; no example replaced)
 
