@@ -7,6 +7,20 @@ added; 05 and 04 researched with no value changed; only 01 Overview left)
 ## Where it stands
 - Site complete: nine chapters, EN / 中文, design system finished, `npm run check` passes.
 - Research: **in scope for all nine chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
+- **Two chrome fixes (2026-09-16, author-requested)**: the author pressed
+  `[` / `]` and nothing happened. Cause: `KeyboardNav.tsx` matched `e.key` only, and a Chinese IME turns the
+  bracket keys into 「 and 」, so the handler never fired for the author — a feature the sidebar advertises on
+  every page was dead for anyone typing Chinese. It now also matches `e.code` (`BracketLeft` / `BracketRight`),
+  and skips `isComposing` and `contenteditable` targets. While looking at that sidebar block, two **blanket
+  disclaimers turned out to contradict eight researched chapters** and were corrected in both languages:
+  the sidebar's 「所示数据均为示意。」 → 「每个数据都标注了出处。」 ("Every figure shows its provenance.") and —
+  the worse one, since it renders on every page — the footer's 「所有数字均为示意性研究假设，非市场数据。」 →
+  「市场、竞品、机制类数字均有出处；产品目标值与判断类字段标为示意。」 ("Market, competitor and mechanism figures
+  are sourced; product targets and judgement fields are marked Illustrative."), which matches the positioning
+  line decided on 2026-09-06. Recorded in `CLAUDE.md` (the component fix as a sanctioned exception, plus a
+  standing check to re-read those two strings whenever a chapter's provenance changes). `npm run check` passes;
+  both locales curl-checked, old strings gone. **Verified in a browser by the author 2026-09-16: `[` / `]` now
+  navigate.** Committed — see the log.
 - **09 Insights done (2026-09-16)**: the first chapter that mostly consumed the other eight, and **the first
   where research moved a judgement position**. `priorities` / `northStar` / `principles` / `roadmap` are `design`;
   the only block asserting anything is `opportunities` (six items × complexity/value/rationale/dependsOn/

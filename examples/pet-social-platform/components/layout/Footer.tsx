@@ -49,7 +49,7 @@ export function Footer() {
       </div>
       <div className="mt-12 flex flex-wrap items-baseline justify-between gap-4 t-annotation">
         <span>{t({ en: "Pet Social Platform · Product Research & AI Strategy · 2026", zh: "宠物社交平台 · 产品研究与 AI 策略 · 2026" })}</span>
-        <span>{t({ en: "All figures are illustrative research hypotheses, not market data.", zh: "所有数字均为示意性研究假设，非市场数据。" })}</span>
+        <span>{t({ en: "Market, competitor and mechanism figures are sourced; product targets and judgement fields are marked Illustrative.", zh: "市场、竞品、机制类数字均有出处；产品目标值与判断类字段标为示意。" })}</span>
       </div>
     </footer>
   );

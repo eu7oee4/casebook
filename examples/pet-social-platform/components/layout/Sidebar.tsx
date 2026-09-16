@@ -47,7 +47,7 @@ export function Sidebar() {
         <div className="t-label">{t({ en: "Research case", zh: "研究案例" })}</div>
         <div className="t-label">{t({ en: "Product strategy", zh: "产品策略" })}</div>
         <div className="mt-5 pt-4 border-t border-line t-annotation">
-          {t({ en: "Data shown is illustrative.", zh: "所示数据均为示意。" })}
+          {t({ en: "Every figure shows its provenance.", zh: "每个数据都标注了出处。" })}
           <br />
           {t({ en: "Navigate with", zh: "翻章：" })} <kbd className="t-mono">[</kbd> {t({ en: "and", zh: "与" })}{" "}
           <kbd className="t-mono">]</kbd>

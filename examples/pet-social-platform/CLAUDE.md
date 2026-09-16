@@ -104,12 +104,23 @@ one to match a single weak source: the bar for revising is the same as for `veri
   `provenance` prop, and `Metric` no longer hiding the badge for `hypothesis`; and the 2026-09-16 row-level mark
   in 06's category table — `serviceCategories` rows gained an optional `provenance`, and `/local` renders a
   `ProvenanceMark` inline after the frequency value for the rows that carry one. `DataTable` itself was **not** changed:
-  its `cell` render prop was already enough, so nothing outside `/local` moved.)
+  its `cell` render prop was already enough, so nothing outside `/local` moved. And the 2026-09-16 keyboard-nav
+  fix in `KeyboardNav.tsx`, reported by the author: `[` / `]` matched `e.key` only, which a Chinese IME turns into
+  「 and 」, so chapter navigation did nothing for the author — it now matches `e.code` (`BracketLeft` /
+  `BracketRight`) as well, skips `isComposing` and `contenteditable`, and is otherwise unchanged.)
 
   **Pattern for row-level marks in a table**: set the row's optional `provenance` only where the row departs from
   the section floor, keep the `SectionHeader` badge for everything unmarked, and say in the section note which
   cells the section badge still covers. Repeating the section's own state on every row adds noise, not information.
 - Copy tone: analytical, PM-voice, English. No marketing language.
+
+**Standing check on blanket disclaimers.** Chrome strings that describe the case's evidence status go stale as
+chapters get researched. Two were corrected on 2026-09-16 (author-requested) because they contradicted eight
+researched chapters: the sidebar's "Data shown is illustrative." / 「所示数据均为示意。」 became "Every figure shows
+its provenance." / 「每个数据都标注了出处。」, and the footer's "All figures are illustrative research hypotheses,
+not market data." / 「所有数字均为示意性研究假设，非市场数据。」 became "Market, competitor and mechanism figures
+are sourced; product targets and judgement fields are marked Illustrative." / 「市场、竞品、机制类数字均有出处；
+产品目标值与判断类字段标为示意。」 If a chapter's provenance changes, re-read these two strings before finishing.
 
 ## How to work
 
