@@ -26,8 +26,10 @@ supply/demand subtraction retracted; AI cost wording fixed; provenance made legi
     social / services / benchmark`. `CLAUDE.md` provenance rules rewritten for five tiers + a "nothing renders
     unmarked" lead-in (rule numbering preserved so existing "rule 4" references still resolve).
   - `npm run check` passes; all nine ZH pages verified by curl to carry badges. **Reviewed in a browser by the
-    author 2026-09-16 — approved, no changes asked for.** Known gap: competitor-card badges only render when a card is expanded, and the benchmark domain cards in
-    「三个领域，六个参考」 show no mark although their rows are individually sourced in the table below. **Uncommitted.**
+    author 2026-09-16 — approved, no changes asked for.** Both known gaps closed the same day: the competitor
+    card's badge moved out of the expanded body so all 14 products show it collapsed (13 verified / 1 estimate),
+    and each product line in benchmark's 「三个领域，六个参考」 now carries its row's own mark.
+    **All of the above is committed** (ff02839 / 1ad031c / b9eaf8f / b10de22, on `main`).
 - **AI cost / tiering wording (2026-09-15, author-raised and author-decided)**: the author asked whether having AI
   understand every post — and rank with AI too — is overuse, and what the compute would cost. A search of `data/`
   and `app/` confirmed the gap: **every "cost / 成本" string in the case was user-side** (posting effort, acquisition,
@@ -43,7 +45,9 @@ supply/demand subtraction retracted; AI cost wording fixed; provenance made legi
   **No cost figure was put on any page** — that needs sourced unit economics and is now an open question on the 07
   table in `research/plan.md`. `npm run check` passes; `/en|zh/content` and `/en|zh/ai-strategy` all 200 with the new
   copy in the SSR payload, except `pipeline[1].detail`, which only renders for the *active* stage of the client-side
-  pipeline widget — confirmed shipped in the client chunk instead. **Not eyeballed in a browser. Uncommitted.**
+  pipeline widget — confirmed shipped in the client chunk instead. Committed (1ad031c). The author reviewed
+  these pages in a browser on 2026-09-16 for the provenance badges; the stage-02 detail text itself was not
+  separately confirmed (it only shows when that stage is selected).
 - **04 Content done (2026-09-14)**: **no value changed** — the chapter's numbers survive research, but three of
   them now say what they are measured against. The one public content-type mix that exists (微博大数据 via the
   iResearch × Weibo content white paper, 2021 H1: 宠物日记及创意内容 43% / 动物段子集锦 22% / 宠物热点及资讯 18% /
@@ -62,13 +66,15 @@ supply/demand subtraction retracted; AI cost wording fixed; provenance made legi
   exact architecture this chapter draws (one Interest Taxonomy feeding home feed ranking, search ranking &
   retrieval and ads targeting); Instagram names semantic content signals for Reels only, popularity elsewhere —
   recorded as partial counter-evidence. 7 new sources (S43–S49). `npm run check` passes; both locales SSR-checked
-  by curl and the provenance notes confirmed in the payload; **not eyeballed in a browser**. **Uncommitted.**
+  by curl and the provenance notes confirmed in the payload; committed (ff02839). The author reviewed this page
+  in a browser on 2026-09-16 for the badges; the hover-card contents were not separately confirmed.
 - **08 Benchmark done (2026-09-10)**: all six rows carry `provenance` reused from 03's sources (5 `verified`,
   小红书 `estimate`). Two mechanism wordings corrected because nothing public documents them: Soul's "guided first
   conversation" (also fixed in `data/competitors.ts`) and Meituan's "merchant SLAs" → platform-level refund
   guarantees. "SLA" stays in the adaptation column / `transferMap` as the case's own design term (noted). No example
   replaced; reasoning in `research/08-benchmark.md`. No `revisions.md` row — no insight or adaptation changed.
-  `npm run check` passes; SSR-checked by curl; not eyeballed in a browser. **Uncommitted.**
+  `npm run check` passes; SSR-checked by curl; committed earlier in be3f01d (the "Uncommitted" marker here was
+  stale). Benchmark badges reviewed in a browser 2026-09-16.
 - **03 Competitors done (2026-09-10)**: BarkHappy kept on the map (author OK, 2026-09-10); closure reason researched — none published, timeline and company facts in `research/03-competitors.md` (S40–S42). the 11 cards are now 14 named products, every one with a `provenance`
   (13 `verified`, 1 `estimate` — Xiaohongshu's search-first mechanism rests on secondary press). Direct tier:
   Petzbe, Yummypets, BarkHappy (US, app discontinued Jan 2025 — kept on the map as evidence), 宠胖胖 (CN). Industry:
