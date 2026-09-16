@@ -8,7 +8,7 @@ import { InsightCard } from "@/components/ui/InsightCard";
 import { ThesisChain } from "@/components/ui/FlowDiagram";
 import { Badge } from "@/components/ui/Tag";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
-import { overview } from "@/data/overview";
+import { overview, overviewThesisProvenance, overviewInsightsProvenance, overviewOpportunitiesProvenance } from "@/data/overview";
 import { isLocale, localePath, tr, DEFAULT_LOCALE } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -77,6 +77,7 @@ export default async function OverviewPage({ params }: { params: Promise<{ local
       <Section>
         <SectionHeader
           label={t({ en: "Core thesis", zh: "核心论点" })}
+          provenance={overviewThesisProvenance}
           title={t({
             en: "A pet platform compounds when content turns into relationships, and relationships turn into local service.",
             zh: "当内容转化为关系、关系转化为本地服务时，宠物平台才会产生复利。",
@@ -109,6 +110,7 @@ export default async function OverviewPage({ params }: { params: Promise<{ local
       <Section>
         <SectionHeader
           label={t({ en: "Three insights", zh: "三个洞察" })}
+          provenance={overviewInsightsProvenance}
           title={t({ en: "What the research changed in how I think about the product", zh: "研究改变了我对这个产品的哪些看法" })}
         />
         <Stagger className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-10">
@@ -124,6 +126,7 @@ export default async function OverviewPage({ params }: { params: Promise<{ local
       <Section>
         <SectionHeader
           label={t({ en: "Key opportunities", zh: "关键机会" })}
+          provenance={overviewOpportunitiesProvenance}
           title={t({ en: "Four AI-native opportunities, prioritised in chapter 09", zh: "四个 AI 原生机会，在第 09 章排定优先级" })}
           right={
             <Link href={localePath(locale, "/insights")} className="t-label inline-flex items-center gap-1.5 text-ink hover:text-accent-ink">

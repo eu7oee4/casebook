@@ -1,4 +1,4 @@
-import { HYPOTHESIS, type Provenance } from "./provenance";
+import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
 import type { Str, Text } from "@/lib/i18n";
 
 /** Frequency and trust-need are judgements; replace with survey or platform data when found. */
@@ -21,6 +21,8 @@ export const serviceCategories: Array<{ name: Text; frequency: Text; trustNeed: 
   { name: { en: "Community events", zh: "社区活动" }, frequency: { en: "Monthly", zh: "每月" }, trustNeed: "Low", intentFrom: { en: "Social graph, same-city", zh: "社交图谱、同城" } },
 ];
 
+export const serviceJourneyProvenance: Provenance = DESIGN;
+
 export const serviceJourney: Array<{ label: Text; note: Text; emphasis?: boolean }> = [
   { label: { en: "Discovery", zh: "发现" }, note: { en: "content, friends, concierge", zh: "内容、朋友、管家" } },
   { label: { en: "Comparison", zh: "比较" }, note: { en: "distance · price · fit · rating", zh: "距离 · 价格 · 匹配度 · 评分" } },
@@ -29,6 +31,8 @@ export const serviceJourney: Array<{ label: Text; note: Text; emphasis?: boolean
   { label: { en: "Review", zh: "评价" }, note: { en: "becomes content", zh: "再次成为内容" } },
   { label: { en: "Repeat", zh: "复购" }, note: { en: "trust compounds", zh: "信任累积" }, emphasis: true },
 ];
+
+export const conciergeProvenance: Provenance = DESIGN;
 
 export const conciergeQuery: Text = {
   en: "Saturday, want to take my 2-year-old golden for a bath nearby, budget under ¥200.",
@@ -144,6 +148,8 @@ export type Service = {
   best?: boolean;
 };
 
+export const recommendedServicesProvenance: Provenance = DESIGN;
+
 export const recommendedServices: Service[] = [
   {
     id: "s1",
@@ -222,6 +228,8 @@ export const booking: {
 };
 
 /** Product targets. Cite comparable local-service conversion benchmarks in `note` if an estimate is made. */
+export const servicePrinciplesProvenance: Provenance = DESIGN;
+
 export const serviceMetrics: Array<{ label: Text; value: string; note: Text; provenance: Provenance }> = [
   { label: { en: "Intent → booking", zh: "意图 → 预订" }, value: "23%", note: { en: "vs 6% for search-based flow (hypothesis)", zh: "对比搜索式流程的 6%（假设）" }, provenance: HYPOTHESIS },
   { label: { en: "Time to book", zh: "预订耗时" }, value: "48 s", note: { en: "median, from first message", zh: "从第一条消息起的中位数" }, provenance: HYPOTHESIS },

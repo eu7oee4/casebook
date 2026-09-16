@@ -10,17 +10,7 @@ import { InsightCard } from "@/components/ui/InsightCard";
 import { Tag } from "@/components/ui/Tag";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { AgentWorkflow } from "@/components/product/local/AgentWorkflow";
-import {
-  booking,
-  conciergeQuery,
-  conciergeSteps,
-  recommendedServices,
-  serviceCategories,
-  serviceJourney,
-  serviceMetrics,
-  trustNeedLabel,
-  type TrustNeed,
-} from "@/data/services";
+import { booking, conciergeQuery, conciergeSteps, recommendedServices, serviceCategories, serviceCategoriesProvenance, serviceJourney, serviceMetrics, trustNeedLabel, type TrustNeed, serviceJourneyProvenance, conciergeProvenance, servicePrinciplesProvenance } from "@/data/services";
 import { DEFAULT_LOCALE, isLocale, tr } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -76,6 +66,7 @@ export default async function LocalPage({ params }: { params: Promise<{ locale: 
       <Section className="mt-14 lg:mt-20">
         <SectionHeader
           label={t({ en: "Service ecosystem", zh: "服务生态" })}
+          provenance={serviceCategoriesProvenance}
           title={t({ en: "Eight service categories, very different trust requirements", zh: "八类服务，信任要求差异很大" })}
           description={t({
             en: "Frequency drives habit; trust need drives where the community matters. Intent for almost every category shows up in content before it shows up in search.",
@@ -114,6 +105,7 @@ export default async function LocalPage({ params }: { params: Promise<{ locale: 
       <Section>
         <SectionHeader
           label={t({ en: "Service journey", zh: "服务旅程" })}
+          provenance={serviceJourneyProvenance}
           title={t({ en: "Discovery to repeat, with content at both ends", zh: "从发现到复购，两端都是内容" })}
           description={t({
             en: "Discovery starts from content and friends; the review at the end becomes content again. Repeat is where the loop pays: the second booking costs nothing to acquire.",
@@ -129,6 +121,7 @@ export default async function LocalPage({ params }: { params: Promise<{ locale: 
       <Section>
         <SectionHeader
           label={t({ en: "AI Service Concierge", zh: "AI 服务管家" })}
+          provenance={conciergeProvenance}
           title={t({ en: "One sentence becomes a booking", zh: "一句话变成一次预订" })}
           description={t({
             en: "The concierge is the first agentic transaction in the product: it understands the request, reads what the platform already knows about the pet, searches and filters supply, explains its ranking, and books with the user’s confirmation.",
@@ -158,6 +151,7 @@ export default async function LocalPage({ params }: { params: Promise<{ locale: 
       <Section>
         <SectionHeader
           label={t({ en: "Design principles", zh: "设计原则" })}
+          provenance={servicePrinciplesProvenance}
           title={t({ en: "What makes this an agent, not a search box", zh: "为什么这是 Agent，而不是搜索框" })}
         />
         <Stagger className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-x-10 gap-y-10">

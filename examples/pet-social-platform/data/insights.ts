@@ -1,4 +1,5 @@
 import type { Text } from "@/lib/i18n";
+import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
 
 export type Opportunity = {
   id: string;
@@ -12,6 +13,9 @@ export type Opportunity = {
   dependsOn?: Text;
   firstMilestone: Text;
 };
+
+/** The 0-100 complexity / value scores are the author's judgement, not measured. */
+export const opportunitiesProvenance: Provenance = HYPOTHESIS;
 
 export const opportunities: Opportunity[] = [
   {
@@ -104,12 +108,16 @@ export const opportunities: Opportunity[] = [
   },
 ];
 
+export const prioritiesProvenance: Provenance = DESIGN;
+
 export const priorities: Array<{ priority: "P0" | "P1"; name: Text; why: Text }> = [
   { priority: "P0", name: { en: "AI Content Intelligence", zh: "AI 内容理解" }, why: { en: "Substrate for everything; fastest to evaluate.", zh: "一切的基础；最容易评估。" } },
   { priority: "P0", name: { en: "AI Service Concierge", zh: "AI 服务管家" }, why: { en: "Revenue and the first agentic transaction.", zh: "收入来源，也是第一笔 Agent 式交易。" } },
   { priority: "P1", name: { en: "AI Pet Match", zh: "AI 宠物匹配" }, why: { en: "Retention engine; needs density first.", zh: "留存引擎；先要有密度。" } },
   { priority: "P1", name: { en: "Pet Knowledge Graph", zh: "宠物知识图谱" }, why: { en: "Grows from P0 entities into the shared memory.", zh: "从 P0 的实体生长为共享记忆。" } },
 ];
+
+export const northStarProvenance: Provenance = DESIGN;
 
 export const northStar: { statement: [Text, Text]; metric: Text; connects: Text[] } = {
   statement: [
@@ -130,12 +138,16 @@ export const northStar: { statement: [Text, Text]; metric: Text; connects: Text[
   ],
 };
 
+export const principlesProvenance: Provenance = DESIGN;
+
 export const principles: Array<{ index: string; title: Text; body: Text }> = [
   { index: "01", title: { en: "Build the graph.", zh: "建图谱。" }, body: { en: "Understand every post, pet, place and merchant as an entity. Nothing else works without it.", zh: "把每条内容、每只宠物、每个地点和商家都理解为实体。没有它，其他一切都不成立。" } },
   { index: "02", title: { en: "Build meaningful relationships.", zh: "建有意义的关系。" }, body: { en: "Measure relationships that last, not matches shown. Anchor every match to an activity.", zh: "衡量能延续的关系，而不是展示的匹配数。每个匹配都锚定在一个具体活动上。" } },
   { index: "03", title: { en: "Turn intent into action.", zh: "把意图变成行动。" }, body: { en: "A sentence should become a booking. The concierge is the first proof.", zh: "一句话应该变成一次预订。服务管家是第一个证明。" } },
   { index: "04", title: { en: "Let AI orchestrate the ecosystem.", zh: "让 AI 调度整个生态。" }, body: { en: "One intelligence layer across content, social and local — reading one graph, optimising outcomes.", zh: "一个贯穿内容、社交与本地的智能层：读同一张图，优化最终结果。" } },
 ];
+
+export const roadmapProvenance: Provenance = DESIGN;
 
 export const roadmap: Array<{ phase: Text; focus: Text; items: Text[] }> = [
   {

@@ -1,4 +1,11 @@
 import type { Text } from "@/lib/i18n";
+import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
+
+export const overviewScopeProvenance: Provenance = DESIGN;
+export const overviewThesisProvenance: Provenance = DESIGN;
+/** The three insights are the author's product judgement about the world, revisable by research. */
+export const overviewInsightsProvenance: Provenance = HYPOTHESIS;
+export const overviewOpportunitiesProvenance: Provenance = DESIGN;
 
 export const overview = {
   project: { en: "Project / 2026", zh: "项目 / 2026" } as Text,

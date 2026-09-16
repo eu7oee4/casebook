@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { HYPOTHESIS, provenanceLabel, type Provenance } from "@/data/provenance";
+import { HYPOTHESIS, provenanceBadge, provenanceKind, type Provenance } from "@/data/provenance";
 import { useLocale, useT } from "@/lib/locale-context";
 import { ProvenanceHover } from "./ProvenanceHover";
 import type { Str } from "@/lib/i18n";
@@ -34,25 +34,31 @@ export function ProvenanceMark({
   className?: string;
 }) {
   const locale = useLocale();
-  const text = label ?? provenanceLabel(provenance, locale);
+  const text = label ?? provenanceBadge(provenance, locale);
+  const kind = provenanceKind(provenance);
+  // Shape carries the distinction so it survives greyscale and colour-blindness; colour only reinforces it.
+  // round + filled = sourced · round + hollow = invented · square = the proposal itself, nothing to cite.
   const dot =
-    provenance.confidence === "verified"
-      ? "bg-accent"
-      : provenance.confidence === "contradicted"
-        ? "bg-series-2"
-        : provenance.confidence === "estimate"
-          ? "bg-ink-3"
-          : "bg-series-3";
+    kind === "invented"
+      ? "rounded-full border border-series-3 bg-transparent"
+      : kind === "design"
+        ? "rounded-[1px] bg-ink-3"
+        : provenance.confidence === "verified"
+          ? "rounded-full bg-accent"
+          : provenance.confidence === "contradicted"
+            ? "rounded-full bg-series-2"
+            : "rounded-full bg-ink-3";
   return (
     <ProvenanceHover provenance={provenance} className={className}>
       <span
         className={cn(
-          "inline-flex items-center gap-1.5 min-w-0 max-w-full font-mono text-[11px] leading-[1.4] tracking-[0.06em] border border-line-2 rounded-sm px-1.5 py-[3px] text-ink-3 cursor-help",
-          provenance.confidence === "hypothesis" && "uppercase tracking-[0.12em]",
-          "hover:text-ink hover:border-ink transition-colors"
+          "inline-flex items-center gap-1.5 min-w-0 max-w-full font-mono text-[11px] leading-[1.4] tracking-[0.06em] rounded-sm px-1.5 py-[3px] cursor-help border transition-colors",
+          kind === "invented"
+            ? "border-dashed border-line-2 text-ink-3 uppercase tracking-[0.12em] hover:text-ink-2 hover:border-ink-3"
+            : "border-solid border-line-2 text-ink-2 hover:text-ink hover:border-ink"
         )}
       >
-        <span className={cn("h-1 w-1 rounded-full shrink-0", dot)} aria-hidden />
+        <span className={cn("h-1.5 w-1.5 shrink-0", dot)} aria-hidden />
         <span className="truncate min-w-0 max-w-[32ch]">{text}</span>
       </span>
     </ProvenanceHover>

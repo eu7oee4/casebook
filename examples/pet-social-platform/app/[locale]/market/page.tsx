@@ -13,16 +13,7 @@ import { SpendTrend } from "@/components/product/market/SpendTrend";
 import { ValueMatrix } from "@/components/product/market/ValueMatrix";
 import { Sourced } from "@/components/ui/ProvenanceHover";
 import { chart } from "@/components/charts/theme";
-import {
-  marketKpis,
-  spendTrendNote,
-  needLayers,
-  journey,
-  opportunityAreas,
-  spendTrendProvenance,
-  valueMatrixProvenance,
-  medicalShareShiftProvenance,
-} from "@/data/market";
+import { marketKpis, spendTrendNote, needLayers, journey, opportunityAreas, spendTrendProvenance, valueMatrixProvenance, medicalShareShiftProvenance, needLayersProvenance, journeyProvenance, productOpportunityProvenance } from "@/data/market";
 import { DEFAULT_LOCALE, isLocale, tr } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -131,6 +122,7 @@ export default async function MarketPage({ params }: { params: Promise<{ locale:
       <Section>
         <SectionHeader
           label={t({ en: "02 · User needs", zh: "02 · 用户需求" })}
+          provenance={needLayersProvenance}
           title={t({ en: "Three needs, one owner", zh: "三种需求，同一个养宠人" })}
           size="lg"
         />
@@ -239,6 +231,7 @@ export default async function MarketPage({ params }: { params: Promise<{ locale:
       <Section>
         <SectionHeader
           label={t({ en: "Owner journey", zh: "养宠人旅程" })}
+          provenance={journeyProvenance}
           title={t({
             en: "Every stage has a need and a touchpoint the platform can own",
             zh: "每个阶段都有一个需求，和一个平台可以拥有的触点",
@@ -273,6 +266,7 @@ export default async function MarketPage({ params }: { params: Promise<{ locale:
       <Section>
         <SectionHeader
           label={t({ en: "04 · Product opportunity", zh: "04 · 产品机会" })}
+          provenance={productOpportunityProvenance}
           title={t({ en: "Three gaps the research points to", zh: "研究指向的三个缺口" })}
           size="lg"
         />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Footer } from "@/components/layout/Footer";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { ProvenanceMark } from "@/components/ui/Note";
 import { Section, SectionHeader } from "@/components/ui/SectionHeader";
 import { InsightCard } from "@/components/ui/InsightCard";
 import { ChartCard } from "@/components/ui/ChartCard";
@@ -11,7 +12,7 @@ import { IdentityGraph } from "@/components/product/social/IdentityGraph";
 import { RelationshipLadder } from "@/components/product/social/RelationshipLadder";
 import { LadderFunnelChart } from "@/components/product/social/LadderFunnelChart";
 import { PetMatch } from "@/components/product/social/PetMatch";
-import { matchMetrics, matchPrinciples, ladderFunnelProvenance } from "@/data/social";
+import { matchMetrics, matchPrinciples, ladderFunnelProvenance, identityDimensionsProvenance, petMatchProvenance, relationshipLadderProvenance } from "@/data/social";
 import { DEFAULT_LOCALE, isLocale, tr } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -60,6 +61,7 @@ export default async function SocialPage({ params }: { params: Promise<{ locale:
       <Section>
         <SectionHeader
           label={t({ en: "Pet as social identity", zh: "宠物作为社交身份" })}
+          provenance={identityDimensionsProvenance}
           title={t({ en: "Six dimensions, one graph", zh: "六个维度，一张图谱" })}
           description={t({
             en: "The pet turns generic profile fields into a specific, persistent, emotionally loaded identity. The social graph is built on that identity, not on follow counts.",
@@ -84,6 +86,9 @@ export default async function SocialPage({ params }: { params: Promise<{ locale:
         <div className="mt-10 grid-12 gap-y-10">
           <Reveal className="col-span-12 lg:col-span-6">
             <RelationshipLadder />
+            <div className="mt-4">
+              <ProvenanceMark provenance={relationshipLadderProvenance} />
+            </div>
           </Reveal>
           <Reveal className="col-span-12 lg:col-span-6" delay={0.1}>
             <ChartCard
@@ -105,6 +110,7 @@ export default async function SocialPage({ params }: { params: Promise<{ locale:
       <Section>
         <SectionHeader
           label={t({ en: "AI Pet Match", zh: "AI 宠物匹配" })}
+          provenance={petMatchProvenance}
           title={t({ en: "A recommendation is a plan, not a profile", zh: "推荐是一个计划，而不是一份资料" })}
           description={t({
             en: "The user asks in plain language. The system reads pet, schedule and place from what it already knows, ranks nearby owners on compatibility, and proposes a concrete activity with a reason.",

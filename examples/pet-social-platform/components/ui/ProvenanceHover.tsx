@@ -12,12 +12,14 @@ const CARD_WIDTH = 304; // w-76 equivalent; keep in sync with the card class bel
 
 const dotClass = (p: Provenance) =>
   p.confidence === "verified"
-    ? "bg-accent"
+    ? "rounded-full bg-accent"
     : p.confidence === "contradicted"
-      ? "bg-series-2"
+      ? "rounded-full bg-series-2"
       : p.confidence === "estimate"
-        ? "bg-ink-3"
-        : "bg-series-3";
+        ? "rounded-full bg-ink-3"
+        : p.confidence === "design"
+          ? "rounded-[1px] bg-ink-3"
+          : "rounded-full border border-series-3 bg-transparent";
 
 /**
  * Hover card showing where a number comes from: tier, source, link, retrieval date and the
@@ -107,6 +109,7 @@ export function ProvenanceHover({
 
   const zh = locale === "zh";
   const hypothesis = provenance.confidence === "hypothesis";
+  const design = provenance.confidence === "design";
 
   return (
     <span
@@ -139,7 +142,7 @@ export function ProvenanceHover({
             )}
           >
             <div className="flex items-center gap-1.5 font-mono text-[11px] leading-[1.4] tracking-[0.06em] text-ink">
-              <span className={cn("h-1 w-1 rounded-full shrink-0", dotClass(provenance))} aria-hidden />
+              <span className={cn("h-1.5 w-1.5 shrink-0", dotClass(provenance))} aria-hidden />
               <span className="min-w-0 break-words">{provenanceLabel(provenance, locale)}</span>
             </div>
             {hypothesis && (
@@ -147,6 +150,13 @@ export function ProvenanceHover({
                 {zh
                   ? "占位假设，用于搭建案例结构；不是市场事实，研究后或替换或明确保留。"
                   : "Placeholder hypothesis used to structure the case — not a market fact; research either replaces it or keeps it deliberately."}
+              </p>
+            )}
+            {design && (
+              <p className="t-caption mt-2">
+                {zh
+                  ? "产品设计本身，不是对世界的断言，因此没有出处可引 —— 它既不是「已核实」，也不是「编的数字」。"
+                  : "The product's own design, not a claim about the world, so there is nothing to cite — neither verified nor an invented figure."}
               </p>
             )}
             {provenance.retrievedAt && (

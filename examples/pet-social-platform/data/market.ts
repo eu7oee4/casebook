@@ -4,7 +4,7 @@
  * Strings are bilingual `Text`; numbers, years and coordinates are language-neutral.
  */
 import type { Text } from "@/lib/i18n";
-import { HYPOTHESIS, type Provenance } from "./provenance";
+import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
 
 export type MarketKpi = { label: Text; value: Text; note: Text; provenance: Provenance };
 
@@ -163,6 +163,12 @@ export type ValueKind = "service" | "content" | "social" | "local";
 export type ValuePoint = { id: string; name: Text; x: number; y: number; size: number; kind: ValueKind };
 
 /** Functional value (x) × emotional value (y), 0–100. Positions are research judgements; cite interviews or surveys when available. */
+/** The three need layers are the author's model of demand, not a measured segmentation. */
+export const needLayersProvenance: Provenance = HYPOTHESIS;
+/** The owner journey is a model of how owners behave; no public study maps these stages. */
+export const journeyProvenance: Provenance = HYPOTHESIS;
+/** Closing argument of the chapter — the case's own reading, nothing to cite. */
+export const productOpportunityProvenance: Provenance = DESIGN;
 export const valueMatrixProvenance: Provenance = HYPOTHESIS;
 export const valueMatrix: ValuePoint[] = [
   { id: "vet", name: { en: "Vet / health", zh: "医疗 / 健康" }, x: 92, y: 55, size: 3, kind: "service" },

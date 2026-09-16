@@ -1,5 +1,5 @@
 import type { Str, Text } from "@/lib/i18n";
-import type { Provenance } from "./provenance";
+import { DESIGN, type Provenance } from "./provenance";
 
 export type BenchmarkDomain = "Content" | "Social" | "Local";
 
@@ -125,6 +125,8 @@ export const benchmarkRows: BenchmarkRow[] = [
     },
   },
 ];
+
+export const transferMapProvenance: Provenance = DESIGN;
 
 export const transferPrinciple: { title: Text; body: Text } = {
   title: { en: "Borrow the mechanism, not the product.", zh: "借鉴机制，而不是复制产品。" },

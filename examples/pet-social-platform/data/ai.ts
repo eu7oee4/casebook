@@ -1,4 +1,7 @@
 import type { Text } from "@/lib/i18n";
+import { DESIGN, type Provenance } from "./provenance";
+
+export const architectureProvenance: Provenance = DESIGN;
 
 export const architecture = {
   top: "AI",
@@ -18,6 +21,8 @@ export type Capability = {
   businessValue: Text;
   priority: "P0" | "P1";
 };
+
+export const capabilitiesProvenance: Provenance = DESIGN;
 
 export const capabilities: Capability[] = [
   {
@@ -186,6 +191,8 @@ export const capabilities: Capability[] = [
   },
 ];
 
+export const agentLoopProvenance: Provenance = DESIGN;
+
 export const agentLoop: Array<{ label: Text; note: Text; emphasis?: boolean }> = [
   { label: { en: "Understand intent", zh: "理解意图" }, note: { en: "parse the request into entities and constraints", zh: "把请求解析为实体与约束" } },
   { label: { en: "Context", zh: "上下文" }, note: { en: "user, pet, history, location from the graph", zh: "从图谱中读取用户、宠物、历史与位置" } },
@@ -194,6 +201,8 @@ export const agentLoop: Array<{ label: Text; note: Text; emphasis?: boolean }> =
   { label: { en: "Execute", zh: "执行" }, note: { en: "with explicit confirmation on side effects", zh: "有副作用的操作先获得明确确认" } },
   { label: { en: "Feedback", zh: "反馈" }, note: { en: "outcome updates the graph and the ranker", zh: "结果回写图谱并更新排序模型" }, emphasis: true },
 ];
+
+export const petCareTraceProvenance: Provenance = DESIGN;
 
 export const petCareQuery: Text = {
   en: "Saturday, find me a grooming shop nearby that suits my golden retriever, budget ¥200.",
@@ -228,6 +237,8 @@ export const whyAgent: { statement: Text; parts: Text[]; body: Text } = {
     zh: "聊天机器人负责回答，Agent 负责完成。区别在于工具访问、上下文和行动的权限，而有副作用的操作由用户来确认。",
   },
 };
+
+export const aiPrinciplesProvenance: Provenance = DESIGN;
 
 export const aiPrinciples: Array<{ title: Text; body: Text }> = [
   { title: { en: "Understanding before generation.", zh: "先理解，后生成。" }, body: { en: "The platform's edge is knowing pets, people and places — not writing captions.", zh: "平台的优势在于认识宠物、人和地点，而不是写文案。" } },

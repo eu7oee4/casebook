@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Footer } from "@/components/layout/Footer";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { ProvenanceMark } from "@/components/ui/Note";
 import { Section, SectionHeader } from "@/components/ui/SectionHeader";
 import { InsightCard } from "@/components/ui/InsightCard";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { CompetitorExplorer } from "@/components/product/competitors/CompetitorExplorer";
-import { competitors, competitorInsights, tiers } from "@/data/competitors";
+import { competitors, competitorInsights, tiers, tiersProvenance, competitorInsightsProvenance, competitorMapProvenance } from "@/data/competitors";
 import { DEFAULT_LOCALE, isLocale, tr, type Text } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -58,6 +59,7 @@ export default async function CompetitorsPage({ params }: { params: Promise<{ lo
       <Section className="mt-12 lg:mt-16">
         <SectionHeader
           label={t({ en: "Research system", zh: "研究体系" })}
+          provenance={tiersProvenance}
           title={t({ en: "Three tiers, three questions", zh: "三个层级，三个问题" })}
         />
         <Stagger className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
@@ -95,12 +97,16 @@ export default async function CompetitorsPage({ params }: { params: Promise<{ lo
         />
         <div className="mt-8">
           <CompetitorExplorer />
+          <div className="mt-4">
+            <ProvenanceMark provenance={competitorMapProvenance} />
+          </div>
         </div>
       </Section>
 
       <Section>
         <SectionHeader
           label={t({ en: "What the landscape says", zh: "格局说明了什么" })}
+          provenance={competitorInsightsProvenance}
           title={t({ en: "Three readings", zh: "三个解读" })}
           size="lg"
         />

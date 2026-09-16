@@ -6,7 +6,7 @@ import { Section, SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { BenchmarkTable } from "@/components/product/benchmark/BenchmarkTable";
 import { TransferMap } from "@/components/product/benchmark/TransferMap";
-import { benchmarkRows, DOMAIN_LABEL, transferPrinciple, type BenchmarkDomain } from "@/data/benchmark";
+import { benchmarkRows, DOMAIN_LABEL, transferPrinciple, type BenchmarkDomain, transferMapProvenance } from "@/data/benchmark";
 import { DEFAULT_LOCALE, isLocale, tr, type Text } from "@/lib/i18n";
 
 const DOMAINS: Array<{ domain: BenchmarkDomain; question: Text }> = [
@@ -70,6 +70,7 @@ export default async function BenchmarkPage({ params }: { params: Promise<{ loca
       <Section>
         <SectionHeader
           label={t({ en: "Mechanism transfer", zh: "机制迁移" })}
+          provenance={transferMapProvenance}
           title={t({ en: "What works, why it works, and what it becomes here", zh: "什么有效，为何有效，以及在这里会变成什么" })}
           description={t({ en: "The insight column is the research output. The adaptation column is the product output.", zh: "洞察一列是研究的产出，落地一列是产品的产出。" })}
           size="lg"
@@ -83,6 +84,7 @@ export default async function BenchmarkPage({ params }: { params: Promise<{ loca
       <Section>
         <SectionHeader
           label={t({ en: "Transfer map", zh: "迁移地图" })}
+          provenance={transferMapProvenance}
           title={t({ en: "Six transfers, one identity", zh: "六条迁移，一个身份" })}
           description={t({
             en: "Every transfer runs through the pet: the same entity connects discovery, relationship and fulfilment.",

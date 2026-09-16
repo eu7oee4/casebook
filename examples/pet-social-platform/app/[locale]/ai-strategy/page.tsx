@@ -9,7 +9,7 @@ import { ArchitectureDiagram } from "@/components/product/ai/ArchitectureDiagram
 import { CapabilityList } from "@/components/product/ai/CapabilityList";
 import { AgentLoop } from "@/components/product/ai/AgentLoop";
 import { AgentTrace } from "@/components/product/ai/AgentTrace";
-import { capabilities, agentLoop, petCareQuery, petCareTrace, whyAgent, aiPrinciples } from "@/data/ai";
+import { capabilities, agentLoop, petCareQuery, petCareTrace, whyAgent, aiPrinciples, architectureProvenance, capabilitiesProvenance, agentLoopProvenance, petCareTraceProvenance, aiPrinciplesProvenance } from "@/data/ai";
 import { DEFAULT_LOCALE, isLocale, tr } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -53,6 +53,7 @@ export default async function AIStrategyPage({ params }: { params: Promise<{ loc
       <Section className="mt-12 lg:mt-16">
         <SectionHeader
           label={t({ en: "Architecture", zh: "架构" })}
+          provenance={architectureProvenance}
           title={t({
             en: "One intelligence layer above three surfaces, one data spine beneath them",
             zh: "三个界面之上是一个智能层，之下是一条数据主干",
@@ -71,6 +72,7 @@ export default async function AIStrategyPage({ params }: { params: Promise<{ loc
       <Section>
         <SectionHeader
           label={t({ en: "AI capabilities", zh: "AI 能力" })}
+          provenance={capabilitiesProvenance}
           title={t({ en: "Five capabilities, one substrate", zh: "五项能力，一个基底" })}
           description={t({
             en: "Each row is a product mechanism, not a model. Expand a capability to see the problem it solves, what it reads, and what it returns to the user and the business.",
@@ -86,6 +88,7 @@ export default async function AIStrategyPage({ params }: { params: Promise<{ loc
       <Section>
         <SectionHeader
           label={t({ en: "AI agent architecture", zh: "AI Agent 架构" })}
+          provenance={agentLoopProvenance}
           title={t({ en: "From a sentence to a completed task", zh: "从一句话到一件办完的事" })}
           description={t({
             en: "The agent is the natural-language interface to every capability above. Tools are product actions; the loop closes on feedback.",
@@ -101,6 +104,7 @@ export default async function AIStrategyPage({ params }: { params: Promise<{ loc
       <Section>
         <SectionHeader
           label={t({ en: "Pet care agent", zh: "宠物护理 Agent" })}
+          provenance={petCareTraceProvenance}
           title={t({
             en: "A worked run: grooming for a golden retriever, Saturday, under ¥200",
             zh: "一次完整运行：周六、金毛、美容、预算 200 元以内",
@@ -141,6 +145,7 @@ export default async function AIStrategyPage({ params }: { params: Promise<{ loc
       <Section>
         <SectionHeader
           label={t({ en: "Design principles for the AI layer", zh: "AI 层的设计原则" })}
+          provenance={aiPrinciplesProvenance}
           title={t({ en: "What we will not build, and what we optimise instead", zh: "我们不做什么，转而优化什么" })}
         />
         <Stagger className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">

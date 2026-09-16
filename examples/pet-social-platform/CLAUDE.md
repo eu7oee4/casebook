@@ -9,7 +9,8 @@ Audience: product directors and interviewers. The site must read as the work of 
 ## What you are here to do
 
 Research the pet social / pet services domain step by step, gather **sourced** data, and update the site's
-content. You update **data and research notes**, not UI. The visual system is finished; do not redesign it.
+content. You update **data and research notes**, not UI. The visual system is finished; do not redesign it —
+except where "What not to change" below records an explicit, author-approved exception.
 
 Start every session by reading `research/plan.md` (open questions per chapter) and `research/sources.md`.
 
@@ -41,13 +42,24 @@ between languages. UI chrome strings live inline as `t({ en, zh })` in component
 
 Every factual number or claim carries a `Provenance` (`data/provenance.ts`):
 
-- `hypothesis` — placeholder to structure the case. Rendered as **Illustrative**. This is the default.
-- `estimate` — derived from cited sources with reasoning in `note`. Rendered as **Estimate · source**.
-- `verified` — read directly from a cited source. Rendered as **Source · source** (linked if `url`).
+- `hypothesis` — placeholder to structure the case: a number or claim that *could* have a source but does not
+  yet. Rendered as **Illustrative** with a **dashed** border and a **hollow** dot. This is the default.
+- `design` — the product's own design, not a claim about the world: a step in its own flow, a capability
+  definition, a deliberately fictional worked example, a roadmap. There is nothing to cite, so it is **not**
+  "unsourced" — it is off the sourced/invented axis. Rendered as **Design** with a solid border and a **square**
+  dot. Never use it for a number that could have a source; that is `hypothesis`.
+- `estimate` — derived from cited sources with reasoning in `note`. Rendered as **Estimate**, solid border, filled dot.
+- `verified` — read directly from a cited source. Rendered as **Sourced**, solid border, filled accent dot.
 - `contradicted` — a cited source points the **opposite** way from the value or claim shown. Rendered as
   **Contradicted · source** (linked if `url`). Same evidence bar as `verified`: `source`, `url` (if one exists),
   `retrievedAt`, and a `note` saying what the source measures and how it conflicts. Use it when the claim is kept
   on the page for now (pending the author's decision, see `research/revisions.md`) but must not read as supported.
+
+**Nothing renders unmarked.** Every block of data on a page carries a provenance — per item where the component
+supports it (`Metric`, competitor cards, benchmark rows), otherwise at the section level via `SectionHeader`'s
+`provenance` prop. A section whose items are *individually* marked takes no section badge: one badge cannot
+honestly summarise a mixed section. The badge shows only the state word; the source name, link, retrieval date
+and note live in the hover card. Then, for each mark:
 
 1. Never set `estimate`, `verified` or `contradicted` without `source`, `url` (if one exists) and `retrievedAt` (ISO date).
 2. If a number cannot be found, leave it `hypothesis`. **Do not invent, round, or "reasonably assume" a figure.**
@@ -84,8 +96,10 @@ one to match a single weak source: the bar for revising is the same as for `veri
 
 ## What not to change
 
-- UI components, design tokens, typography, layout, `app/globals.css`, `components/`. (The one sanctioned
-  exception is the `contradicted` branch already added to `ProvenanceMark` in `components/ui/Note.tsx`.)
+- UI components, design tokens, typography, layout, `app/globals.css`, `components/`. (Sanctioned exceptions,
+  both already made: the `contradicted` branch in `ProvenanceMark`, and the 2026-09-15 provenance-legibility
+  change — the `design` tier, the dashed/solid + hollow/filled/square badge scheme, `SectionHeader`'s
+  `provenance` prop, and `Metric` no longer hiding the badge for `hypothesis`.)
 - Copy tone: analytical, PM-voice, English. No marketing language.
 
 ## How to work

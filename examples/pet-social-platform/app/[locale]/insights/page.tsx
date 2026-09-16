@@ -7,7 +7,7 @@ import { Section, SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Badge } from "@/components/ui/Tag";
 import { OpportunityMatrix } from "@/components/product/insights/OpportunityMatrix";
-import { opportunities, priorities, roadmap, northStar, principles } from "@/data/insights";
+import { opportunities, priorities, roadmap, northStar, principles, opportunitiesProvenance, prioritiesProvenance, roadmapProvenance, principlesProvenance } from "@/data/insights";
 import { DEFAULT_LOCALE, isLocale, tr } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -51,6 +51,7 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
       <Section className="mt-12 lg:mt-16">
         <SectionHeader
           label={t({ en: "Opportunity matrix", zh: "机会矩阵" })}
+          provenance={opportunitiesProvenance}
           title={t({ en: "User value against implementation complexity", zh: "用户价值 × 实现复杂度" })}
           description={t({
             en: "Select a point to read the rationale and the first milestone. The two P0s are the ones that unlock the others.",
@@ -66,6 +67,7 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
       <Section>
         <SectionHeader
           label={t({ en: "Priority", zh: "优先级" })}
+          provenance={prioritiesProvenance}
           title={t({ en: "Two to build first, two to grow into", zh: "先建两项，再长出两项" })}
         />
         <ol className="mt-8 border-t border-ink">
@@ -89,6 +91,7 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
       <Section>
         <SectionHeader
           label={t({ en: "Sequencing", zh: "节奏" })}
+          provenance={roadmapProvenance}
           title={t({ en: "Understand, then connect, then orchestrate", zh: "先理解，再连接，最后调度" })}
           description={t({
             en: "Each phase ships the entities the next one reasons over. The graph is grown, not pre-built.",
@@ -143,7 +146,11 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
 
       {/* Principles */}
       <Section>
-        <SectionHeader label={t({ en: "Closing", zh: "收束" })} title={t({ en: "Four commitments", zh: "四项承诺" })} />
+        <SectionHeader
+          label={t({ en: "Closing", zh: "收束" })}
+          title={t({ en: "Four commitments", zh: "四项承诺" })}
+          provenance={principlesProvenance}
+        />
         <Stagger className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-12">
           {principles.map((p, i) => (
             <StaggerItem key={p.index} className={i === 3 ? "border-t border-accent pt-5" : "border-t border-ink pt-5"}>

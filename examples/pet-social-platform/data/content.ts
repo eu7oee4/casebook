@@ -1,5 +1,5 @@
 import type { Str, Text } from "@/lib/i18n";
-import { HYPOTHESIS, type Provenance } from "./provenance";
+import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
 
 export const contentTypesProvenance: Provenance = {
   confidence: "hypothesis",
@@ -27,6 +27,8 @@ export const contentTypesNote: Text = {
   zh: "各类内容占比，是对信息流的设计目标，而非观测值。经验与问答两类内容单条可检索的知识密度最高；最接近的公开数据知识密度远低于此，把这两类的权重设到这么高，依据在需求侧，而不在任何已观测到的供给。",
 };
 
+export const contentLoopProvenance: Provenance = DESIGN;
+
 export const contentLoop: Array<{ label: Text; note: Text; emphasis?: boolean }> = [
   { label: { en: "Create", zh: "创作" }, note: { en: "diary, question, review", zh: "日记、提问、评价" } },
   { label: { en: "Publish", zh: "发布" }, note: { en: "understood before ranked", zh: "先理解，再排序" } },
@@ -37,6 +39,8 @@ export const contentLoop: Array<{ label: Text; note: Text; emphasis?: boolean }>
 ];
 
 export type PipelineStage = { id: string; stage: Text; title: Text; detail: Text; example: Str };
+
+export const pipelineProvenance: Provenance = DESIGN;
 
 export const pipeline: PipelineStage[] = [
   {
@@ -97,6 +101,8 @@ export const pipeline: PipelineStage[] = [
     },
   },
 ];
+
+export const creationVsUnderstandingProvenance: Provenance = DESIGN;
 
 export const creationVsUnderstanding: Array<{ id: string; label: Text; role: Text; what: Text; value: Text; limit: Text }> = [
   {

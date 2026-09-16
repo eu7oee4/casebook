@@ -1,5 +1,7 @@
-import { HYPOTHESIS, type Provenance } from "./provenance";
+import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
 import type { Text } from "@/lib/i18n";
+
+export const identityDimensionsProvenance: Provenance = DESIGN;
 
 export const identityDimensions: Array<{ label: Text; note: Text }> = [
   { label: { en: "User", zh: "用户" }, note: { en: "owner, lifestyle, schedule", zh: "主人、生活方式、作息" } },
@@ -9,6 +11,8 @@ export const identityDimensions: Array<{ label: Text; note: Text }> = [
   { label: { en: "Lifestyle", zh: "生活方式" }, note: { en: "work rhythm, weekend habits", zh: "工作节奏、周末习惯" } },
   { label: { en: "Pet stage", zh: "宠物阶段" }, note: { en: "puppy · adult · senior · recovery", zh: "幼年 · 成年 · 老年 · 康复期" } },
 ];
+
+export const relationshipLadderProvenance: Provenance = DESIGN;
 
 export const relationshipLadder: Array<{ step: Text; depth: number; signal: Text; note: Text }> = [
   { step: { en: "Like", zh: "点赞" }, depth: 1, signal: { en: "Attention", zh: "注意" }, note: { en: "cheap, one-way", zh: "低成本、单向" } },
@@ -31,6 +35,8 @@ export const ladderFunnel: Array<{ step: Text; users: number }> = [
   { step: { en: "Offline", zh: "线下" }, users: 2.2 },
   { step: { en: "Relationship", zh: "关系" }, users: 1.1 },
 ];
+
+export const petMatchProvenance: Provenance = DESIGN;
 
 export const matchQuery: Text = {
   en: "Find someone nearby to walk dogs with on weekend mornings.",
@@ -126,6 +132,8 @@ export const matchMetrics: Array<{ label: Text; value: string; note: Text; prove
   { label: { en: "7D relationship retention", zh: "7 日关系留存" }, value: "41%", note: { en: "still messaging or meeting a week later", zh: "一周后仍在联系或见面的比例" }, provenance: HYPOTHESIS },
   { label: { en: "Offline conversion", zh: "线下转化率" }, value: "12%", note: { en: "of matches that meet in person within 30 days", zh: "30 天内线下见面的匹配比例" }, provenance: HYPOTHESIS },
 ];
+
+export const matchPrinciplesProvenance: Provenance = DESIGN;
 
 export const matchPrinciples: Array<{ title: Text; body: Text }> = [
   {

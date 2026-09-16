@@ -1,5 +1,5 @@
 import type { Text } from "@/lib/i18n";
-import type { Provenance } from "./provenance";
+import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
 
 export type Tier = "direct" | "industry" | "benchmark";
 
@@ -26,6 +26,9 @@ export type Competitor = {
 };
 
 const RETRIEVED = "2026-09-10";
+
+/** The three-tier research frame is the case's own method. */
+export const tiersProvenance: Provenance = DESIGN;
 
 export const tiers: Array<{ value: Tier | "all"; label: Text; description: Text }> = [
   { value: "all", label: { en: "All", zh: "全部" }, description: { en: "The full landscape across three tiers.", zh: "三个层级的完整格局。" } },
@@ -465,6 +468,9 @@ export const competitors: Competitor[] = [
     },
   },
 ];
+
+export const competitorMapProvenance: Provenance = HYPOTHESIS;
+export const competitorInsightsProvenance: Provenance = HYPOTHESIS;
 
 export const competitorInsights: Text[] = [
   {

@@ -11,7 +11,7 @@ import { Spec } from "@/components/ui/InsightCard";
 import { Badge } from "@/components/ui/Tag";
 import { ContentTypesChart } from "@/components/product/content/ContentTypesChart";
 import { IntelligencePipeline } from "@/components/product/content/IntelligencePipeline";
-import { contentTypes, contentTypesNote, contentLoop, creationVsUnderstanding, understandingMetrics, contentTypesProvenance } from "@/data/content";
+import { contentTypes, contentTypesNote, contentLoop, creationVsUnderstanding, understandingMetrics, contentTypesProvenance, contentLoopProvenance, creationVsUnderstandingProvenance, pipelineProvenance } from "@/data/content";
 import { DEFAULT_LOCALE, isLocale, tr } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -84,6 +84,7 @@ export default async function ContentPage({ params }: { params: Promise<{ locale
       <Section>
         <SectionHeader
           label={t({ en: "Content loop", zh: "内容闭环" })}
+          provenance={contentLoopProvenance}
           title={t({ en: "The loop closes on return, and return depends on relationships", zh: "闭环在回访处闭合，而回访取决于关系" })}
           description={t({
             en: "Every step is measurable. The step most pet apps lose is the last: people return for the people they follow, not for the feed.",
@@ -99,6 +100,7 @@ export default async function ContentPage({ params }: { params: Promise<{ locale
       <Section>
         <SectionHeader
           label={t({ en: "AI × Content", zh: "AI × 内容" })}
+          provenance={creationVsUnderstandingProvenance}
           title={t({ en: "Two very different jobs hide behind “AI for content”", zh: "「AI 做内容」背后藏着两件截然不同的事" })}
         />
         <div className="mt-10 grid-12 gap-y-10">
@@ -148,6 +150,7 @@ export default async function ContentPage({ params }: { params: Promise<{ locale
       <Section>
         <SectionHeader
           label={t({ en: "Content intelligence pipeline", zh: "内容理解流水线" })}
+          provenance={pipelineProvenance}
           title={t({ en: "From one post to recommendation, matching and service intent", zh: "从一条帖子到推荐、匹配与服务意图" })}
           description={t({
             en: "Understanding happens once, at publish time. Every downstream surface reuses the same entities instead of re-guessing from engagement — and because a post is understood once but read many times, doing it at write time is what makes understanding every post affordable at all.",

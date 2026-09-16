@@ -40,7 +40,7 @@ export function Metric({ label, value, unit, note, delta, provenance, size = "md
         )}
       </div>
       {note && <div className="t-caption">{note}</div>}
-      {provenance && provenance.confidence !== "hypothesis" && (
+      {provenance && (
         <div className="pt-1 mt-auto min-w-0">
           <ProvenanceMark provenance={provenance} />
         </div>
