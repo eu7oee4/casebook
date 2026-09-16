@@ -1,5 +1,5 @@
 import type { Text } from "@/lib/i18n";
-import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
+import { DESIGN, type Provenance } from "./provenance";
 
 export type Opportunity = {
   id: string;
@@ -15,18 +15,25 @@ export type Opportunity = {
 };
 
 /** The 0-100 complexity / value scores are the author's judgement, not measured. */
-export const opportunitiesProvenance: Provenance = HYPOTHESIS;
+export const opportunitiesProvenance: Provenance = {
+  confidence: "hypothesis",
+  source: "Google Actions Center, Reservations End-to-End (eligibility & integration policies); 美团开放平台接入指南",
+  url: "https://developers.google.com/actions-center/verticals/reservations/e2e/policies/integration-policies",
+  retrievedAt: "2026-09-16",
+  note:
+    "Positions are the author's judgement; no source can produce a 0–100 score. Two were moved on 2026-09-16 after research, both author-decided: the concierge from 66 to 80, because its supply dependency is documented and contractual rather than technical — an integration of this shape requires “a direct contractual relationship with all the merchants included in their integration feed”, availability answered “in less than 1 second” and “comprehensive inventory”, and even then “meeting the requirements does not guarantee a partner will be eligible”; in the target market nothing public exposes a merchant's bookable slots at all (美团's open platform documents OAuth and user resources only, with access behind an enterprise application and review), and the Chinese pet-store SaaS vendors publish no APIs. And content intelligence from 42 to 52, because the evaluation half of its rationale does not hold on this label set: published breed accuracy tops out at 86.4% (Tsinghua Dogs) and ~59% (Oxford-IIIT Pet), the pet types most common in Chinese pet content are in neither class list, and service intent has no public comparable. The other four positions were checked against the evidence from 02–08 and left as they were; reasoning per item in research/09-insights.md.",
+};
 
 export const opportunities: Opportunity[] = [
   {
     id: "content-intel",
     name: { en: "AI Content Intelligence", zh: "AI 内容理解" },
-    complexity: 42,
+    complexity: 52,
     value: 88,
     priority: "P0",
     rationale: {
-      en: "Highest leverage per unit of effort: mature multimodal models, clear evaluation, and every other capability depends on it.",
-      zh: "单位投入的杠杆最高：多模态模型已成熟、评估方式清晰，而且其他所有能力都依赖它。",
+      en: "Highest leverage per unit of effort: mature multimodal models, and every other capability depends on it. The evaluation set is ours to build — the breeds most common in Chinese pet content appear in no public model's class list.",
+      zh: "单位投入的杠杆最高：多模态模型已成熟，而且其他所有能力都依赖它。但评估集得自己建——中文宠物内容里最常见的那几种，在公开模型的类目表里都找不到。",
     },
     firstMilestone: {
       en: "Pet / breed / stage / place / emotion labels on 90% of posts; feed ranked on them.",
@@ -36,14 +43,14 @@ export const opportunities: Opportunity[] = [
   {
     id: "concierge",
     name: { en: "AI Service Concierge", zh: "AI 服务管家" },
-    complexity: 66,
+    complexity: 80,
     value: 92,
     priority: "P0",
     rationale: {
       en: "Direct revenue and the clearest demonstration of agentic value; depends on supply integration, not on research breakthroughs.",
       zh: "直接带来收入，也是 Agent 价值最清晰的证明；依赖的是供给侧接入，而不是研究突破。",
     },
-    dependsOn: { en: "Merchant availability API; pet profile", zh: "商家可预约时段接口；宠物档案" },
+    dependsOn: { en: "A contract per merchant, real-time slots, complete inventory; pet profile", zh: "每家商家的合同、实时可预约时段、完整库存；宠物档案" },
     firstMilestone: {
       en: "Grooming only, one city; intent → booked in under 60 seconds.",
       zh: "只做美容、只做一个城市；从意图到完成预订不超过 60 秒。",

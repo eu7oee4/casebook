@@ -82,12 +82,12 @@ judgement; research there means finding evidence for or against the argument, no
 | Verify each described mechanism (Xiaohongshu, Instagram, Soul, Jike, Dianping, Meituan) from public material | `benchmarkRows[*].mechanism`, `.provenance` | product pages, help centres, credible teardowns |
 | Is there a better example for any domain? | `benchmarkRows` | replace only with a reason recorded in the note |
 
-## 09 Insights — `data/insights.ts` ☐
+## 09 Insights — `data/insights.ts` ☑ (2026-09-16 — see `research/09-insights.md`; **two positions moved, both author-decided**: the concierge 66 → 80 (its supply dependency is contractual and documented — a contract per merchant, sub-second availability, complete inventory — and has no public interface in the target market) and content intelligence 42 → 52 with its "clear evaluation" clause replaced (published breed accuracy tops out at 86.4% / ~59% and the commonest Chinese pet types are in no class list). The other four were checked against 02–08 and left alone; `priorities` / `northStar` / `principles` / `roadmap` are `design`.)
 
 | Question | Feeds | Notes |
 |---|---|---|
-| Does the evidence from 02–08 change any complexity / value position? | `opportunities[*].complexity/value` | positions are judgement; adjust only with a reason recorded in the note, and tell the author |
-| Dependencies confirmed by research (e.g. merchant availability APIs exist) | `opportunities[*].dependsOn` | |
+| Does the evidence from 02–08 change any complexity / value position? | `opportunities[*].complexity/value` | ☑ Two complexity scores moved (concierge 66 → 80, content-intel 42 → 52), both proposed to and decided by the author, two `revisions.md` rows. No `value` score was challenged; `pet-match`, `knowledge-graph`, `creation-tools` and `events` survived the check unchanged, with their rationales now evidenced (S50/S43 for creation tools, S53–S55/S57 for match, S46/S47 for the graph) |
+| Dependencies confirmed by research (e.g. merchant availability APIs exist) | `opportunities[*].dependsOn` | ☑ **No public merchant-availability API exists in the target market** — 美团's open platform publishes OAuth and user resources only, behind an enterprise application and review (S79); where the interface is standardised it requires a contract with every merchant, sub-second availability and complete inventory (S80, S81); the Chinese pet-store SaaS vendors publish none (negative finding). `dependsOn` reworded to say so. Same-city density is not externally verifiable and stays the author's |
 
 ## 01 Overview — `data/overview.ts` ☐
 

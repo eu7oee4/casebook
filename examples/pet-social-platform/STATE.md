@@ -1,12 +1,41 @@
 # STATE — pet-social-platform
 
-Last updated: 2026-09-16 (07 AI Strategy researched — zero data changes by construction; 06 Local researched
-with two frequency cells narrowed and row-level badges added; 05 and 04 researched with no value changed;
-supply/demand subtraction retracted; AI cost wording fixed; provenance made legible at a glance)
+Last updated: 2026-09-16 (09 Insights researched — two complexity positions moved, author-decided; 07 researched
+with zero data changes by construction; 06 researched with two frequency cells narrowed and row-level badges
+added; 05 and 04 researched with no value changed; only 01 Overview left)
 
 ## Where it stands
 - Site complete: nine chapters, EN / 中文, design system finished, `npm run check` passes.
 - Research: **in scope for all nine chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
+- **09 Insights done (2026-09-16)**: the first chapter that mostly consumed the other eight, and **the first
+  where research moved a judgement position**. `priorities` / `northStar` / `principles` / `roadmap` are `design`;
+  the only block asserting anything is `opportunities` (six items × complexity/value/rationale/dependsOn/
+  firstMilestone). All six were reconciled item by item against 02–08; **four survived unchanged** and their
+  rationales are now evidenced (creation tools "raise supply without raising relevance" ← 90-9-1 participation
+  skew S50 plus demand for knowledge not captions S43; pet-match "needs density" ← the anchored tie is the only
+  mediating relationship type, b=0.69 p<.001, S54, and the walk is the social act, 77.9% walked daily, S57; the
+  graph "should grow out of the first two capabilities" ← exactly how Pinterest's taxonomy is populated and
+  consumed, S46/S47). **Two moved, both proposed to the author and decided by them**:
+  - `concierge` **66 → 80** (value 92 unchanged, still P0, same quadrant). The chapter's real finding sits here:
+    its rationale ("depends on supply integration, not research breakthroughs") is right and understated.
+    Where a bookable-slot interface is a published standard it is **contractual** — "a direct contractual
+    relationship with all the merchants included in their integration feed" (S80), availability answered "in
+    less than 1 second", "comprehensive inventory", and even then "meeting the requirements does not guarantee
+    a partner will be eligible" (S81). In the target market nothing public exposes a merchant's slots at all:
+    美团's open platform documents OAuth and user resources only, with access behind an enterprise email
+    application (营业执照号 + 身份证号) and review (S79), and none of the named Chinese pet-store SaaS vendors
+    (宠老板/宠想来/爱宠/宠知道) publishes an API. `dependsOn` reworded `en`+`zh` to name the real dependency.
+  - `content-intel` **42 → 52** and its rationale's "clear evaluation" clause replaced (`en`+`zh`): published
+    breed accuracy tops out at 86.4% / ~59% and the commonest Chinese pet types are in neither class list
+    (S44–S45), service intent has no comparable, and 07's tier gap (63% vs 92%, S72) means the escalation
+    policy needs an eval set that does not exist yet. **Side effect flagged to the author**: 52 crosses the
+    x=50 reference line, so Quick wins (速赢) is now an **empty quadrant** while `OpportunityMatrix`'s caption
+    still calls top-left "the build-first quadrant" — 48 would keep it populated; the component and caption
+    were **not** touched (UI copy, separate decision).
+  `opportunitiesProvenance` gained source/url/date and a note saying which two moved and that the other four
+  were checked. 3 new sources (S79–S81). Two `revisions.md` rows, both logged **author**. `npm run check`
+  passes. **Reviewed in a browser by the author 2026-09-16: no label collisions** between `concierge` (80) and
+  `knowledge-graph` (82) after the label-side flip, and no other change asked for. Committed — see the log.
 - **07 AI Strategy done (2026-09-16)**: **no data change, and none was possible** — every block in `data/ai.ts` is
   `design` (architecture, five capabilities, agent loop, fictional trace, four principles), so the whole chapter
   was evidence-for/against plus the author's cost question. **The cost question (raised 2026-09-15) is now
@@ -31,7 +60,7 @@ supply/demand subtraction retracted; AI cost wording fixed; provenance made legi
   named control is exactly the human approval the chapter already requires (S75), and the product's agent reads
   user-generated content then books and pays, so the exposure is real — and **PIPL Art. 28/29: 行踪轨迹 is sensitive
   personal information requiring 单独同意 (S78), a constraint the case mentions nowhere** (see flag 6). 10 new
-  sources (S69–S78). No `revisions.md` row: no counter-evidence was found, and the note says so explicitly.
+  sources (S69–S78). **Committed (e1ff221, on `main`).** No `revisions.md` row: no counter-evidence was found, and the note says so explicitly.
   `npm run check` passes; both locales curl-checked (no render change expected — nothing on the page moved).
 - **06 Local done (2026-09-16)**: **no value changed**, and no page copy changed either — every edit is provenance
   metadata. The five-tier model again decided most of the chapter: `serviceJourney`, the whole concierge
@@ -203,7 +232,7 @@ supply/demand subtraction retracted; AI cost wording fixed; provenance made legi
      for the section badge to read 估算; keeping one badge for a mixed section would have over-claimed for the
      six unsourced rows, so on the author's instruction the marks went **row-level** instead (see flag 5).
      **Not eyeballed in a browser after this edit.**
-  5. (from 06, 2026-09-16 — **author-approved UI change, not eyeballed in a browser**) `serviceCategories` rows
+  5. (from 06, 2026-09-16 — **author-approved UI change, reviewed in a browser 2026-09-16**) `serviceCategories` rows
      gained an optional `provenance`; the 美容 and 宠物医疗 rows carry their own **估算 / Estimate** badge,
      rendered inline after the frequency value (`whitespace-nowrap`, so the marked rows keep the same height as the
      rest — the author asked for this after seeing the badge stacked under the value), and the frequency column
@@ -221,39 +250,33 @@ supply/demand subtraction retracted; AI cost wording fixed; provenance made legi
      layer. Adding a line about separate, explicit location consent would strengthen the AI layer's credibility,
      but it is **new content**, not a correction, so nothing was written. Reasoning in
      `research/07-ai-strategy.md` → Q3.
-  7. (from 02, 2026-09-10) KPI grid switched to 2 columns (rows 2 / 2 / 1) at the author's request after badges
+  7. (from 09, 2026-09-16) **The Quick wins quadrant is now empty.** `content-intel` moved 42 → 52 at the
+     author's instruction, which crosses `OpportunityMatrix`'s x=50 reference line, so 速赢 / Quick wins holds
+     no opportunity while the chart's caption still calls top-left "the build-first quadrant" and the quadrant
+     label still renders. Two ways out, both the author's call: set 48 (one number, keeps the quadrant
+     populated) or keep 52 and reword the caption plus decide whether an empty labelled quadrant should still
+     be drawn — the latter is UI copy, so nothing was touched. Reasoning in `research/09-insights.md` → Data
+     changes.
+  8. (from 02, 2026-09-10) KPI grid switched to 2 columns (rows 2 / 2 / 1) at the author's request after badges
      overlapped at zoom; `npm run check` passes, not eyeballed in a browser (no Chrome extension in this session).
   (The `SpendTrend.tsx` hard-coded Y domain was fixed 2026-09-06 with author approval: domain/ticks are now
   computed from the data. Provenance-badge overflow with long real source names was also fixed the same day —
   badges now truncate to their column width and bottom-align across a metric row.)
 
 ## Next steps (in order)
-1. **Research 09 Insights next**, then 01 last. 09 is the first chapter that can *consume* the other eight:
-   the question in `research/plan.md` → Insights is whether the evidence from 02–08 moves any complexity / value
-   position in `opportunities[*]`, and whether the dependencies hold. Positions are judgement — adjust only with
-   a reason recorded and tell the author.
-   **Head start from 06 and 07**, three things that bear directly on 09's matrix:
-   - *Local is more de-risked than it looks, but its metrics are unmeasurable in public.* Repeat dominates pet
-     services (Rover 81% of bookings, S64) and peer recommendation dominates high-trust acquisition (32.8%, S63),
-     while no marketplace publishes a request → booking conversion (S66). Value up, measurability down.
-   - *Social is the least evidenced capability and the least evidenced chapter.* No funnel is published anywhere
-     (S52), the ladder's two comparables disagree (S50 vs S43), and 07 found no production description. If any
-     complexity position deserves a second look, it is the social one.
-   - *The AI layer's cost argument is now sourced but has no number*, and the escalation path is load-bearing
-     (S72's 63% vs 92%). An opportunity that assumes cheap understanding everywhere should say "cheap on the
-     easy majority", not "cheap".
-   Also unclosed from 07: the **PIPL 单独同意 constraint on location data** (S78) — new content, waiting on the
-   author (flag 6), and it touches 05, 06 and 07 if accepted.
-   **Method that has worked three times**: Chinese white-paper PDFs use subset fonts, so plain fetching returns
-   nothing — extract text page by page with PyMuPDF (venv at the scratchpad path recorded in
-   `research/04-content.md`; it also read the KPMG and AAHA PDFs and an academic PDF in 06). medium.com,
-   nature.com, springer and pubmed need a text proxy of the same URL; PMC needs the `pmc.ncbi.nlm.nih.gov` host,
-   not `www.ncbi.nlm.nih.gov`. SEC EDGAR filing pages fetch fine but a single fetch may miss the metrics section
-   — ask for the exact phrase.
-   **Standing rule learned the hard way** (two retractions, and a third comparison refused in 06): before
-   comparing two figures, check they share a denominator. Supply share vs multi-select demand (04), cascade
-   funnel vs self-reported frequency (05), and Rover's repeat-booking share vs a same-merchant 60-day repeat
-   rate (06) all look comparable and are not.
+1. **01 Overview is the last chapter, and now it is the only one left.** Per `research/plan.md` it is updated
+   only after 02–09 and only to reflect verified evidence; the thesis and the three insights are the author's,
+   so propose edits in `research/01-overview.md` rather than changing them. Three things from 05/07/09 belong in
+   that proposal, all already recorded:
+   - The pet anchors the relationship, but the climb from contact to trust is the product's job, not a property
+     of dog ownership (05's revisions row, S53–S55).
+   - Understanding is cheap **on the easy majority** — the escalation path is load-bearing, not an optimisation
+     (07, S72's 63% vs 92%).
+   - Local is strongest on value and weakest on measurability: no marketplace publishes a request → booking
+     conversion (S66), so the argument rests on repeat and peer trust, which are published (S63, S64).
+   Also still open from the research pass: the **positioning line** decided on 2026-09-06 lands in 01's opening
+   copy and `PRODUCT.md` when 01 is updated, and the **PIPL 单独同意 constraint** (flag 6) is waiting on the
+   author.
 2. After 02 (or 02+03) is walked through end to end, casebook v1 extraction (`packages/`, template, skills)
    can start in parallel with the remaining chapters — workspace-level decision, 2026-09-06.
 3. Review mode (in-page editing + annotations → AI applies) is planned at the casebook level, not here; wait for `packages/` to exist.
