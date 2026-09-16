@@ -1,12 +1,38 @@
 # STATE — pet-social-platform
 
-Last updated: 2026-09-16 (06 Local researched; 05 Social researched; 04 Content researched; no value changed
-in any of the three; supply/demand subtraction retracted; AI cost wording fixed; provenance made legible at a
-glance — all author-decided)
+Last updated: 2026-09-16 (07 AI Strategy researched — zero data changes by construction; 06 Local researched
+with two frequency cells narrowed and row-level badges added; 05 and 04 researched with no value changed;
+supply/demand subtraction retracted; AI cost wording fixed; provenance made legible at a glance)
 
 ## Where it stands
 - Site complete: nine chapters, EN / 中文, design system finished, `npm run check` passes.
 - Research: **in scope for all nine chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
+- **07 AI Strategy done (2026-09-16)**: **no data change, and none was possible** — every block in `data/ai.ts` is
+  `design` (architecture, five capabilities, agent loop, fictional trace, four principles), so the whole chapter
+  was evidence-for/against plus the author's cost question. **The cost question (raised 2026-09-15) is now
+  closed as「答清了结构，不上数字」**: the documented cascade is Pinterest's — lightweight ranking sits before full
+  ranking because that step "is usually quite costly and time-consuming", and the funnel runs billions → thousands
+  → a handful, with Pixie alone generating "over 75 million Pins per second" (S73) — on top of P2I's "0.01% more
+  resources per Pin … multiplied by 200 billion" (S47). The levers are now sourced first-party and they compose:
+  model tier $1/$5 (Haiku 4.5) vs $5/$25 (Opus 5) vs $10/$50 per MTok (S70), measured at "about a tenth of Opus 5's
+  cost per question, with 63% accuracy compared with 92%" (S72); batch "charged at 50% of the standard API prices"
+  (S69); cache reads 0.1× input, measured 2.7–5.3× on agent loops and 83% on a triage agent (S71, S72). **No ¥/post
+  figure went on any page** — that needs tokens per post, escalation rate and refresh frequency, all the product's
+  own unknowns. The sharpest finding for the chapter's wording: the cheap tier is not just cheaper but **materially
+  worse** (63% vs 92%), so the escalation path in `capabilities[0]` is load-bearing, not an optimisation — if 01 is
+  ever rewritten, keep the second half of that sentence. Capability evidence: 01 Pinterest taxonomy (S46/S47, in
+  hand), 03 Meituan 智能掌柜 splitting reviews by 菜品/服务/环境 at ~708k merchants (S76) and Dianping's 点仔
+  internal test (S77), 04 one-graph-many-consumers (S46), **05 confirmation-gated execution turns out to be a
+  platform primitive** — "The model never executes anything on its own" and a per-tool `permission_policy` that
+  requires confirmation (S74). **02 Social Intelligence is the one unevidenced capability**: nobody publishes a
+  funnel (S52, from 05) or a production description — consistent with its P1 priority, and the honest answer if an
+  interviewer asks which capability is least de-risked. New risks section in the chapter note: the breed error floor
+  from 04 (86.4% / ~59%, with Weibo's top pet types in no class list), indirect prompt injection — OWASP LLM01's
+  named control is exactly the human approval the chapter already requires (S75), and the product's agent reads
+  user-generated content then books and pays, so the exposure is real — and **PIPL Art. 28/29: 行踪轨迹 is sensitive
+  personal information requiring 单独同意 (S78), a constraint the case mentions nowhere** (see flag 6). 10 new
+  sources (S69–S78). No `revisions.md` row: no counter-evidence was found, and the note says so explicitly.
+  `npm run check` passes; both locales curl-checked (no render change expected — nothing on the page moved).
 - **06 Local done (2026-09-16)**: **no value changed**, and no page copy changed either — every edit is provenance
   metadata. The five-tier model again decided most of the chapter: `serviceJourney`, the whole concierge
   (`conciergeQuery` / `conciergeSteps` / the three fictional merchants / `booking`) and the design principles are
@@ -189,21 +215,35 @@ glance — all author-decided)
      departs from the section floor. Reviewed in a browser by the author 2026-09-16: hover card renders correctly
      and is not clipped by the table's `overflow-x-auto` wrapper; the only change asked for was moving the badge
      onto the value's line, now done.
-  6. (from 02, 2026-09-10) KPI grid switched to 2 columns (rows 2 / 2 / 1) at the author's request after badges
+  6. (from 07, 2026-09-16) **New constraint the case mentions nowhere**: PIPL Article 28 lists 行踪轨迹 among
+     sensitive personal information and Article 29 requires 单独同意 for processing it (S78). Location is load
+     bearing in three chapters — `capabilities[01]`'s location label, 05's same-city rung, 06's entire local
+     layer. Adding a line about separate, explicit location consent would strengthen the AI layer's credibility,
+     but it is **new content**, not a correction, so nothing was written. Reasoning in
+     `research/07-ai-strategy.md` → Q3.
+  7. (from 02, 2026-09-10) KPI grid switched to 2 columns (rows 2 / 2 / 1) at the author's request after badges
      overlapped at zoom; `npm run check` passes, not eyeballed in a browser (no Chrome extension in this session).
   (The `SpendTrend.tsx` hard-coded Y domain was fixed 2026-09-06 with author approval: domain/ticks are now
   computed from the data. Provenance-badge overflow with long real source names was also fixed the same day —
   badges now truncate to their column width and bottom-align across a metric row.)
 
 ## Next steps (in order)
-1. **Research 07 AI Strategy next**, then 09, then 01 last. Chapter 07 is product judgement: the job is
-   evidence for / against, not rewriting. Questions are in `research/plan.md` → AI Strategy; `data/ai.ts`.
-   The open question added on 2026-09-15 is the load-bearing one: **what content understanding costs to run at
-   scale and how production systems tier it** — Pinterest P2I (S47) is in hand; no unit price goes on a page
-   without a source.
-   **Head start from 06**: `serviceMetrics[0]`'s negative finding (no marketplace publishes a request → booking
-   conversion) is the shape to expect for agent-performance targets too; and 06's evidence that ratings compress
-   at the top (97% five-star on Rover, S64) is an argument *for* the personalisation capability, worth reusing.
+1. **Research 09 Insights next**, then 01 last. 09 is the first chapter that can *consume* the other eight:
+   the question in `research/plan.md` → Insights is whether the evidence from 02–08 moves any complexity / value
+   position in `opportunities[*]`, and whether the dependencies hold. Positions are judgement — adjust only with
+   a reason recorded and tell the author.
+   **Head start from 06 and 07**, three things that bear directly on 09's matrix:
+   - *Local is more de-risked than it looks, but its metrics are unmeasurable in public.* Repeat dominates pet
+     services (Rover 81% of bookings, S64) and peer recommendation dominates high-trust acquisition (32.8%, S63),
+     while no marketplace publishes a request → booking conversion (S66). Value up, measurability down.
+   - *Social is the least evidenced capability and the least evidenced chapter.* No funnel is published anywhere
+     (S52), the ladder's two comparables disagree (S50 vs S43), and 07 found no production description. If any
+     complexity position deserves a second look, it is the social one.
+   - *The AI layer's cost argument is now sourced but has no number*, and the escalation path is load-bearing
+     (S72's 63% vs 92%). An opportunity that assumes cheap understanding everywhere should say "cheap on the
+     easy majority", not "cheap".
+   Also unclosed from 07: the **PIPL 单独同意 constraint on location data** (S78) — new content, waiting on the
+   author (flag 6), and it touches 05, 06 and 07 if accepted.
    **Method that has worked three times**: Chinese white-paper PDFs use subset fonts, so plain fetching returns
    nothing — extract text page by page with PyMuPDF (venv at the scratchpad path recorded in
    `research/04-content.md`; it also read the KPMG and AAHA PDFs and an academic PDF in 06). medium.com,
