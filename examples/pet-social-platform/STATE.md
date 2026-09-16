@@ -36,7 +36,7 @@ glance — all author-decided)
   cannot carry the ranking and a followed owner's can. One `revisions.md` row: the "intent shows up in content
   **before** search" ordering is **kept with a qualification** — nothing measures the ordering, Meituan/Dianping
   notes grew 224% vs searches 80% (S68) but Xiaohongshu discloses 70% of MAU actively searching (S67); the
-  channel claim survives, the sequence word does not. 13 new sources (S56–S68). **All of the above is committed (b226f6a, on `main`).** Section-level marking kept on
+  channel claim survives, the sequence word does not. 13 new sources (S56–S68). **All of the above is committed (f84841b, on `main`).** Section-level marking kept on
   the category table (per-row badges would need a `provenance` field and a `DataTable` change — author approved
   keeping the section badge, 2026-09-16). `npm run check` passes; both locales curl-checked, all eight new
   provenance notes present in the SSR payload. **Not eyeballed in a browser** (hover-card content only).
