@@ -1,7 +1,14 @@
 import type { Str, Text } from "@/lib/i18n";
 import { HYPOTHESIS, type Provenance } from "./provenance";
 
-export const contentTypesProvenance: Provenance = HYPOTHESIS;
+export const contentTypesProvenance: Provenance = {
+  confidence: "hypothesis",
+  source: "艾瑞《2021年中国宠物内容价值研究白皮书》",
+  url: "https://pdf.dfcfw.com/pdf/H3_AP202112211535867880_1.pdf",
+  retrievedAt: "2026-09-14",
+  note:
+    "Design target for an owner community, not an observation. The only public mix found measures a different object — broadcast pet content on Weibo, 2021 H1 (Weibo big data, via iResearch p.7): 宠物日记及创意内容 43%, 动物段子集锦 22%, 宠物热点及资讯 18%, 动物公益/救助 12%, 养宠知识/科普 3%, 宠物服务 2%. Three of those six genres have no counterpart in this model and the knowledge-bearing ones total 5%, so the shares cannot be mapped onto these seven types. Demand does not line up with that supply, though the two must not be subtracted — 5% is a share of posts, 58.2% a share of people on a multi-select question. Read inside each denominator: demand is near-flat (eight genres, 66.2% → 47.4%; 养宠知识/科普 ranks fourth at 58.2%, 8.0pp below the leader) while supply spans 21× (43% → 2%, knowledge at one fourteenth of the leader); and TGI, normalised against the base population, puts owners at 136 on knowledge and 123 on goods/services rather than the flat 100 an undifferentiated audience would give (N=500, iResearch iClick survey, 2021-08). Consumption by genre is unknown — both supply figures are publishing volume and no per-genre read counts are published.",
+};
 
 export type ContentType = { id: string; type: Text; intent: Text; signal: Text; share: number };
 
@@ -16,8 +23,8 @@ export const contentTypes: ContentType[] = [
 ];
 
 export const contentTypesNote: Text = {
-  en: "Share of posts — hypothesis for an early-stage feed mix. Advice and Q&A carry the most retrievable knowledge per post.",
-  zh: "各类内容占比，为早期信息流结构的假设。经验与问答两类内容单条可检索的知识密度最高。",
+  en: "Share of posts — a design target for the feed, not an observation. Advice and Q&A carry the most retrievable knowledge per post; the closest public mix is far less knowledge-dense than this, and the case for weighting them this high comes from demand, not from any observed supply.",
+  zh: "各类内容占比，是对信息流的设计目标，而非观测值。经验与问答两类内容单条可检索的知识密度最高；最接近的公开数据知识密度远低于此，把这两类的权重设到这么高，依据在需求侧，而不在任何已观测到的供给。",
 };
 
 export const contentLoop: Array<{ label: Text; note: Text; emphasis?: boolean }> = [
@@ -112,8 +119,44 @@ export const creationVsUnderstanding: Array<{ id: string; label: Text; role: Tex
 
 /** Product targets, not observations. Keep as hypothesis unless a comparable published benchmark is cited in `note`. */
 export const understandingMetrics: Array<{ label: Text; value: string; note: Text; provenance: Provenance }> = [
-  { label: { en: "Posts with resolved pet entity", zh: "解析出宠物实体的帖子" }, value: "91%", note: { en: "target: profile-linked or inferred", zh: "目标：关联档案或推断得出" }, provenance: HYPOTHESIS },
-  { label: { en: "Breed inference precision", zh: "品种推断精确率" }, value: "0.87", note: { en: "vision model, top-1 on labelled set", zh: "视觉模型，标注集上的 top-1" }, provenance: HYPOTHESIS },
-  { label: { en: "Location-resolved posts", zh: "解析出地点的帖子" }, value: "64%", note: { en: "explicit or inferred from place", zh: "明确标注或由地点推断" }, provenance: HYPOTHESIS },
+  {
+    label: { en: "Posts with resolved pet entity", zh: "解析出宠物实体的帖子" },
+    value: "91%",
+    note: { en: "target: profile-linked or inferred", zh: "目标：关联档案或推断得出" },
+    provenance: {
+      confidence: "hypothesis",
+      source: "Pinterest Engineering — Interest Taxonomy",
+      url: "https://medium.com/pinterest-engineering/interest-taxonomy-a-knowledge-graph-management-system-for-content-understanding-at-pinterest-a6ae75c203fd",
+      retrievedAt: "2026-09-14",
+      note:
+        "Target, not an observation. Closest published comparable: Pinterest states that \"more than 99% of the Pins can be mapped to at least one taxonomy node\" through Pin2Interest, over a corpus of 200B+ Pins (2020). That is coverage of a broad interest taxonomy, not resolution to one named entity such as a specific pet, so this target is deliberately set below it.",
+    },
+  },
+  {
+    label: { en: "Breed inference precision", zh: "品种推断精确率" },
+    value: "0.87",
+    note: { en: "vision model, top-1 on labelled set", zh: "视觉模型，标注集上的 top-1" },
+    provenance: {
+      confidence: "hypothesis",
+      source: "Tsinghua Dogs benchmark",
+      url: "https://cg.cs.tsinghua.edu.cn/ThuDogs/",
+      retrievedAt: "2026-09-14",
+      note:
+        "Target, set against published fine-grained results. Tsinghua Dogs (130 breeds, 70,428 images, over 65% taken from real life, breed frequencies matched to how often they occur in China) reports a best benchmark of 86.4% (WS-DAN, Inception-v3, 2019); Oxford-IIIT Pet (37 breeds, 7,349 images) stood at about 59% average per-class accuracy when it was published in 2012. Both score a closed breed list on curated single-animal photos. A real pet feed does not fit one: Weibo's 2021 H1 cat top-10 is led by 橘猫 and 狸花猫, and the dog top-10 includes 中华田园犬 — coat types and landraces that are not classes in either dataset.",
+    },
+  },
+  {
+    label: { en: "Location-resolved posts", zh: "解析出地点的帖子" },
+    value: "64%",
+    note: { en: "explicit or inferred from place", zh: "明确标注或由地点推断" },
+    provenance: {
+      confidence: "hypothesis",
+      source: "Huang & Carley, geotagging on Twitter (2019)",
+      url: "https://arxiv.org/abs/1908.10948",
+      retrievedAt: "2026-09-14",
+      note:
+        "Target, not an observation. The explicit half of it is rare wherever it has been measured at scale: across 41.3bn tweets from 20.0m users, 2.31% carried a geotag (1.76% a place, 0.55% coordinates). No comparable public figure was found for inferred location, which is where most of this target would have to come from.",
+    },
+  },
   { label: { en: "Posts → service intent signals", zh: "帖子 → 服务意图信号" }, value: "12%", note: { en: "posts carrying a detectable service moment", zh: "带有可检测服务时刻的帖子" }, provenance: HYPOTHESIS },
 ];

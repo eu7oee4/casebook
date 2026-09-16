@@ -42,7 +42,7 @@ judgement; research there means finding evidence for or against the argument, no
 | Do any players occupy the high-service × high-social quadrant? | map coordinates `x`, `y` | positions are judgement; explain them in the chapter note |
 | Which pet service / commerce apps matter in the target market? | `competitors[tier=industry]` | |
 
-## 04 Content — `data/content.ts` ☐
+## 04 Content — `data/content.ts` ☑ (2026-09-14 — see `research/04-content.md`; no value changed: the one public content mix measures broadcast pet content on Weibo and cannot be mapped onto the seven types, so shares stay hypothesis; three of the four understanding targets now carry a published comparable in their provenance note)
 
 | Question | Feeds | Notes |
 |---|---|---|
