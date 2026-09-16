@@ -50,7 +50,7 @@ judgement; research there means finding evidence for or against the argument, no
 | Published benchmarks for breed / entity recognition precision | `understandingMetrics` (note only) | targets stay hypothesis; cite comparable model results in `note` |
 | Examples of platforms ranking content on structured understanding | `research/04-content.md` | evidence for the "understanding is infrastructure" claim |
 
-## 05 Social — `data/social.ts` ☐
+## 05 Social — `data/social.ts` ☑ (2026-09-16 — see `research/05-social.md`; no value changed. The five-tier model left only two blocks needing evidence: `ladderFunnel` (two comparables that disagree on the shape, neither sharing its denominator) and `matchMetrics` (one peer-reviewed figure for the last step; the listed dating companies publish no funnel). Identity dimensions, the ladder, the match prototype and the principles are `design`.)
 
 | Question | Feeds | Notes |
 |---|---|---|

@@ -25,7 +25,14 @@ export const relationshipLadder: Array<{ step: Text; depth: number; signal: Text
 ];
 
 /** Hypothesised conversion between rungs (of users at the previous rung). */
-export const ladderFunnelProvenance: Provenance = HYPOTHESIS;
+export const ladderFunnelProvenance: Provenance = {
+  confidence: "hypothesis",
+  source: "NN/g, Participation Inequality (90-9-1)",
+  url: "https://www.nngroup.com/articles/participation-inequality/",
+  retrievedAt: "2026-09-16",
+  note:
+    "No public funnel measures this ladder; the two nearest comparables point opposite ways and neither shares its denominator, so the shape stays the author's. (1) Steep: Nielsen's participation inequality — 90% lurk / 9% contribute occasionally / 1% heavily, with the angle varying enormously by design (blogs 95-5-0.1, Wikipedia 99.8-0.2-0.003); it measures contribution, not like → comment → DM. (2) Flat: among Chinese pet-content users, self-reported 总是+经常 frequency is 点赞/转发 67.7%, 评论 65.7%, 加入粉丝群 57.6% — only 10.1pp across three rungs (N=500, iResearch iClick, 2021-08). That is stated frequency per behaviour on one fixed denominator, not unique users cascading rung to rung, so it cannot replace these numbers either.",
+};
 export const ladderFunnel: Array<{ step: Text; users: number }> = [
   { step: { en: "Like", zh: "点赞" }, users: 100 },
   { step: { en: "Comment", zh: "评论" }, users: 38 },
@@ -130,7 +137,19 @@ export const matchMetrics: Array<{ label: Text; value: string; note: Text; prove
   { label: { en: "Conversation rate", zh: "对话率" }, value: "58%", note: { en: "of accepted matches that exchange ≥3 messages", zh: "接受的匹配中交换 ≥3 条消息的比例" }, provenance: HYPOTHESIS },
   { label: { en: "Mutual follow rate", zh: "互关率" }, value: "47%", note: { en: "of conversations that lead to mutual follow", zh: "对话中发展为互相关注的比例" }, provenance: HYPOTHESIS },
   { label: { en: "7D relationship retention", zh: "7 日关系留存" }, value: "41%", note: { en: "still messaging or meeting a week later", zh: "一周后仍在联系或见面的比例" }, provenance: HYPOTHESIS },
-  { label: { en: "Offline conversion", zh: "线下转化率" }, value: "12%", note: { en: "of matches that meet in person within 30 days", zh: "30 天内线下见面的匹配比例" }, provenance: HYPOTHESIS },
+  {
+    label: { en: "Offline conversion", zh: "线下转化率" },
+    value: "12%",
+    note: { en: "of matches that meet in person within 30 days", zh: "30 天内线下见面的匹配比例" },
+    provenance: {
+      confidence: "hypothesis",
+      source: "Levy, Markell & Cerf, Front. Psychol. 10 (2019)",
+      url: "https://doi.org/10.3389/fpsyg.2019.02010",
+      retrievedAt: "2026-09-16",
+      note:
+        "Target, not an observation. The one public figure found for this step comes from Hinge data (>500k users, 421,690,471 potential matches, collected before 2015-11): 508,989 contact-information exchanges against 2,148,947 conversations — \"for every 4.23 people that a user chats with, they will exchange contact information with one\", i.e. 23.6% of conversations. Its denominator is conversations, not matches, and exchanging contact details is not the same as meeting, so it brackets this target rather than supporting it. The listed dating companies publish nothing closer: Match Group and Bumble disclose payers and revenue per payer only, no match-to-meeting funnel.",
+    },
+  },
 ];
 
 export const matchPrinciplesProvenance: Provenance = DESIGN;

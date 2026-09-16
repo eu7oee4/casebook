@@ -1,11 +1,29 @@
 # STATE — pet-social-platform
 
-Last updated: 2026-09-15 (04 Content researched; no value changed, three targets now benchmarked;
+Last updated: 2026-09-16 (05 Social researched; 04 Content researched; no value changed in either;
 supply/demand subtraction retracted; AI cost wording fixed; provenance made legible at a glance — all author-decided)
 
 ## Where it stands
 - Site complete: nine chapters, EN / 中文, design system finished, `npm run check` passes.
 - Research: **in scope for all nine chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
+- **05 Social done (2026-09-16)**: **no value changed.** The five-tier model paid off immediately — `identityDimensions`,
+  `relationshipLadder`, the AI Pet Match prototype and `matchPrinciples` are all `design`, so only two blocks
+  needed evidence. `ladderFunnel` stays `hypothesis`: the two nearest comparables **disagree on the shape** and
+  neither shares its denominator — Nielsen's 90-9-1 says participation decays steeply but measures contribution,
+  while self-reported frequency among Chinese pet-content users is nearly flat across three rungs (点赞/转发 67.7%,
+  评论 65.7%, 加入粉丝群 57.6%; N=500, S43 p.17) against the chart's 100 → 38 → 24. Both now sit in the hover card.
+  `matchMetrics[4]` (offline conversion 12%) gets one bracket from peer-reviewed Hinge data — 23.6% of
+  conversations exchanged contact details, "for every 4.23 people that a user chats with… one" (S51) — with the
+  caveat that the denominator is conversations, not matches, and contact exchange is not a meeting. The other four
+  targets stay bare `hypothesis`: **Match Group and Bumble disclose no funnel at all** (payers / ARPPU only, S52),
+  and every "Hinge match rate" figure in search traces to SEO content farms with no attribution — none used.
+  Q3 is the strong part: three peer-reviewed studies say dogs reliably create **contact** (2.4× more likely to meet
+  neighbours, S55; higher activities-with-neighbours for walkers, S53) but **not cohesion** (no difference, S53)
+  and **not friendship** (b=0.22, p=.36, S54) — what carries through to a sense of community is the *anchored*
+  tie, the only mediating relationship type (b=0.69, p<.001, S54), at more than twice the direct effect. That
+  supports `matchPrinciples` specifically and denies the ladder's implicit smooth climb to trust; one `revisions.md`
+  row records it (kept — the ladder is `design`). 6 new sources (S50–S55). `npm run check` passes; both locales
+  SSR-checked. **Not eyeballed in a browser.**
 - **Provenance legibility (2026-09-15, author-approved UI change)**: the author's rule — *every data element must
   show its source explicitly, and a reader must tell at a glance what is real and what is invented; the specific
   source may hide in the hover card*. Audit found three failures: `Metric.tsx` **explicitly hid the badge for
@@ -125,11 +143,23 @@ supply/demand subtraction retracted; AI cost wording fixed; provenance made legi
   badges now truncate to their column width and bottom-align across a metric row.)
 
 ## Next steps (in order)
-1. Research 05 Social next, then 06, 07, then 09, then 01 last. Chapters 05–07 are product judgement: the job is
-   evidence for / against, not rewriting. **Head start for 05**: the same iResearch × Weibo white paper (S43 p.17)
-   has the closest public thing yet found to the ladder funnel — 71.2% of pet-content users actively follow
-   creators (经常 43.6% + 总是 27.6%, N=500), broken down into 点赞/转发 → 评论 → 加入粉丝群. Read it from the local
-   text dump route described in `research/04-content.md` (the PDF's text layer needs page-by-page extraction).
+1. **Research 06 Local next**, then 07, then 09, then 01 last. Chapters 06–07 are product judgement: the job is
+   evidence for / against, not rewriting. Questions are in `research/plan.md` → Local; `data/services.ts`.
+   **Head start for 06, handed over from 05**: in both dog-and-neighbourhood studies the effect belongs to the
+   *walk*, not to ownership — S53 (Japan, N=3606) finds the higher activities-with-neighbours score only for dog
+   owners **who walk**, and only among young-to-middle-aged adults; S55 (US) finds owners 2.4× more likely to meet
+   neighbours but its sample is 55+ and 90% female. The walk is the social act, which bears directly on the
+   service categories and the local journey. Also note before starting: after the five-tier model (2026-09-15),
+   much of `data/services.ts` is `design` (service journey, concierge workflow and its fictional merchants) — the
+   blocks that actually assert something about the world are `serviceCategories` (frequency, trustNeed) and
+   `serviceMetrics`. Expect a small research surface, as in 05.
+   **Method that has worked twice**: Chinese white-paper PDFs use subset fonts, so plain fetching returns nothing —
+   extract text page by page with PyMuPDF (venv at the scratchpad path recorded in `research/04-content.md`).
+   medium.com and nature.com need a text proxy of the same URL; PMC needs the `pmc.ncbi.nlm.nih.gov` host, not
+   `www.ncbi.nlm.nih.gov`.
+   **Standing rule learned the hard way** (two retractions now): before comparing two figures, check they share a
+   denominator. Supply share vs multi-select demand (04) and cascade funnel vs self-reported frequency (05) both
+   look comparable and are not.
 2. After 02 (or 02+03) is walked through end to end, casebook v1 extraction (`packages/`, template, skills)
    can start in parallel with the remaining chapters — workspace-level decision, 2026-09-06.
 3. Review mode (in-page editing + annotations → AI applies) is planned at the casebook level, not here; wait for `packages/` to exist.
