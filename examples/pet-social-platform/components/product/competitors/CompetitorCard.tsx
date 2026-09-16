@@ -51,6 +51,11 @@ export function CompetitorCard({ competitor: c }: { competitor: Competitor }) {
           </div>
         </div>
       </button>
+      {c.provenance && (
+        <div className="mt-3">
+          <ProvenanceMark provenance={c.provenance} />
+        </div>
+      )}
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -72,9 +77,6 @@ export function CompetitorCard({ competitor: c }: { competitor: Competitor }) {
                     label: t({ en: "Mechanism", zh: "值得借鉴的机制" }),
                     value: <span className="text-accent-ink">{t(c.mechanism)}</span>,
                   },
-                  ...(c.provenance
-                    ? [{ label: t({ en: "Source", zh: "来源" }), value: <ProvenanceMark provenance={c.provenance} /> }]
-                    : []),
                 ]}
               />
             </div>

@@ -3,6 +3,7 @@ import { PageContainer } from "@/components/layout/PageContainer";
 import { Footer } from "@/components/layout/Footer";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section, SectionHeader } from "@/components/ui/SectionHeader";
+import { ProvenanceMark } from "@/components/ui/Note";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { BenchmarkTable } from "@/components/product/benchmark/BenchmarkTable";
 import { TransferMap } from "@/components/product/benchmark/TransferMap";
@@ -57,6 +58,11 @@ export default async function BenchmarkPage({ params }: { params: Promise<{ loca
                     <li key={p.id} className="py-3">
                       <div className="text-[15px] font-medium">{t(p.product)}</div>
                       <div className="t-caption mt-0.5">{t(p.mechanism)}</div>
+                      {p.provenance && (
+                        <div className="mt-2">
+                          <ProvenanceMark provenance={p.provenance} />
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ul>
