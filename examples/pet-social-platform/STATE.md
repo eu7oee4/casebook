@@ -1,12 +1,114 @@
 # STATE — pet-social-platform
 
-Last updated: 2026-09-16 (09 Insights researched — two complexity positions moved, author-decided; 07 researched
-with zero data changes by construction; 06 researched with two frequency cells narrowed and row-level badges
-added; 05 and 04 researched with no value changed; only 01 Overview left)
+Last updated: 2026-09-17 (**01 Overview done — all nine chapters researched**; PIPL 单独同意 written into 07
+as a fifth design principle; and a **tenth chapter — 09 风险与未解 / Risks & Unknowns — approved and fully
+specced but NOT built**: see `research/09-risks.md` → "Resume here")
 
 ## Where it stands
 - Site complete: nine chapters, EN / 中文, design system finished, `npm run check` passes.
 - Research: **in scope for all nine chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
+- **NEXT SESSION STARTS HERE — 09 风险与未解 is approved and specced, nothing is built.** The author asked
+  whether the two risks that render nowhere (the breed ceiling, indirect prompt injection) could become their
+  own chapter, with Insights renumbered 09 → 10. Answer: yes, and **risks before the conclusion is the right
+  order** — the recommendation then lands having survived them. The full spec, with EN + ZH drafts for every
+  row and an ordered build checklist, is `research/09-risks.md` → **"Resume here"**. Nothing outside that file
+  has been touched: no route, no `data/risks.ts`, no nav row, no renumbering.
+  - **Six sections**: 能力边界 (breed ceiling S44/S45; the escalation rule has no Chinese evaluation set, S72) ·
+    执行安全 (indirect prompt injection S75, whose named control is `aiPrinciples[3]`, S74) · 法律与合规
+    (PIPL S78 — **kept here as well as in 07**, author-decided: the constraint and the product's answer to it
+    are different claims) · 供给依赖 (contractual, not technical, S79–S81) · **测不到的东西** · 先证伪什么.
+  - **The author's question reshaped the chapter.** They objected that 需求 → 预订 has no obtainable
+    denominator — the platform only ever sees needs that surfaced on it. That is right, and sharper than what
+    06 recorded (which framed it as "nobody publishes this"). The metric is labelled 「意图 → 预订」, and an
+    *intent* is a state of the owner, not a platform event: 「狗该洗澡了，下楼那家就做了」 never touches the
+    product. Browsing data recovers **precision** (of the intents flagged, how many converted) but never
+    **recall** — that needs ground truth on needs that never appeared. Only surveys, external splits (S60) or
+    geo/hold-out experiments estimate it. One channel this product has that a pure marketplace does not: users
+    narrate offline consumption in content, so a post about a service the platform did not broker is an
+    observation of the censored half — **an argument, not a measurement**, and labelled as such.
+  - So section 5 types the unknowns instead of bucketing them: **A** not published (request → booking, S66) ·
+    **B** not observable from inside (意图 → 预订) · **C** no comparable exists (the matching funnel, S52).
+  - **Consequence for 06, decided**: `serviceMetrics[0].label` 「意图 → 预订」 → 「表达出的意图 → 预订」, note
+    extended, value 23% unchanged, one `revisions.md` row logged **author**. This is step 1 of the checklist
+    and is independent of the new chapter.
+  - **Tone rule — now a workspace rule, not a note in this chapter.** Extracted 2026-09-17 to
+    `docs/writing-rules.md` (public, case-agnostic: the two voices, what a note must record including the
+    three kinds of unmeasurable, argument-vs-measurement labelling, bilingual); the case `CLAUDE.md` →
+    "Copy tone" now points at it, and the root `CLAUDE.md` `docs/` row was corrected — it still said the
+    folder was empty. In summary (author, after correcting a first over-application):
+    *「平一点，调研报告，别太自夸」* governs **page copy** — objectively naming something as important is fine,
+    the case praising its own work is not. It does **not** govern `research/09-risks.md`, which exists to hand
+    judgement forward: that file says which rows carry the chapter and why, at length. The section-5 standfirst
+    is Option A (the flat one); R7's standfirst was flattened too, for arguing with the reader rather than for
+    immodesty.
+  - **No new research, no new sources.** Everything is already in `research/sources.md` (S44, S45, S52, S66,
+    S72, S74, S75, S78–S81). A row that cannot be written from a source already in hand does not go in.
+  - Build cost is small and counted: **6 code touch points** (numbering is centralised in `lib/nav.ts`) and
+    **11 doc cross-references**; `research/09-insights.md` → `10-insights.md`; **existing `revisions.md` rows
+    are not renumbered** — they are dated records, so a line under the table header notes the renumbering.
+- **PIPL 单独同意 written into 07 (2026-09-17, author-decided)** — the one piece of **new content** the
+  research produced, open since 09-16 as flag 6. PIPL Art. 28 lists 行踪轨迹 among sensitive personal
+  information and Art. 29 requires 单独同意 — separate consent, not a blanket ToS checkbox (S78, statute text,
+  first-hand). Location is load-bearing in `capabilities[01]`, 05's same-city rung and the whole of 06, and
+  the case said nothing about it anywhere.
+  Three shapes were put to the author; the **smallest** was chosen, on the reasoning that (a) the chapter's
+  other two risks — the breed error floor and indirect prompt injection — render **nowhere**, so a dedicated
+  compliance section would have made PIPL the only risk on the site and tipped the case towards reading as a
+  compliance memo, and (b) PIPL is not the same kind of thing as those two: they are engineering risks the
+  design already absorbs (`aiPrinciples[3]` "every action with a side effect asks first" is exactly the
+  control OWASP names for LLM01), while PIPL is a hard legal constraint that **changes the consent flow**.
+  **Written**: `aiPrinciples` four → five, phrased as the product's own commitment so the block stays honestly
+  `design` — 「位置单独征求同意。位置权限单独问一次；拒绝它只会失去本地功能，不影响信息流，也不影响图谱。」 The
+  statute is cited in the principles section's copy through `<Sourced>` and a new `locationConsentProvenance`
+  (`verified`, S78) — **07's first non-`design` export** — following the `/market` convention for a sourced
+  claim inside prose. No component changed: `SectionHeader.description` already took a `ReactNode`.
+  **Two points deliberately kept off the page** because no source for them was read: where the line falls
+  between a 行踪轨迹 and a single city-level fix (which matters — "same city" and continuous tracking are not
+  the same legal object), and whether handing location to a merchant at booking triggers a **second**
+  单独同意 under Art. 23. Both are in `research/07-ai-strategy.md`, and the provenance note says S78 covers
+  statute text only. One `revisions.md` row, logged **author** (15 rows now). `npm run check` passes; both
+  locales verified in the prerendered output. **Reviewed in a browser by the author 2026-09-17 — approved.**
+  Not committed.
+- **01 Overview done (2026-09-16 → 09-17) — the ninth and last chapter.** 01 has almost no external facts of
+  its own: four of its seven blocks are `design`, two are page copy, and only `insights` asserts anything about
+  the world. So the pass was a block-by-block reconciliation against 02–09 plus one targeted search, and it
+  found **seven mismatches** — four already predicted by `revisions.md` rows ending "if chapter 01 is ever
+  rewritten…". **All nine edits are applied.**
+  - **Insights 01 and 02 were rewritten by the author** (two `revisions.md` rows, both **author**). Insight 01's
+    「比任何兴趣标签都更有力」 is gone — nothing public makes that comparison, and 05's evidence splits underneath
+    it: dogs reliably produce contact (S55, S53) but not cohesion (S53) and not friendship (b=0.22, p=.36, S54),
+    with the anchored tie doing the real work (b=0.69, p<.001, S54). It now reads 「一把可靠的社交钥匙……但它本身
+    带来的信任有限：如何从接触上升到关系，是产品要思考的事。」 Insight 02's two universals are gone and 06's
+    **negative finding** is now on the page: 「一句需求到底有多大比例会变成一次预订，中间那一步没有任何平台公开过。」
+    Three small fixes were made to the author's ZH drafts (a duplicated 的, a dangling appositive, 「寄养喂养」→
+    「寄养」 since 喂养 is not one of 06's categories, and 搭筑→搭建) and one point was **raised and not changed**:
+    「信任有限」 concedes a small positive effect where S53/S54 are **null** results — the author's wording kept,
+    the objection recorded in the note and the revision row.
+  - **Consistency repairs**: `opportunities[0]` still carried the **pre-2026-09-15** "understand every post"
+    framing that the author's cost challenge replaced in `ai.ts` and `content.ts` — now aligned; and "Reading
+    the chain" put the failure at "relationships that never leave the screen", which 03 had already revised —
+    it now names BarkHappy, which did leave the screen and closed in Jan 2025 with no transaction layer
+    (S21, S40–S42). Both are follow-through of existing rows, so no new rows. ¶2 gained 07's escalation half
+    (cheap only on the easy majority; the cheap tier is materially worse, S72).
+  - **The positioning line decided 2026-09-06 has landed**: new `overview.positioning` field rendered under the
+    hero summary in both locales, and `PRODUCT.md`'s "Evidence on Hand" rewritten from "None yet … `sources.md`
+    is empty" to the real state (nine chapters, 81 sources, what is sourced / Illustrative by design / `design`,
+    and the four negative findings). `PROGRESS.md`'s "Chapters researched: none yet" ticked.
+  - **The last unmarked data block on the site is closed**: `overviewScopeProvenance` was exported and rendered
+    nowhere (the 2026-09-15 pass wired 28 `SectionHeader`s and the Research scope block does not use one). A
+    `ProvenanceMark` now sits beside the label; EN prerenders three `Design` badges on 01 where it had two.
+  - **One search, two negative findings**: nothing compares an identity key against an interest tag (the
+    homophily literature treats status, value and shared-activity foci as parallel mechanisms and ranks none),
+    and the obvious citation for the identity half — Belk, *Society & Animals* 4(2), 1996 — could not be read
+    first-hand (the open PDF is a scan with no text layer; the publisher 403s), so **no source was added** and
+    `sources.md` is unchanged at 81. The identity half of insight 01 is on record as the only load-bearing
+    claim in the case with no citation at all; a library copy of Belk 1996 or Trigg 2016 would close it.
+  - `overviewInsightsProvenance` stays `hypothesis` — reconciling against 02–09 does not make the insights
+    *derived from* sources — and carries a note with the for/against per insight, so the hover card shows the
+    evidence status instead of a bare 示意.
+  - `npm run check` passes; every new string verified in both prerendered locales, including the scope badge's
+    markup. **Reviewed in a browser by the author 2026-09-17 — approved, no changes asked for.** Standing check
+    on the two chrome disclaimers re-run: both still hold, neither changed. Not committed.
 - **Two chrome fixes (2026-09-16, author-requested)**: the author pressed
   `[` / `]` and nothing happened. Cause: `KeyboardNav.tsx` matched `e.key` only, and a Chinese IME turns the
   bracket keys into 「 and 」, so the handler never fired for the author — a feature the sidebar advertises on
@@ -229,6 +331,13 @@ added; 05 and 04 researched with no value changed; only 01 Overview left)
 
 ## Blocked on the author
 - Nothing blocking. Flags open for review:
+  0. (from 01, 2026-09-17 — **reviewed in a browser by the author 2026-09-17, no changes asked for**) The
+     positioning line under the hero summary (`t-annotation` + `border-t border-line-2 pt-3` separator, so it
+     does not blur into the EN-only `summaryZh` line above it) and the scope `ProvenanceMark` beside the
+     "Research scope" label (`flex items-center gap-3`).
+  0b. (from 01, 2026-09-17) **Objection left standing at the author's choice**: insight 01 says the trust pet
+     identity brings is 「有限」, but S53 and S54 are null results, so that wording asserts a small positive
+     effect nobody measured. Recorded in `research/01-overview.md` → Data changes and in the revision row.
   1. (from 02) Copy edits were made in `app/[locale]/market/page.tsx` (section title, description, implication, aside
      label, removed the blanket section-01 Illustrative badge) — content corrections, not UI; listed in
      `research/02-market.md` → Data changes.
@@ -258,12 +367,10 @@ added; 05 and 04 researched with no value changed; only 01 Overview left)
      departs from the section floor. Reviewed in a browser by the author 2026-09-16: hover card renders correctly
      and is not clipped by the table's `overflow-x-auto` wrapper; the only change asked for was moving the badge
      onto the value's line, now done.
-  6. (from 07, 2026-09-16) **New constraint the case mentions nowhere**: PIPL Article 28 lists 行踪轨迹 among
-     sensitive personal information and Article 29 requires 单独同意 for processing it (S78). Location is load
-     bearing in three chapters — `capabilities[01]`'s location label, 05's same-city rung, 06's entire local
-     layer. Adding a line about separate, explicit location consent would strengthen the AI layer's credibility,
-     but it is **new content**, not a correction, so nothing was written. Reasoning in
-     `research/07-ai-strategy.md` → Q3.
+  6. (from 07, 2026-09-16 — **decided, written and reviewed 2026-09-17**) The PIPL 单独同意 constraint is on
+     the page as `aiPrinciples[4]`, with S78 cited in the section copy via `<Sourced>`. See the entry above and
+     `research/07-ai-strategy.md`. **Reviewed in a browser by the author 2026-09-17**: the five-card grid with
+     one empty slot on the last row is fine, no changes asked for.
   7. (from 09, 2026-09-16) **The Quick wins quadrant is now empty.** `content-intel` moved 42 → 52 at the
      author's instruction, which crosses `OpportunityMatrix`'s x=50 reference line, so 速赢 / Quick wins holds
      no opportunity while the chart's caption still calls top-left "the build-first quadrant" and the quadrant
@@ -278,7 +385,14 @@ added; 05 and 04 researched with no value changed; only 01 Overview left)
   badges now truncate to their column width and bottom-align across a metric row.)
 
 ## Next steps (in order)
-1. **01 Overview is the last chapter, and now it is the only one left.** Per `research/plan.md` it is updated
+0. **Build 09 风险与未解.** Approved and specced 2026-09-17, nothing built. Follow
+   `research/09-risks.md` → "Resume here" in order: 06's metric label first (independent), then the chapter,
+   then the renumbering. No decisions are outstanding.
+1. **The research pass itself is complete — all nine existing chapters are ☑ in `research/plan.md`.** What is
+   left on the site is the two older UI flags (2 and 8, both from before this research pass) and **one open
+   author question**: the empty Quick wins quadrant (flag 7). Everything from the 09-16 / 09-17 work has been
+   reviewed in a browser by the author.
+2. **01 Overview — the original brief for this chapter, kept for reference.** Per `research/plan.md` it is updated
    only after 02–09 and only to reflect verified evidence; the thesis and the three insights are the author's,
    so propose edits in `research/01-overview.md` rather than changing them. Three things from 05/07/09 belong in
    that proposal, all already recorded:

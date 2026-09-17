@@ -8,7 +8,8 @@ import { InsightCard } from "@/components/ui/InsightCard";
 import { ThesisChain } from "@/components/ui/FlowDiagram";
 import { Badge } from "@/components/ui/Tag";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
-import { overview, overviewThesisProvenance, overviewInsightsProvenance, overviewOpportunitiesProvenance } from "@/data/overview";
+import { ProvenanceMark } from "@/components/ui/Note";
+import { overview, overviewScopeProvenance, overviewThesisProvenance, overviewInsightsProvenance, overviewOpportunitiesProvenance } from "@/data/overview";
 import { isLocale, localePath, tr, DEFAULT_LOCALE } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -45,6 +46,7 @@ export default async function OverviewPage({ params }: { params: Promise<{ local
             <p className="t-statement text-ink">{t(overview.subtitle)}</p>
             <p className="t-body text-ink-2 mt-6 max-w-[40ch]">{t(overview.summary)}</p>
             {locale === "en" && <p className="t-annotation mt-3 max-w-[40ch]">{overview.summaryZh}</p>}
+            <p className="t-annotation mt-4 max-w-[40ch] border-t border-line-2 pt-3">{t(overview.positioning)}</p>
           </div>
         </div>
       </header>
@@ -53,7 +55,10 @@ export default async function OverviewPage({ params }: { params: Promise<{ local
       <Section className="mt-12 lg:mt-16">
         <div className="grid-12 gap-y-8">
           <div className="col-span-12 lg:col-span-4">
-            <div className="t-label">{t({ en: "Research scope", zh: "研究范围" })}</div>
+            <div className="flex items-center gap-3">
+              <div className="t-label">{t({ en: "Research scope", zh: "研究范围" })}</div>
+              <ProvenanceMark provenance={overviewScopeProvenance} />
+            </div>
             <p className="t-body-sm text-ink-2 mt-3 max-w-[34ch]">
               {t({
                 en: "Six modules, one loop. Each chapter isolates a module; the strategy chapter connects them.",
@@ -92,14 +97,14 @@ export default async function OverviewPage({ params }: { params: Promise<{ local
             <div className="t-label">{t({ en: "Reading the chain", zh: "如何读这条链" })}</div>
             <p className="t-body-sm text-ink-2 mt-3">
               {t({
-                en: "Each step is a product surface with its own metric. The chain fails where most pet apps stop: interaction that never becomes a relationship, and relationships that never leave the screen.",
-                zh: "每一步都是一个有自己指标的产品界面。大多数宠物产品止步的地方，正是这条链断掉的地方：互动没有变成关系，关系没有离开屏幕。",
+                en: "Each step is a product surface with its own metric. Most pet apps stall at interaction that never becomes a relationship. BarkHappy got further — nearby matches, user-hosted play dates, dog-friendly place pages — and closed in 2025 with no transaction layer underneath it.",
+                zh: "每一步都是一个有自己指标的产品界面。大多数宠物产品止步于互动，关系始终没有长出来。BarkHappy 走得更远——附近匹配、用户自办的约玩、宠物友好场所页——但下面没有交易层，2025 年关停。",
               })}
             </p>
             <p className="t-body-sm text-ink-2 mt-3">
               {t({
-                en: "AI is not a step in the chain. It is the layer that makes each transition cheaper — understanding content, matching people, executing services.",
-                zh: "AI 不是链条中的一步，而是让每一次转化变得更便宜的那一层：理解内容、匹配人、执行服务。",
+                en: "AI is not a step in the chain. It is the layer that makes each transition cheaper — understanding content, matching people, executing services. Cheaper on the easy majority: the cheap model tier is materially worse, not only cheaper, so knowing when to escalate is part of the design rather than an optimisation.",
+                zh: "AI 不是链条中的一步，而是让每一次转化变得更便宜的那一层：理解内容、匹配人、执行服务。便宜只在「容易的大多数」上成立——便宜的模型档位不只是更便宜，它确实更差，所以「什么时候升级」是设计的一部分，而不是事后的优化。",
               })}
             </p>
           </div>

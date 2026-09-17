@@ -89,7 +89,7 @@ the case already made.
 
 - **Breed and entity misclassification has a published error floor.** From 04: the best comparable is 86.4% on
   Tsinghua Dogs (130 breeds, >65% real-life images) and ~59% on Oxford-IIIT Pet, and Weibo's most common pet
-  types (橘猫, 狸花犬, 中华田园犬) appear in **none** of those class lists (S44–S45, in hand). So
+  types (橘猫, 狸花猫, 中华田园犬) appear in **none** of those class lists (S44–S45, in hand). So
   `understandingMetrics[0]`'s 0.87 target sits at the top of what published models reach, on an easier label set
   than this product's. Mitigation is already in the design: the profile join (the owner told us the breed) and
   escalation for ambiguous posts, rather than trusting a classifier on every image.
@@ -149,6 +149,36 @@ looked for. Two qualifications worth carrying forward instead:
    is consistent with its P1 priority, and worth saying out loud if an interviewer asks which capability is
    least de-risked.
 
-**For the author, not acted on:** the PIPL 单独同意 constraint on location data (S78) is absent from the case.
-It affects 05 (same-city), 06 (the local layer) and this chapter's location label. Adding a line about it would
-strengthen the AI layer's credibility, but it is new content, so it waits for the author's decision.
+**PIPL 单独同意 — raised 2026-09-16, decided and written 2026-09-17 (author).** The constraint was absent from
+the whole case: location is load-bearing in `capabilities[01]`'s location label, in 05's same-city rung and in
+the whole of 06, and nothing anywhere said that 行踪轨迹 is sensitive personal information in the target market.
+
+Three shapes were put to the author — a line in this chapter's design principles, a sentence each in 05 and 06,
+or a dedicated compliance section — and the **first** was chosen, for two reasons recorded here:
+
+1. The other two risks in this section (the breed error floor, indirect prompt injection) render **nowhere**;
+   they live in this note. A compliance section would make PIPL the only risk on the site, and would push the
+   case towards reading as a compliance memo.
+2. PIPL is not the same kind of thing as those two. They are engineering risks the design already absorbs
+   (escalation; `aiPrinciples[3]` "every action with a side effect asks first", which is the control OWASP
+   names for LLM01). PIPL is a **hard legal constraint that changes the product's consent flow** — a design
+   input, and something a PM presenting this case would be expected to know.
+
+**Written**: a fifth principle, phrased as the product's own commitment so the block stays honestly `design` —
+"Location is asked for on its own. Separate, explicit consent for location — declining it costs only the local
+features, not the feed and not the graph." / 「位置单独征求同意。位置权限单独问一次；拒绝它只会失去本地功能，
+不影响信息流，也不影响图谱。」 The statute it is designed around is cited in the section's copy via `<Sourced>`
+and a new `locationConsentProvenance` (`verified`, S78) — the convention set on `/market` for a sourced claim
+inside page prose. No component changed; `SectionHeader.description` already took a `ReactNode`.
+
+**Deliberately kept off the page, and why.** Two related points are interpretive and no source for them was
+read, so putting them on the site would spend the case's credibility on an uncited judgement:
+
+- Where the line falls between a 行踪轨迹 (a trail that can reconstruct movement) and a single city-level fix.
+  This matters a great deal here — "same city" and "continuous location tracking" are not the same legal
+  object — but it is a contested reading, not something the statute text settles.
+- Whether handing a user's location to a merchant at booking time triggers a **second** 单独同意 under
+  Article 23 (providing personal information to another handler). Plausible, and it would land on 06's
+  concierge rather than on this chapter, but again: no source read.
+
+Both stay in this note. S78 covers the statute text only, and `locationConsentProvenance`'s note says so.

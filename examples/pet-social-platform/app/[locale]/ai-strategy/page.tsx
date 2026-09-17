@@ -9,7 +9,8 @@ import { ArchitectureDiagram } from "@/components/product/ai/ArchitectureDiagram
 import { CapabilityList } from "@/components/product/ai/CapabilityList";
 import { AgentLoop } from "@/components/product/ai/AgentLoop";
 import { AgentTrace } from "@/components/product/ai/AgentTrace";
-import { capabilities, agentLoop, petCareQuery, petCareTrace, whyAgent, aiPrinciples, architectureProvenance, capabilitiesProvenance, agentLoopProvenance, petCareTraceProvenance, aiPrinciplesProvenance } from "@/data/ai";
+import { Sourced } from "@/components/ui/ProvenanceHover";
+import { capabilities, agentLoop, petCareQuery, petCareTrace, whyAgent, aiPrinciples, architectureProvenance, capabilitiesProvenance, agentLoopProvenance, petCareTraceProvenance, aiPrinciplesProvenance, locationConsentProvenance } from "@/data/ai";
 import { DEFAULT_LOCALE, isLocale, tr } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -147,6 +148,23 @@ export default async function AIStrategyPage({ params }: { params: Promise<{ loc
           label={t({ en: "Design principles for the AI layer", zh: "AI 层的设计原则" })}
           provenance={aiPrinciplesProvenance}
           title={t({ en: "What we will not build, and what we optimise instead", zh: "我们不做什么，转而优化什么" })}
+          description={
+            locale === "zh" ? (
+              <>
+                最后一条不是偏好，是约束：
+                <Sourced provenance={locationConsentProvenance}>《个人信息保护法》第 28 / 29 条</Sourced>
+                把行踪轨迹列为敏感个人信息，处理它必须单独取得同意。位置在这个案例里贯穿内容、同城关系与本地服务三层，所以它是设计输入，不是补丁。
+              </>
+            ) : (
+              <>
+                The last one is a constraint, not a preference:{" "}
+                <Sourced provenance={locationConsentProvenance}>PIPL Articles 28 and 29</Sourced> list 行踪轨迹
+                (location trails) as sensitive personal information and require separate consent to process it.
+                Location runs through all three layers of this case — content, same-city relationships, local
+                services — so it is a design input rather than a patch.
+              </>
+            )
+          }
         />
         <Stagger className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-10">
           {aiPrinciples.map((p, i) => (

@@ -245,4 +245,25 @@ export const aiPrinciples: Array<{ title: Text; body: Text }> = [
   { title: { en: "Every capability reads the same graph.", zh: "每个能力读同一张图。" }, body: { en: "Content, matching and services share entities, so each improves the others.", zh: "内容、匹配与服务共用实体，因此每一项都会让其他项变得更好。" } },
   { title: { en: "Optimise outcomes, not outputs.", zh: "优化结果，而非产出。" }, body: { en: "Relationships formed, services completed, questions resolved — not posts generated or matches shown.", zh: "衡量的是形成的关系、完成的服务、解决的问题，而不是生成的内容数或展示的匹配数。" } },
   { title: { en: "Explain and confirm.", zh: "解释并确认。" }, body: { en: "Every recommendation says why; every action with a side effect asks first.", zh: "每个推荐都说明理由；每个有副作用的操作都先征求确认。" } },
+  {
+    title: { en: "Location is asked for on its own.", zh: "位置单独征求同意。" },
+    body: {
+      en: "Separate, explicit consent for location — declining it costs only the local features, not the feed and not the graph.",
+      zh: "位置权限单独问一次；拒绝它只会失去本地功能，不影响信息流，也不影响图谱。",
+    },
+  },
 ];
+
+/**
+ * Why the fifth principle exists: PIPL Art. 28 lists 行踪轨迹 among sensitive personal information and Art. 29
+ * requires 单独同意 to process it. The principle itself is the product's design (hence the `design` block);
+ * this marks the statute it is designed around, cited in the principles section's copy via `<Sourced>`.
+ */
+export const locationConsentProvenance: Provenance = {
+  confidence: "verified",
+  source: "《中华人民共和国个人信息保护法》第二十八条 / 第二十九条",
+  url: "https://www.cac.gov.cn/2021-08/20/c_1631050028355286.htm",
+  retrievedAt: "2026-09-16",
+  note:
+    "Article 28 defines sensitive personal information as data whose leak or misuse 「容易导致自然人的人格尊严受到侵害或者人身、财产安全受到危害」 and lists 行踪轨迹 alongside biometrics, religion, medical and financial data. Article 29: 「处理敏感个人信息应当取得个人的单独同意」 — separate consent, not a blanket terms-of-service checkbox; Article 30 additionally requires telling the user why the processing is necessary and how it affects them. Promulgated 2021-08-20, effective 2021-11-01. Statute text only. Where the line falls between a 行踪轨迹 and a single city-level fix, and whether handing location to a merchant triggers a second 单独同意 under Article 23, are interpretive questions with no source read here — see research/07-ai-strategy.md.",
+};

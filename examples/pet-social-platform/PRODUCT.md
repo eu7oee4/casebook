@@ -51,18 +51,43 @@ Insights — each backed by a data file in `data/` (map in `CLAUDE.md`).
 
 Constraints on anyone editing content:
 
-- Every factual number carries a provenance tier: `hypothesis` (rendered **Illustrative**), `estimate`,
-  `verified`, or `contradicted`. Confidence is never raised without a source, URL and retrieval date.
+- Every factual number carries a provenance tier: `hypothesis` (rendered **Illustrative**), `design` (the
+  product's own proposal — nothing to cite, so it is off the sourced/invented axis), `estimate`, `verified`,
+  or `contradicted`. Confidence is never raised without a source, URL and retrieval date. Nothing renders
+  unmarked: per item where the component supports it, otherwise at the section level.
 - Conclusions are revisable, but only with a row in `research/revisions.md` (see `CLAUDE.md`).
 - UI, tokens, layout and `components/` are finished and not to be redesigned.
 - No deploy target yet; local dev only.
 
 ## Evidence on Hand
 
-None yet — **this is a to-do state, not a design intention.** As of 2026-09-05 every figure on the site is still
-`hypothesis` and renders as Illustrative; `research/sources.md` is empty. The research plan in `research/plan.md`
-defines what has to be sourced per chapter, and which chapters are in scope is the open decision at the top of
-that file. Until that work is done, nothing on the site may be presented as a real research finding.
+**All nine chapters researched, 2026-09-06 → 2026-09-17.** `research/sources.md` holds 81 sources; each chapter
+has a note in `research/NN-chapter.md` recording what was found, what could not be, and why.
+
+How the case positions itself — the line decided 2026-09-06 and now in 01's hero and below:
+
+> Evidence-backed product research built on public sources; market, competitor and mechanism figures are
+> sourced, while product targets and judgement-based conclusions are explicitly marked as the author's
+> hypotheses.
+>
+> 基于公开来源做过实证的产品研究；市场、竞品、机制类数字均有出处，产品目标值与判断类结论明确标注为作者假设。
+
+What that means in practice:
+
+- **Sourced** — 02's five market KPIs (`verified`) and its spend index (`estimate`, derivation in the note);
+  03's 14 named competitors (13 `verified` / 1 `estimate`); 08's six mechanism rows; two of 06's eight service
+  frequencies.
+- **Illustrative by design, not by neglect** — product targets (match, concierge, understanding metrics),
+  matrix and map positions, and funnels with no public benchmark. Several now carry a published comparable in
+  the hover card even though the tier stays `hypothesis`.
+- **`design`** — the product's own proposal: 07's architecture and five capabilities, the concierge worked
+  example, 05's ladder and match prototype, 09's priorities, north star and roadmap.
+- **Negative findings are recorded, not hidden** — no marketplace publishes a request → booking rate (06); no
+  dating company publishes a funnel (05); no public merchant-availability API exists in the target market
+  (09); no source compares an identity key against an interest tag (01).
+
+Conclusions changed where the evidence said so: `research/revisions.md` carries a row per conclusion weighed,
+including the ones kept. See `STATE.md` for what is still open.
 
 ## Product Principles
 

@@ -112,7 +112,11 @@ one to match a single weak source: the bar for revising is the same as for `veri
   **Pattern for row-level marks in a table**: set the row's optional `provenance` only where the row departs from
   the section floor, keep the `SectionHeader` badge for everything unmarked, and say in the section note which
   cells the section badge still covers. Repeating the section's own state on every row adds noise, not information.
-- Copy tone: analytical, PM-voice, English. No marketing language.
+- Copy tone: analytical, PM-voice, English. No marketing language, and **no praising the case's own research**
+  — page copy states a finding, it does not appraise it. Marking something as important objectively is fine;
+  telling the reader the work is rigorous or honest is not. The research notes under `research/` run the
+  opposite rule and should carry judgement forward at length. Both are in `docs/writing-rules.md` (workspace
+  level, applies to every case); read it before writing copy or a chapter note.
 
 **Standing check on blanket disclaimers.** Chrome strings that describe the case's evidence status go stale as
 chapters get researched. Two were corrected on 2026-09-16 (author-requested) because they contradicted eight

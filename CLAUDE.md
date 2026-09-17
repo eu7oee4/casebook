@@ -9,7 +9,7 @@ a piece of personal history, each as its own bilingual Next.js site. One workspa
 |---|---|---|
 | `examples/<slug>/` | Example cases, shipped with the repo. `examples/pet-social-platform` is the reference case: the shared rules and code are extracted from it, and it is still being worked on as the test bed for the tooling. | yes |
 | `projects/<slug>/` | The author's real cases. Git-ignored here; the folder is its own private repository. | **no** |
-| `docs/` | Rules shared by every case: UI system, AI writing rules, provenance. _(To be extracted; empty until then.)_ | yes |
+| `docs/` | Rules shared by every case. `writing-rules.md` — the two voices (page copy vs. research notes), what a note must record, bilingual. `references.md` — external projects borrowed from, with licenses. _(UI system and provenance still to be extracted from the reference case.)_ | yes |
 | `packages/` | Shared code: design tokens, components, provenance, i18n, review mode. _(Planned.)_ | yes |
 | `.claude/skills/` | Workflow skills: `dossier-new`, `dossier-continue`, `dossier-review`. _(Planned.)_ | yes |
 

@@ -1,10 +1,23 @@
 import type { Text } from "@/lib/i18n";
-import { DESIGN, HYPOTHESIS, type Provenance } from "./provenance";
+import { DESIGN, type Provenance } from "./provenance";
 
 export const overviewScopeProvenance: Provenance = DESIGN;
 export const overviewThesisProvenance: Provenance = DESIGN;
-/** The three insights are the author's product judgement about the world, revisable by research. */
-export const overviewInsightsProvenance: Provenance = HYPOTHESIS;
+/**
+ * The three insights are the author's product judgement about the world, revisable by research.
+ * They stay `hypothesis`: reconciling them against 02–09 (2026-09-16) did not make them *derived from*
+ * sources, so `estimate` would over-claim. The note carries what the research found for and against each.
+ */
+export const overviewInsightsProvenance: Provenance = {
+  confidence: "hypothesis",
+  retrievedAt: "2026-09-16",
+  note:
+    "The author's product judgement, written before any research and kept as the author's. Reconciled against chapters 02–09 on 2026-09-16; what the evidence says, per insight. " +
+    "(01) Pet identity reliably produces contact — US dog owners were 2.4× more likely to meet their neighbours than cat owners, and Japanese owners who walked scored higher on activities with neighbours — but not cohesion (no significant difference) and not neighbourhood friendship (b=0.22, p=.36). What mediates a sense of community is the anchored tie, the relationship that exists through the dog (b=0.69, p<.001, more than twice the direct effect). So the climb from contact to trust is the product's job, not a property of ownership. No public source compares an identity key against an interest tag, so \"stronger than any interest tag\" is uncompared. " +
+    "(02) The two ends of the loop are published — Rover: \"approximately 81% of our bookings were repeat bookings\"; 32.8% of new veterinary clients first heard of the practice from a fellow pet owner, ahead of every other channel. The middle is not: no marketplace discloses how often a stated need becomes a booking. " +
+    "(03) Four of the five capabilities have production comparables (Pinterest's one taxonomy feeding several consumers over 200B+ Pins; Meituan's review understanding at ~708k merchants; Dianping's 点仔; confirmation-gated agent execution as a platform primitive). Social matching has none — no dating company discloses a funnel. And understanding is cheap only on the easy majority: the cheap model tier measured 63% accuracy against 92%, so escalation is load-bearing. " +
+    "Sources per claim in research/01-overview.md.",
+};
 export const overviewOpportunitiesProvenance: Provenance = DESIGN;
 
 export const overview = {
@@ -21,6 +34,14 @@ export const overview = {
   } as Text,
   /** Shown small under the summary in the English version only (the original Chinese brief). */
   summaryZh: "探索如何通过内容、关系与本地服务构建宠物生活生态，并以 AI 作为 intelligence layer，连接用户、宠物、内容与服务。",
+  /**
+   * How the case positions its own evidence. Decided 2026-09-06 (`research/plan.md`, top) to land here and in
+   * `PRODUCT.md` when chapter 01 was updated; placed in the hero 2026-09-17. Renders in both locales.
+   */
+  positioning: {
+    en: "Evidence-backed product research built on public sources; market, competitor and mechanism figures are sourced, while product targets and judgement-based conclusions are explicitly marked as the author's hypotheses.",
+    zh: "基于公开来源做过实证的产品研究；市场、竞品、机制类数字均有出处，产品目标值与判断类结论明确标注为作者假设。",
+  } as Text,
   scope: [
     { label: { en: "Content", zh: "内容" }, note: { en: "Diary, advice, discovery", zh: "日记、经验、发现" } },
     { label: { en: "Social", zh: "社交" }, note: { en: "Pet identity → relationship", zh: "宠物身份 → 关系" } },
@@ -42,16 +63,16 @@ export const overview = {
       index: "01",
       title: { en: "Pet is not just a content topic. It is a social identity.", zh: "宠物不只是一个内容话题，而是一种社交身份。" },
       body: {
-        en: "Owners present themselves through their pets — breed, stage, temperament, routine. That identity is a stronger social key than any interest tag, because it is specific, persistent and emotionally loaded.",
-        zh: "养宠人通过宠物来呈现自己：品种、阶段、性格、作息。这种身份比任何兴趣标签都更有力，因为它具体、持久，且带有强烈情感。",
+        en: "Owners present themselves through their pets — breed, stage, temperament, routine: specific, persistent, emotionally loaded. That identity is a reliable social key — it genuinely produces contact between owners. The trust it brings on its own is limited: how you climb from contact to a relationship is the product's problem to solve.",
+        zh: "养宠人通过宠物来呈现自己：品种、阶段、性格、作息——具体、持久，且带有强烈情感。这种身份是一把可靠的社交钥匙，能让养宠人之间真的产生接触。但它本身带来的信任有限：如何从接触上升到关系，是产品要思考的事。",
       },
     },
     {
       index: "02",
       title: { en: "Local services are where online relationships become real-world value.", zh: "本地服务是线上关系转化为现实价值的地方。" },
       body: {
-        en: "Walks, parks, groomers and vets are inherently local. Every same-city relationship carries service intent; every service visit creates content and trust. That loop is the moat a pure content app never gets.",
-        zh: "遛狗、公园、美容店、宠物医院天然是本地的。每一段同城关系都带着服务意图，每一次服务都产生内容与信任。这个闭环是纯内容产品永远得不到的护城河。",
+        en: "Walks, grooming, boarding, the vet — these needs are inherently local. And how often a stated need actually becomes a booking: no platform has ever published that middle step. Pet social relationships carry service intent; services that land produce content, trust and repeat bookings. That loop is the moat a pure content app never gets, and the hardest gap to build across.",
+        zh: "遛狗、美容、寄养、宠物医院……这些需求天然是本地的。而一句需求到底有多大比例会变成一次预订，中间那一步没有任何平台公开过。宠物社交关系带着服务意图，服务落地产生内容、信任和复购。这个闭环是纯内容产品永远得不到的护城河，也是最难搭建的缺口。",
       },
     },
     {
@@ -69,7 +90,7 @@ export const overview = {
   opportunities: [
     {
       title: { en: "AI Content Intelligence", zh: "AI 内容理解" },
-      body: { en: "Understand every post at the pet / breed / stage / place / emotion level; the substrate for every other capability.", zh: "在宠物 / 品种 / 阶段 / 地点 / 情绪的层面理解每一条内容，是其他所有能力的基础。" },
+      body: { en: "Understand every post at the pet / breed / stage / place / emotion level — once at publish time, with only the ambiguous ones escalated; the substrate for every other capability.", zh: "在宠物 / 品种 / 阶段 / 地点 / 情绪的层面理解每一条内容——发布时跑一次，只有判不准的才升级处理；是其他所有能力的基础。" },
       priority: "P0",
     },
     {
