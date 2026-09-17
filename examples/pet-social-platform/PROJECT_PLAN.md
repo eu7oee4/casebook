@@ -16,7 +16,8 @@ All data is illustrative (research hypotheses), never presented as real market f
 | 06 | `/local` | Local | Service ecosystem, service journey, AI Service Concierge workflow |
 | 07 | `/ai-strategy` | AI Strategy | Architecture diagram, 5 capabilities, Agent architecture, Pet Care Agent |
 | 08 | `/benchmark` | Benchmark | Mechanism transfer table (Content / Social / Local) |
-| 09 | `/insights` | Insights | Opportunity matrix, priorities, north star, four principles |
+| 09 | `/risks` | Risks & Unknowns | Capability limits, execution safety, law, supply dependency, what could not be measured, what to falsify first (added 2026-09-17) |
+| 10 | `/insights` | Insights | Opportunity matrix, priorities, north star, four principles |
 
 Reading order = navigation order. Left rail is the only chrome; each page is a chapter.
 

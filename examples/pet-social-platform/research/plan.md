@@ -4,6 +4,9 @@
 
 **Status: decided by the author, 2026-09-06. End state: research case. All nine chapters are in scope.**
 
+**Added 2026-09-17: a tenth chapter, 09 风险与未解 / Risks & Unknowns** (`data/risks.ts`, `/risks`), which
+renders findings already sourced in the other nine and adds no new research; Insights moved 09 → 10.
+
 - Every chapter is researched until each field is either sourced (`verified` / `estimate`) or explicitly
   recorded as staying `hypothesis`. Product targets and judgement-type fields (map positions, matrix
   positions, funnels with no public benchmarks) stay Illustrative **by design** — the per-chapter notes
@@ -82,7 +85,14 @@ judgement; research there means finding evidence for or against the argument, no
 | Verify each described mechanism (Xiaohongshu, Instagram, Soul, Jike, Dianping, Meituan) from public material | `benchmarkRows[*].mechanism`, `.provenance` | product pages, help centres, credible teardowns |
 | Is there a better example for any domain? | `benchmarkRows` | replace only with a reason recorded in the note |
 
-## 09 Insights — `data/insights.ts` ☑ (2026-09-16 — see `research/09-insights.md`; **two positions moved, both author-decided**: the concierge 66 → 80 (its supply dependency is contractual and documented — a contract per merchant, sub-second availability, complete inventory — and has no public interface in the target market) and content intelligence 42 → 52 with its "clear evaluation" clause replaced (published breed accuracy tops out at 86.4% / ~59% and the commonest Chinese pet types are in no class list). The other four were checked against 02–08 and left alone; `priorities` / `northStar` / `principles` / `roadmap` are `design`.)
+## 09 Risks & Unknowns — `data/risks.ts` ☑ (2026-09-17 — see `research/09-risks.md`; specced 2026-09-17 and built the same day. **No new research and no new source**: every row restates a finding already in hand (S44, S45, S52, S60, S66, S72, S74, S75, S78–S81). Six sections — 能力边界, 执行安全, 法律与合规, 供给依赖, 测不到的东西 (three unknowns typed A/B/C), 先证伪什么 (three proposed tests, `design`). One consequence for 06: `serviceMetrics[0]` relabelled 「意图 → 预订」 → 「表达出的意图 → 预订」, one `revisions.md` row, **author**.)
+
+| Question | Feeds | Notes |
+|---|---|---|
+| Does every row trace to a source already in `research/sources.md`? | `data/risks.ts` | ☑ Yes, by construction — a row that could not be written from a source in hand was not written. The one Illustrative mark is type B in 测不到的东西, where the finding *is* the absence and the note says so |
+| Is anything moved out of 04 / 06 / 07 / 10? | those chapters | ☑ No. Each keeps its own mitigation and this chapter references it |
+
+## 10 Insights — `data/insights.ts` ☑ (2026-09-16, renumbered 09 → 10 on 2026-09-17 — see `research/10-insights.md`; **two positions moved, both author-decided**: the concierge 66 → 80 (its supply dependency is contractual and documented — a contract per merchant, sub-second availability, complete inventory — and has no public interface in the target market) and content intelligence 42 → 52 with its "clear evaluation" clause replaced (published breed accuracy tops out at 86.4% / ~59% and the commonest Chinese pet types are in no class list). The other four were checked against 02–08 and left alone; `priorities` / `northStar` / `principles` / `roadmap` are `design`.)
 
 | Question | Feeds | Notes |
 |---|---|---|

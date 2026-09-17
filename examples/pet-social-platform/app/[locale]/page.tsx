@@ -132,7 +132,7 @@ export default async function OverviewPage({ params }: { params: Promise<{ local
         <SectionHeader
           label={t({ en: "Key opportunities", zh: "关键机会" })}
           provenance={overviewOpportunitiesProvenance}
-          title={t({ en: "Four AI-native opportunities, prioritised in chapter 09", zh: "四个 AI 原生机会，在第 09 章排定优先级" })}
+          title={t({ en: "Four AI-native opportunities, prioritised in chapter 10", zh: "四个 AI 原生机会，在第 10 章排定优先级" })}
           right={
             <Link href={localePath(locale, "/insights")} className="t-label inline-flex items-center gap-1.5 text-ink hover:text-accent-ink">
               {t({ en: "Opportunity matrix", zh: "机会矩阵" })} <ArrowRight size={12} strokeWidth={1.5} />

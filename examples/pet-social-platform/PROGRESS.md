@@ -22,12 +22,14 @@
       `verified` / `contradicted`; `design` added 2026-09-15); `ProvenanceMark` in UI
 - [x] `research/` — plan per chapter, sources register, chapter note templates
 - [x] Chapters researched: **all nine** (02 and 03 and 08 · 2026-09-06 → 09-10; 04 · 09-14; 05, 06, 07, 09 ·
-      09-16; 01 · 09-16 → 09-17). 81 sources in `research/sources.md`, 15 rows in `research/revisions.md`.
+      09-16; 01 · 09-16 → 09-17). 81 sources in `research/sources.md`, 16 rows in `research/revisions.md`.
+- [x] **09 Risks & Unknowns built 2026-09-17** — a tenth chapter that renders what the research argues against;
+      no new research and no new source. Insights renumbered 09 → 10.
       Market, competitor and mechanism figures are sourced; product targets and judgement fields stay
       Illustrative **by design** (declared end state, `research/plan.md` top)
 
 ## Bilingual (2026-09-04)
 - [x] Routes `/en/*` and `/zh/*`, root redirect by Accept-Language, sidebar EN / 中文 toggle
-- [x] All nine chapters translated; data strings are `{ en, zh }` objects
+- [x] All ten chapters translated; data strings are `{ en, zh }` objects
 - [x] Chinese typography overrides (`:lang(zh-CN)`), CJK font fallbacks
 - [x] QA: zh desktop + mobile screenshots, en interaction test, `npm run check`

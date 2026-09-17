@@ -1,6 +1,6 @@
 # 06 · Local — research notes
 
-Status: ☑ done (all fields sourced or explicitly left hypothesis) · Last updated: 2026-09-16
+Status: ☑ done (all fields sourced or explicitly left hypothesis) · Last updated: 2026-09-17 (one label changed — see “Relabelled 2026-09-17” below)
 
 ## Questions
 See `research/plan.md` → Local.
@@ -135,6 +135,29 @@ which is not an observation of how often owners book it, and the vet cell additi
 distribution for scale. The section badge stays `hypothesis` and now covers only what is unmarked — the four
 unsourced frequencies and the whole trust-need ordering — which its note states explicitly. Rows are marked only
 where they depart from that floor; repeating `hypothesis` on six rows would add noise rather than information.
+
+### Relabelled 2026-09-17 — `serviceMetrics[0]`, author-decided
+
+「意图 → 预订」 → 「**表达出的意图** → 预订」 / "Intent → booking" → "**Expressed intent** → booking". Value unchanged
+at 23%, tier unchanged at `hypothesis`; the provenance note is extended and the metrics section's description
+copy on `/local` was aligned in both languages so the page does not keep the old phrase above the new label.
+
+The author's objection (2026-09-17): 「用户的需求没办法得到一个确切的统计值吧？」 It holds, and it is sharper than
+what this chapter recorded on 2026-09-16. This note framed the gap as a disclosure problem — nobody publishes a
+request → booking rate (S66). That is true of a **request**, which is a platform event Angi and Rover can both
+count. It is not true of an **intent**, which is a state of the owner: 「狗该洗澡了，下楼那家就做了」 never touches
+the product, so the denominator cannot be enumerated from inside the platform at all. Browsing behaviour
+recovers precision — of the intents the model flags, how many convert — but never recall, which needs ground
+truth on needs that never appeared. Only a survey, an external split (S60) or a geo / hold-out experiment
+estimates that.
+
+One channel this product has that a pure marketplace does not: owners narrate offline consumption in content, so
+a post saying 「今天带狗去洗澡了」 is an observation of a transaction the platform did not broker. That is an
+**argument, not a measurement**, and it is labelled as one — the same treatment the 2026-09-15 row gave
+"scrolled past ≠ findable when needed".
+
+One `revisions.md` row, logged **author**. The three-way typing this produced (A not published · B not
+observable from inside · C no comparable exists) became section 5 of `research/09-risks.md`, now built.
 
 ## Still hypothesis
 

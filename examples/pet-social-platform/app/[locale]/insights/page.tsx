@@ -23,7 +23,7 @@ export default async function InsightsPage({ params }: { params: Promise<{ local
   return (
     <PageContainer>
       <PageHeader
-        index="09"
+        index="10"
         kicker={t({ en: "Synthesis", zh: "综合" })}
         title={t({ en: "Insights", zh: "结论" })}
         subtitle={

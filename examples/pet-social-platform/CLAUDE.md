@@ -3,7 +3,8 @@
 > The public reference case inside the `casebook` workspace. Read `STATE.md` in this folder first; the workspace-level rules are in
 > the repo root `CLAUDE.md`. Run all `npm` commands from this folder.
 
-A nine-chapter Product Research & AI Strategy case for a 0→1 pet social platform, built as a Next.js site.
+A ten-chapter Product Research & AI Strategy case for a 0→1 pet social platform, built as a Next.js site.
+(Nine researched chapters plus 09 风险与未解, added 2026-09-17, which renders findings already sourced in the other nine.)
 Audience: product directors and interviewers. The site must read as the work of a PM who did real research.
 
 ## What you are here to do
@@ -26,7 +27,8 @@ Start every session by reading `research/plan.md` (open questions per chapter) a
 | 06 Local | `/local` | `data/services.ts` | service categories, journey, concierge workflow, targets |
 | 07 AI Strategy | `/ai-strategy` | `data/ai.ts` | architecture, five capabilities, agent loop, trace |
 | 08 Benchmark | `/benchmark` | `data/benchmark.ts` | mechanism-transfer rows, transfer map |
-| 09 Insights | `/insights` | `data/insights.ts` | opportunity matrix, priorities, north star, roadmap |
+| 09 Risks & Unknowns | `/risks` | `data/risks.ts` | capability limits, execution safety, law, supply, what could not be measured, what to falsify |
+| 10 Insights | `/insights` | `data/insights.ts` | opportunity matrix, priorities, north star, roadmap |
 
 `data/research.ts` re-exports everything. Pages in `app/*/page.tsx` only render; components in `components/` only present.
 
@@ -124,7 +126,10 @@ researched chapters: the sidebar's "Data shown is illustrative." / 「所示数�
 its provenance." / 「每个数据都标注了出处。」, and the footer's "All figures are illustrative research hypotheses,
 not market data." / 「所有数字均为示意性研究假设，非市场数据。」 became "Market, competitor and mechanism figures
 are sourced; product targets and judgement fields are marked Illustrative." / 「市场、竞品、机制类数字均有出处；
-产品目标值与判断类字段标为示意。」 If a chapter's provenance changes, re-read these two strings before finishing.
+产品目标值与判断类字段标为示意。」 A third, `DATA_DISCLAIMER` in `data/research.ts`, still carried the old footer
+wording and was corrected to match on 2026-09-17, together with that file's header comment. It renders nowhere
+today, but it is the first thing a reader of the repo meets. If a chapter's provenance changes, re-read all
+three before finishing.
 
 ## How to work
 

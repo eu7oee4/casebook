@@ -1,6 +1,9 @@
-# 09 · Insights — research notes
+# 10 · Insights — research notes
 
 Status: ☑ done (all fields sourced or explicitly left hypothesis; both score proposals decided by the author) · Last updated: 2026-09-16
+
+> Renumbered 09 → 10 on 2026-09-17, when 09 风险与未解 was inserted before it. The file was `research/09-insights.md`;
+> references to that name in dated records (`research/revisions.md`) were deliberately left as written.
 
 ## Questions
 See `research/plan.md` → Insights.

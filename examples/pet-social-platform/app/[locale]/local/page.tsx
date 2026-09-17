@@ -181,8 +181,8 @@ export default async function LocalPage({ params }: { params: Promise<{ locale: 
           label={t({ en: "What we measure", zh: "衡量什么" })}
           title={t({ en: "Success metrics for the concierge", zh: "服务管家的成功指标" })}
           description={t({
-            en: "Illustrative targets against a search-based baseline. The comparison that matters is intent → booking, not sessions.",
-            zh: "相对搜索式基线的示意性目标。真正重要的对比是意图 → 预订，而不是会话数。",
+            en: "Illustrative targets against a search-based baseline. The comparison that matters is expressed intent → booking, not sessions.",
+            zh: "相对搜索式基线的示意性目标。真正重要的对比是表达出的意图 → 预订，而不是会话数。",
           })}
         />
         <div className="mt-10">

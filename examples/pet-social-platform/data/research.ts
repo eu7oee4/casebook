@@ -1,7 +1,8 @@
 /**
- * Central barrel for all mock research data.
- * Every figure in this project is illustrative — a research hypothesis used to structure the case,
- * never a claim about real market data.
+ * Central barrel for the case's research data.
+ * Every figure carries a provenance (`data/provenance.ts`): market, competitor and mechanism figures are
+ * sourced (`verified` / `estimate`) against `research/sources.md`; product targets and judgement fields stay
+ * `hypothesis` and render as Illustrative; the product's own proposals are `design`. Nothing renders unmarked.
  */
 export * from "./provenance";
 export * from "./overview";
@@ -13,5 +14,8 @@ export * from "./services";
 export * from "./ai";
 export * from "./benchmark";
 export * from "./insights";
+export * from "./risks";
 
-export const DATA_DISCLAIMER = "All figures are illustrative research hypotheses, not market data.";
+/** Matches the footer string in `components/layout/Footer.tsx`; re-read both whenever a chapter's provenance changes. */
+export const DATA_DISCLAIMER =
+  "Market, competitor and mechanism figures are sourced; product targets and judgement fields are marked Illustrative.";

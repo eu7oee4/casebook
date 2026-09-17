@@ -266,7 +266,7 @@ export const servicePrinciplesProvenance: Provenance = DESIGN;
 
 export const serviceMetrics: Array<{ label: Text; value: string; note: Text; provenance: Provenance }> = [
   {
-    label: { en: "Intent → booking", zh: "意图 → 预订" },
+    label: { en: "Expressed intent → booking", zh: "表达出的意图 → 预订" },
     value: "23%",
     note: { en: "vs 6% for search-based flow (hypothesis)", zh: "对比搜索式流程的 6%（假设）" },
     provenance: {
@@ -275,7 +275,7 @@ export const serviceMetrics: Array<{ label: Text; value: string; note: Text; pro
       url: "https://www.sec.gov/Archives/edgar/data/1705110/000170511024000012/angi-20231231.htm",
       retrievedAt: "2026-09-16",
       note:
-        "Target, not an observation, and nothing public brackets it: the local-service marketplaces that disclose operating metrics disclose volume, not conversion. Angi reports that “consumers turned to at least one of our businesses to find a service professional for approximately 23 million projects” in 2023; Rover reports bookings and repeat bookings. Neither publishes a request → booking rate, and the “booking rate” league tables that surface in search (31% vs 18% vs 12% across lead platforms) trace to marketing blogs with no stated method or sample — none used. The 6% search-flow baseline is the author's too.",
+        "Target, not an observation, and nothing public brackets it: the local-service marketplaces that disclose operating metrics disclose volume, not conversion. Angi reports that “consumers turned to at least one of our businesses to find a service professional for approximately 23 million projects” in 2023; Rover reports bookings and repeat bookings. Neither publishes a request → booking rate, and the “booking rate” league tables that surface in search (31% vs 18% vs 12% across lead platforms) trace to marketing blogs with no stated method or sample — none used. The 6% search-flow baseline is the author's too. Relabelled 2026-09-17 (author) from “intent → booking”: the denominator can only ever be the expressed half. An intent is a state of the owner, not a platform event — 「狗该洗澡了，下楼那家就做了」 never touches the product — so the platform cannot enumerate the needs that never surfaced on it. Browsing behaviour recovers precision (of the intents the model flagged, how many converted) but not recall, which would need ground truth on needs that never appeared; only a survey, an external split (S60) or a geo / hold-out experiment estimates that. See 09 风险与未解 § 测不到的东西, type B.",
     },
   },
   { label: { en: "Time to book", zh: "预订耗时" }, value: "48 s", note: { en: "median, from first message", zh: "从第一条消息起的中位数" }, provenance: HYPOTHESIS },

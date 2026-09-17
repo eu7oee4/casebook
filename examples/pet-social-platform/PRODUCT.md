@@ -46,8 +46,10 @@ mobile layouts QA'd at 390px. Both languages are complete.
 ## Capabilities and Constraints
 
 Subject: a 0→1 **pet social platform** (content + owner-to-owner social + local pet services, with an AI
-strategy layer). Nine chapters — Overview, Market, Competitors, Content, Social, Local, AI Strategy, Benchmark,
-Insights — each backed by a data file in `data/` (map in `CLAUDE.md`).
+strategy layer). Ten chapters — Overview, Market, Competitors, Content, Social, Local, AI Strategy, Benchmark,
+Risks & Unknowns, Insights — each backed by a data file in `data/` (map in `CLAUDE.md`). Nine of them were
+researched one by one; 09 Risks & Unknowns, added 2026-09-17, renders findings already sourced in the other
+nine and introduces no new source.
 
 Constraints on anyone editing content:
 
@@ -61,8 +63,11 @@ Constraints on anyone editing content:
 
 ## Evidence on Hand
 
-**All nine chapters researched, 2026-09-06 → 2026-09-17.** `research/sources.md` holds 81 sources; each chapter
-has a note in `research/NN-chapter.md` recording what was found, what could not be, and why.
+**All nine research chapters done, 2026-09-06 → 2026-09-17.** `research/sources.md` holds 81 sources; each chapter
+has a note in `research/NN-chapter.md` recording what was found, what could not be, and why. A tenth chapter,
+**09 Risks & Unknowns** (2026-09-17), collects what the research argues *against* — the capability limits, the
+legal constraint, the contractual dependency, and the three numbers that could not be checked, typed by why
+(not published · not observable from inside · no comparable exists).
 
 How the case positions itself — the line decided 2026-09-06 and now in 01's hero and below:
 

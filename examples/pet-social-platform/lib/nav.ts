@@ -18,7 +18,8 @@ export const NAV: NavItem[] = [
   { index: "06", label: { en: "Local", zh: "本地" }, href: "/local", short: { en: "Where digital relationships become real", zh: "线上关系落地之处" } },
   { index: "07", label: { en: "AI Strategy", zh: "AI 策略" }, href: "/ai-strategy", short: { en: "AI as the intelligence layer", zh: "AI 作为智能层" } },
   { index: "08", label: { en: "Benchmark", zh: "跨界参考" }, href: "/benchmark", short: { en: "Cross-industry mechanisms", zh: "跨行业机制" } },
-  { index: "09", label: { en: "Insights", zh: "结论" }, href: "/insights", short: { en: "From research to product strategy", zh: "从研究到产品策略" } },
+  { index: "09", label: { en: "Risks & Unknowns", zh: "风险与未解" }, href: "/risks", short: { en: "Limits, constraints, and what could not be measured", zh: "能力边界、法律约束，以及测不到的东西" } },
+  { index: "10", label: { en: "Insights", zh: "结论" }, href: "/insights", short: { en: "From research to product strategy", zh: "从研究到产品策略" } },
 ];
 
 /** Index of the current chapter for a pathname with or without a locale prefix. */

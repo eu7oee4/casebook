@@ -47,5 +47,6 @@ Never move a case between `examples/` and `projects/` on your own; that changes 
 
 ## Cases
 
-- `examples/pet-social-platform/` — Product Research & AI Strategy case for a 0→1 pet social platform. Nine
-  chapters, EN / 中文. The reference case.
+- `examples/pet-social-platform/` — Product Research & AI Strategy case for a 0→1 pet social platform. Ten
+  chapters, EN / 中文 (nine researched, plus 09 风险与未解 which renders what the research argues against).
+  The reference case.

@@ -114,6 +114,7 @@ export const overview = {
     { index: "03", label: { en: "Competitors", zh: "竞品" }, note: { en: "who solves which part of the lifecycle", zh: "谁解决了生命周期的哪一段" } },
     { index: "04–06", label: { en: "Content · Social · Local", zh: "内容 · 社交 · 本地" }, note: { en: "the three product surfaces", zh: "三个产品界面" } },
     { index: "07", label: { en: "AI Strategy", zh: "AI 策略" }, note: { en: "the intelligence layer", zh: "智能层" } },
-    { index: "08–09", label: { en: "Benchmark · Insights", zh: "跨界参考 · 结论" }, note: { en: "mechanisms and priorities", zh: "机制与优先级" } },
+    { index: "08", label: { en: "Benchmark", zh: "跨界参考" }, note: { en: "mechanisms borrowed from other categories", zh: "从其他品类借来的机制" } },
+    { index: "09–10", label: { en: "Risks · Insights", zh: "风险 · 结论" }, note: { en: "what could fail, then the priorities", zh: "可能失败在哪里，然后是优先级" } },
   ] as Array<{ index: string; label: Text; note: Text }>,
 };

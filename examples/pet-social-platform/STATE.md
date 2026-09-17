@@ -1,51 +1,63 @@
 # STATE — pet-social-platform
 
-Last updated: 2026-09-17 (**01 Overview done — all nine chapters researched**; PIPL 单独同意 written into 07
-as a fifth design principle; and a **tenth chapter — 09 风险与未解 / Risks & Unknowns — approved and fully
-specced but NOT built**: see `research/09-risks.md` → "Resume here")
+Last updated: 2026-09-17 (**09 风险与未解 / Risks & Unknowns built** — the tenth chapter, Insights renumbered
+09 → 10; 06's metric relabelled 「表达出的意图 → 预订」. Before that, same day: 01 Overview done — all nine
+research chapters researched — and PIPL 单独同意 written into 07 as a fifth design principle.)
 
 ## Where it stands
-- Site complete: nine chapters, EN / 中文, design system finished, `npm run check` passes.
-- Research: **in scope for all nine chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
-- **NEXT SESSION STARTS HERE — 09 风险与未解 is approved and specced, nothing is built.** The author asked
-  whether the two risks that render nowhere (the breed ceiling, indirect prompt injection) could become their
-  own chapter, with Insights renumbered 09 → 10. Answer: yes, and **risks before the conclusion is the right
-  order** — the recommendation then lands having survived them. The full spec, with EN + ZH drafts for every
-  row and an ordered build checklist, is `research/09-risks.md` → **"Resume here"**. Nothing outside that file
-  has been touched: no route, no `data/risks.ts`, no nav row, no renumbering.
-  - **Six sections**: 能力边界 (breed ceiling S44/S45; the escalation rule has no Chinese evaluation set, S72) ·
-    执行安全 (indirect prompt injection S75, whose named control is `aiPrinciples[3]`, S74) · 法律与合规
-    (PIPL S78 — **kept here as well as in 07**, author-decided: the constraint and the product's answer to it
-    are different claims) · 供给依赖 (contractual, not technical, S79–S81) · **测不到的东西** · 先证伪什么.
-  - **The author's question reshaped the chapter.** They objected that 需求 → 预订 has no obtainable
-    denominator — the platform only ever sees needs that surfaced on it. That is right, and sharper than what
-    06 recorded (which framed it as "nobody publishes this"). The metric is labelled 「意图 → 预订」, and an
-    *intent* is a state of the owner, not a platform event: 「狗该洗澡了，下楼那家就做了」 never touches the
-    product. Browsing data recovers **precision** (of the intents flagged, how many converted) but never
-    **recall** — that needs ground truth on needs that never appeared. Only surveys, external splits (S60) or
-    geo/hold-out experiments estimate it. One channel this product has that a pure marketplace does not: users
-    narrate offline consumption in content, so a post about a service the platform did not broker is an
-    observation of the censored half — **an argument, not a measurement**, and labelled as such.
-  - So section 5 types the unknowns instead of bucketing them: **A** not published (request → booking, S66) ·
-    **B** not observable from inside (意图 → 预订) · **C** no comparable exists (the matching funnel, S52).
-  - **Consequence for 06, decided**: `serviceMetrics[0].label` 「意图 → 预订」 → 「表达出的意图 → 预订」, note
-    extended, value 23% unchanged, one `revisions.md` row logged **author**. This is step 1 of the checklist
-    and is independent of the new chapter.
-  - **Tone rule — now a workspace rule, not a note in this chapter.** Extracted 2026-09-17 to
-    `docs/writing-rules.md` (public, case-agnostic: the two voices, what a note must record including the
-    three kinds of unmeasurable, argument-vs-measurement labelling, bilingual); the case `CLAUDE.md` →
-    "Copy tone" now points at it, and the root `CLAUDE.md` `docs/` row was corrected — it still said the
-    folder was empty. In summary (author, after correcting a first over-application):
-    *「平一点，调研报告，别太自夸」* governs **page copy** — objectively naming something as important is fine,
-    the case praising its own work is not. It does **not** govern `research/09-risks.md`, which exists to hand
-    judgement forward: that file says which rows carry the chapter and why, at length. The section-5 standfirst
-    is Option A (the flat one); R7's standfirst was flattened too, for arguing with the reader rather than for
-    immodesty.
-  - **No new research, no new sources.** Everything is already in `research/sources.md` (S44, S45, S52, S66,
-    S72, S74, S75, S78–S81). A row that cannot be written from a source already in hand does not go in.
-  - Build cost is small and counted: **6 code touch points** (numbering is centralised in `lib/nav.ts`) and
-    **11 doc cross-references**; `research/09-insights.md` → `10-insights.md`; **existing `revisions.md` rows
-    are not renumbered** — they are dated records, so a line under the table header notes the renumbering.
+- Site complete: **ten chapters**, EN / 中文, design system finished, `npm run check` passes.
+- Research: **in scope for all nine research chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
+  The tenth chapter, 09 风险与未解, adds no research and no source — it renders what the other nine already found.
+- **09 风险与未解 built (2026-09-17) — the tenth chapter, and the first that renders what the research argues
+  *against* the case.** Everything was decided on 2026-09-17 before the build; the spec, the EN + ZH drafts it
+  was built from, and the build record are in `research/09-risks.md`. **Committed — see the log.** Still
+  outstanding: **not yet reviewed in a browser by the author** (flag 9).
+  - **New**: `data/risks.ts`, `app/[locale]/risks/page.tsx` at `/risks`, exported from `data/research.ts`.
+    **Renumbered**: `lib/nav.ts` (new 09 row, Insights → `index: "10"`), the Insights `PageHeader`, 01's
+    "prioritised in chapter 10", and `overview.readingPath`, whose "08–09" entry split into 08 and 09–10 —
+    six rows now, which also fills the two-column grid evenly. No component changed.
+  - **Six sections**: 能力边界 (breed ceiling S44/S45 `verified`; the escalation rule has no Chinese evaluation
+    set, S72 `estimate` — both rows marked individually, so no section badge) · 执行安全 (indirect prompt
+    injection S75, whose named control is the fourth AI principle, S74) · 法律与合规 (PIPL S78 — **kept here as
+    well as in 07**: the constraint and the product's answer to it are different claims) · 供给依赖
+    (contractual, not technical, S79–S81) · **测不到的东西** (A/B/C) · 先证伪什么 (three tests, `design`).
+  - **Section 5 is the chapter's centre**, and it came from the author's own objection: 需求 → 预订 has no
+    obtainable denominator, because the platform only ever sees the needs that surfaced on it. An *intent* is a
+    state of the owner — 「狗该洗澡了，下楼那家就做了」 never touches the product. Browsing data recovers
+    **precision** but never **recall**; only surveys, an external split (S60) or geo/hold-out experiments
+    estimate it. The three unknowns are typed instead of bucketed: **A** not published (request → booking, S66,
+    `verified`) · **B** not observable from inside (表达出的意图 → 预订, the one **Illustrative** mark in the
+    chapter — there is no source to cite for a rate whose denominator cannot be enumerated) · **C** no
+    comparable exists (the matching funnel, S52, `verified`). The content-narration channel — owners describing
+    offline consumption in posts — is on the page as **an argument, not a measurement**, labelled as such.
+  - **06 relabelled, step 1 and independent**: `serviceMetrics[0].label` 「意图 → 预订」 → 「表达出的意图 →
+    预订」 / "Expressed intent → booking", provenance note extended, value 23% and tier unchanged. The metrics
+    section's description copy on `/local` repeated the old phrase directly above the label and was aligned in
+    both languages — a small extension of the decided step, recorded in the row and in the build record. One
+    `revisions.md` row, logged **author** (16 rows now). The metric grid lays out unchanged at the longer label.
+  - **Three departures from the spec**, all recorded in `research/09-risks.md` → "Built — what shipped": the
+    `/local` copy above; section 6's "Because" cells carry their own marks (a single `design` badge would have
+    covered cells quoting 63% / 92%, the Actions Center requirements and b=0.69 — this adds
+    `anchoredTieProvenance`, S54, the first time 05's anchored-tie result is cited in a data file); and section
+    3 uses its section badge rather than an inline `<Sourced>`, since the whole section is the statute.
+  - **No new research, no new source** — `sources.md` stays at 81. Every row traces to S44, S45, S52, S54, S60,
+    S66, S72, S74, S75, S78–S81. Nothing was moved out of 04 / 06 / 07 / 10; each keeps its own mitigation and
+    this chapter references it.
+  - **Bookkeeping**: `research/09-insights.md` → `research/10-insights.md`; **existing `revisions.md` rows are
+    not renumbered** — they are dated records, and a line under the table header says so. `research/plan.md`,
+    `PRODUCT.md`, `PROGRESS.md`, `PROJECT_PLAN.md`, the case `CLAUDE.md` chapter table and the workspace
+    `CLAUDE.md` case row all updated from "nine chapters" to ten.
+  - `npm run check` passes; every new string verified in both prerendered locales (`/en/risks`, `/zh/risks`),
+    plus the new nav row, the 09 → 10 renumbering and the relabelled metric on `/local`.
+  - **Standing check on the chrome disclaimers re-run, and it found a third one.** The sidebar and footer
+    strings still hold — the new chapter's marks are the same five tiers. But `data/research.ts` still carried
+    the **pre-2026-09-16 footer text** in two places: `DATA_DISCLAIMER` ("All figures are illustrative research
+    hypotheses, not market data.") and the file's header comment ("Every figure in this project is illustrative
+    … never a claim about real market data"). Neither renders — `DATA_DISCLAIMER` is exported and unused — but
+    both are the first thing a reader of the repo meets, and both contradicted nine researched chapters.
+    **Corrected on the author's instruction, 2026-09-17**: `DATA_DISCLAIMER` now matches the footer string
+    verbatim, and the header comment describes the five tiers instead. The case `CLAUDE.md` standing check now
+    names all three strings, not two.
 - **PIPL 单独同意 written into 07 (2026-09-17, author-decided)** — the one piece of **new content** the
   research produced, open since 09-16 as flag 6. PIPL Art. 28 lists 行踪轨迹 among sensitive personal
   information and Art. 29 requires 单独同意 — separate consent, not a blanket ToS checkbox (S78, statute text,
@@ -376,8 +388,13 @@ specced but NOT built**: see `research/09-risks.md` → "Resume here")
      no opportunity while the chart's caption still calls top-left "the build-first quadrant" and the quadrant
      label still renders. Two ways out, both the author's call: set 48 (one number, keeps the quadrant
      populated) or keep 52 and reword the caption plus decide whether an empty labelled quadrant should still
-     be drawn — the latter is UI copy, so nothing was touched. Reasoning in `research/09-insights.md` → Data
-     changes.
+     be drawn — the latter is UI copy, so nothing was touched. Reasoning in `research/10-insights.md` → Data
+     changes (the file was `09-insights.md` until the 2026-09-17 renumbering).
+  9. (from 09 Risks, 2026-09-17) **The new chapter has not been looked at in a browser.** `npm run check`
+     passes and both locales were verified in the prerendered output, but nothing was eyeballed. Three things
+     to look at: the four-column 先证伪什么 table (widest on the site — it scrolls horizontally under ~640px,
+     as every `DataTable` does), the two `DataTable`s whose first column stacks a label above a provenance
+     badge, and whether 「表达出的意图 → 预订」 wraps acceptably in the `/local` metric grid at the longer label.
   8. (from 02, 2026-09-10) KPI grid switched to 2 columns (rows 2 / 2 / 1) at the author's request after badges
      overlapped at zoom; `npm run check` passes, not eyeballed in a browser (no Chrome extension in this session).
   (The `SpendTrend.tsx` hard-coded Y domain was fixed 2026-09-06 with author approval: domain/ticks are now
@@ -385,13 +402,13 @@ specced but NOT built**: see `research/09-risks.md` → "Resume here")
   badges now truncate to their column width and bottom-align across a metric row.)
 
 ## Next steps (in order)
-0. **Build 09 风险与未解.** Approved and specced 2026-09-17, nothing built. Follow
-   `research/09-risks.md` → "Resume here" in order: 06's metric label first (independent), then the chapter,
-   then the renumbering. No decisions are outstanding.
-1. **The research pass itself is complete — all nine existing chapters are ☑ in `research/plan.md`.** What is
-   left on the site is the two older UI flags (2 and 8, both from before this research pass) and **one open
-   author question**: the empty Quick wins quadrant (flag 7). Everything from the 09-16 / 09-17 work has been
-   reviewed in a browser by the author.
+0. **Look at 09 风险与未解 in a browser** (`/en/risks`, `/zh/risks`) and at the relabelled metric on
+   `/local` — flag 9. It is built, checked, verified in both prerendered locales and committed, but not
+   eyeballed.
+1. **The research pass itself is complete — all nine research chapters are ☑ in `research/plan.md`**, and the
+   tenth chapter is built. What is left on the site is the two older UI flags (2 and 8, both from before this
+   research pass), **one open author question** — the empty Quick wins quadrant (flag 7) — and the browser
+   review above. Everything else from the 09-16 / 09-17 work has been reviewed in a browser by the author.
 2. **01 Overview — the original brief for this chapter, kept for reference.** Per `research/plan.md` it is updated
    only after 02–09 and only to reflect verified evidence; the thesis and the three insights are the author's,
    so propose edits in `research/01-overview.md` rather than changing them. Three things from 05/07/09 belong in

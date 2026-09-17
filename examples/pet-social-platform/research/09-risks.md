@@ -1,22 +1,47 @@
-# 09 · Risks & Unknowns 风险与未解 — chapter draft (not built)
+# 09 · Risks & Unknowns 风险与未解 — chapter note
 
-Status: ◐ draft — **five decisions taken by the author 2026-09-17**, one open (the section-5 standfirst) ·
+Status: ☑ **built 2026-09-17** (`data/risks.ts`, `app/[locale]/risks/page.tsx`, chapter inserted at 09 and
+Insights renumbered 10). All five decisions were taken by the author on 2026-09-17; the build record and the
+three places the build departed from this spec are at "Built — what shipped" below. ·
 Last updated: 2026-09-17
 
-**Decided**: chapter name 「风险与未解」 / "Risks & Unknowns"; R4 kept here *and* in 07; 06's metric label
-changed; a closing "what to falsify first" section added (drafted below as R7). **Open**: the section-5
-standfirst — the author flagged the original closing clause as off-key; two replacements are drafted at R6.
+**Decided 2026-09-17, all five**: chapter name 「风险与未解」 / "Risks & Unknowns"; R4 kept here *and* in 07;
+06's metric label changed; a closing "what to falsify first" section added (R7); section 5's standfirst is
+Option A. Nothing is open.
 
-This is a **proposal for a new chapter**, not a research note for an existing one. Nothing here is built and no
-file outside this one has been touched. Decide the shape and the wording first; the code is the small part.
+This file began as a **proposal for a new chapter** and the proposal is kept below as written — R1–R7 are the
+drafts the page was built from, so the wording on the page can be diffed against what was approved.
 
 The author's question of 2026-09-17 — *"用户的需求没办法得到一个确切的统计值吧？"* — changed what this chapter
 is for. See R6, which is now its centre.
 
-## Resume here — everything is decided; build in this order
+## Built — what shipped, 2026-09-17
 
-All five open questions were settled by the author on 2026-09-17. **No approval is outstanding.** Nothing has
-been built: no route, no data file, no nav row, no renumbering.
+Everything in the checklist below was done in one session. `npm run check` passes and every new string was
+verified in both prerendered locales. Committed on `main`; **not yet reviewed in a browser by the author.**
+
+**Three departures from this spec, all small, all deliberate:**
+
+1. **The `/local` metrics section description was edited too** (step 1 said label + note). Its copy read "the
+   comparison that matters is intent → booking" directly above the relabelled metric, which is the same
+   contradiction the relabel exists to remove. Changed in both languages; it is in the `revisions.md` row.
+2. **Section 6's "Because" cells carry their own marks.** A single `design` badge over the table would have
+   covered cells quoting 63% / 92%, the Actions Center requirements and b=0.69 — numbers that are sourced, not
+   invented. The section badge now covers the claims, the tests and the consequences (all the proposal's own)
+   and each "Because" cell carries the mark of the evidence it aims at, per the row-level pattern from 06.
+   This adds `anchoredTieProvenance` (S54) to `data/risks.ts` — the first time 05's anchored-tie result is
+   cited in a data file rather than in prose.
+3. **Section 3 uses the section badge, not an inline `<Sourced>`.** The whole section is the statute, so an
+   inline mark inside the description would have pointed at the same provenance object as the badge beside it.
+   The interpretive questions that stay off the page are on the page as a short paragraph, and the badge's note
+   says the badge covers the statute text only.
+
+**Section 5's type-B row is the one Illustrative mark in the chapter.** There is no source to cite for a rate
+whose denominator cannot be enumerated, and `hypothesis` is what this case's own rules say to use when a number
+cannot be found. Its note carries the three partial remedies and labels the content-narration channel as an
+argument rather than a measurement.
+
+### The checklist, as built
 
 **Tone rule, and it applies to two places differently** (author, 2026-09-17 — the first version of this note
 over-applied it and had to be corrected). It is no longer only written here: it was extracted to
@@ -54,14 +79,14 @@ it does not go in the chapter.
 ## What this chapter is for
 
 Every risk below is **already researched and sourced**; none of it is new work. What is new is that it would
-render. Today the case's best defensive thinking is invisible: 07's risk section, 04's error floor and 09's
-supply finding all live in `research/`, and a reader of the site never meets them.
+render. Before this chapter, the case's defensive thinking was invisible: 07's risk section, 04's error floor
+and the supply finding from Insights all lived in `research/`, and a reader of the site never met them.
 
 **What it must not become.** A generic risk checklist — "data privacy, model accuracy, competition" — is worth
 less than nothing on a case that spent nine chapters citing sources. Two rules keep it honest:
 
 1. **Every row carries a source or is explicitly marked as judgement**, same bar as every other chapter.
-2. **Nothing is moved out of 04 / 06 / 07 / 09.** Those chapters keep their own mitigations; this chapter
+2. **Nothing is moved out of 04 / 06 / 07 / 10.** Those chapters keep their own mitigations; this chapter
    references them. A risk chapter assembled by hollowing out the others would weaken both.
 
 ## Why 09, and not 10
@@ -70,10 +95,11 @@ The author's ordering — Risks 09, Insights 10 — is the right one, and worth 
 **the conclusion should land having survived the risks, not despite them.** A risk chapter after the
 conclusion reads as a disclaimer; before it, it is the last test the recommendation passes.
 
-## Proposed structure
+## Structure, as proposed and as built
 
-Five sections, all built from existing components — no new UI, and `DataTable` + row-level `provenance` is the
-pattern already sanctioned for 06's category table.
+Six sections, all from existing components — no new UI, and `DataTable` + row-level `provenance` is the
+pattern already sanctioned for 06's category table. (The "Component" column is the proposal; see the three
+departures recorded at the top.)
 
 | # | Section | Block | Component |
 |---|---|---|---|
@@ -231,7 +257,7 @@ experiment — there is no denominator to test against. The first move there is 
 survey owners on what they did off-platform last month, and publish the result as an `estimate` with its
 sample stated. Saying that out loud is the point of the section above it.
 
-## Consequences for chapter 06 — needs the author's call
+## Consequences for chapter 06 — decided, and done
 
 R6 is not only a finding for this chapter; it says the existing metric is mislabelled.
 
@@ -244,7 +270,7 @@ and it changes what a number claims to be a rate of). A hover card that contradi
 exact failure mode this provenance system exists to prevent. Check the metric grid still lays out at the
 longer label — if 「表达出的意图 → 预订」 wraps badly, the fix is the grid, not a shorter and less true label.
 
-## Decisions and what is left
+## Decisions — all closed 2026-09-17
 
 1. ~~Section 5's standfirst~~ — **decided: Option A** (the flat one). R7's standfirst was flattened under the
    same rule — its first draft opened "None of this is a reason not to build", which argues with the reader.
@@ -258,8 +284,9 @@ longer label — if 「表达出的意图 → 预订」 wraps badly, the fix is 
    `{ index: "09", label: { en: "Risks & Unknowns", zh: "风险与未解" }, href: "/risks",
    short: { en: "Limits, constraints, and what could not be measured", zh: "能力边界、法律约束，以及测不到的东西" } }`
 
-## Build cost, once the wording is settled
+## Build cost — estimated, then actual
 
+The estimate below held: 6 code touch points and the doc set listed, no component change, no new source.
 Small, and mostly bookkeeping. Numbering is centralised in `lib/nav.ts`, so:
 
 - **Code — 6 touch points**: one new `NAV` row + Insights `index` 09 → 10; `app/[locale]/insights/page.tsx`
