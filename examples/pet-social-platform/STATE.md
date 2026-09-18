@@ -1,11 +1,28 @@
 # STATE — pet-social-platform
 
-Last updated: 2026-09-17 (**09 风险与未解 / Risks & Unknowns built** — the tenth chapter, Insights renumbered
+Last updated: 2026-09-18 (**the site is now a static export, for publishing** — `output: "export"`,
+`proxy.ts` gone, `/` handled by `public/index.html`. Content untouched. See "Publishing" below.)
+
+Before that, 2026-09-17 (**09 风险与未解 / Risks & Unknowns built** — the tenth chapter, Insights renumbered
 09 → 10; 06's metric relabelled 「表达出的意图 → 预订」. Before that, same day: 01 Overview done — all nine
 research chapters researched — and PIPL 单独同意 written into 07 as a fifth design principle.)
 
 ## Where it stands
 - Site complete: **ten chapters**, EN / 中文, design system finished, `npm run check` passes.
+- **Publishing (2026-09-18): the site builds to static files and is ready to upload; nothing is live yet.**
+  The author is buying a domain; the plan is Cloudflare Pages now, mainland bucket after the ICP filing.
+  Rationale and the host comparison are in the workspace's `docs/deploy.md`. What changed here — no content,
+  no component:
+  - `next.config.ts` — `output: "export"`, `trailingSlash: true`. `npm run check` now also writes `out/` (5.2 MB).
+  - `proxy.ts` — **deleted**. Static export has no middleware, so the Accept-Language redirect for `/` moved to
+    `public/index.html`: an inline `navigator.languages` check, plus bilingual links inside `<noscript>`.
+  - `lib/i18n.ts` — `splitLocale` strips the trailing slash before matching. **Without this the export is
+    quietly broken**: `/zh/market/` split to `path: "/market/"`, which matches no `NAV.href`, so `navIndexFor`
+    returned 0 and the sidebar, the footer's prev/next and the `[` / `]` shortcuts all pointed at chapter 01.
+    Verified after the fix: `/zh/market/` → 02, `/en/risks/` → 09, `/zh/` → 01, `/en/insights/` → 10, one
+    `aria-current="page"` per page.
+  - **Known regression**: `/` now 404s under `npm run dev` (dev does not map `/` to `public/index.html`; the
+    built site and every real host do). Open `/en` or `/zh` in dev. Preview the real thing with `npx serve out`.
 - Research: **in scope for all nine research chapters** (open decision closed 2026-09-06, see `research/plan.md` top).
   The tenth chapter, 09 风险与未解, adds no research and no source — it renders what the other nine already found.
 - **09 风险与未解 built (2026-09-17) — the tenth chapter, and the first that renders what the research argues
@@ -404,7 +421,11 @@ research chapters researched — and PIPL 单独同意 written into 07 as a fift
 ## Next steps (in order)
 0. **Look at 09 风险与未解 in a browser** (`/en/risks`, `/zh/risks`) and at the relabelled metric on
    `/local` — flag 9. It is built, checked, verified in both prerendered locales and committed, but not
-   eyeballed.
+   eyeballed. Worth doing against `npx serve out` now, which also checks the export.
+0b. **Publish it** (2026-09-18, author's call, in progress): buy a `.com` at a mainland registrar → Cloudflare
+   Pages, build command `npm run build`, output `out`, root `examples/pet-social-platform` → subdomain
+   `pet.<domain>`. Start the ICP filing in parallel; when it clears, the same `out/` goes to a mainland
+   bucket and DNS repoints, URL unchanged. Steps and the reasoning are in `docs/deploy.md`.
 1. **The research pass itself is complete — all nine research chapters are ☑ in `research/plan.md`**, and the
    tenth chapter is built. What is left on the site is the two older UI flags (2 and 8, both from before this
    research pass), **one open author question** — the empty Quick wins quadrant (flag 7) — and the browser

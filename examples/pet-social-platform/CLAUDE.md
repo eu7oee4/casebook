@@ -34,7 +34,8 @@ Start every session by reading `research/plan.md` (open questions per chapter) a
 
 ## Bilingual content (EN / 中文)
 
-The site is served at `/en/...` and `/zh/...` (root redirects by browser language; the sidebar toggles).
+The site is served at `/en/...` and `/zh/...` (the sidebar toggles; `/` picks a locale from the browser's
+language — in the built site only, see Commands).
 User-visible strings in `data/` are `Text` objects `{ en, zh }` (`lib/i18n.ts`); numbers, codes, product
 names stay plain strings. **Every content change must update both `en` and `zh`** in the same object — never
 leave one language stale. Translate in the same analytical PM voice; do not paraphrase numbers differently
@@ -147,6 +148,15 @@ Work one chapter at a time. Do not commit unless asked.
 ## Commands
 
 ```bash
-npm run dev      # http://localhost:3000 → redirects to /en or /zh
-npm run check    # tsc + eslint + next build
+npm run dev      # http://localhost:3000/en or /zh — `/` itself 404s in dev, see below
+npm run check    # tsc + eslint + next build (the build now also writes out/)
+npx serve out    # preview the exported site exactly as a host will serve it
 ```
+
+**The site is a static export** (`output: "export"`, `trailingSlash: true` in `next.config.ts`), so the same
+`out/` folder runs on any static host and can move between them later. Two consequences when working here:
+
+- There is no `proxy.ts` any more; the locale redirect for `/` lives in `public/index.html` as a client-side
+  script. A real host maps `/` to that file, but `next dev` does not, so in dev open `/en` or `/zh` directly.
+- Nothing may depend on a server at request time: no API routes, no `next/headers`, no runtime `fetch`, no
+  `revalidate`. A change that needs one of those needs a hosting decision first.

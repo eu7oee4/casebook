@@ -12,8 +12,12 @@ system, rules and workflow skills are being extracted from it. See `CLAUDE.md` f
 ```bash
 cd examples/pet-social-platform
 npm install
-npm run dev     # http://localhost:3000 → /en or /zh
-npm run check   # tsc + eslint + next build
+npm run dev     # http://localhost:3000/en or /zh
+npm run check   # tsc + eslint + next build → out/
+npx serve out   # preview the static export as a host serves it
 ```
+
+Cases build to static files (`output: "export"`), so a case runs on any static host and can move between
+them later. See `docs/deploy.md`.
 
 Your own cases go in `projects/<slug>/`, which is git-ignored so they stay private.

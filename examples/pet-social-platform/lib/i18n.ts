@@ -29,11 +29,16 @@ export function localePath(locale: Locale, path: string): string {
   return `/${locale}${clean}`;
 }
 
-/** `/zh/market` → { locale: "zh", path: "/market" }. Unknown prefix → default locale. */
+/**
+ * `/zh/market` → { locale: "zh", path: "/market" }. Unknown prefix → default locale.
+ * The static export serves trailing-slash URLs (`/zh/market/`), so the slash is
+ * dropped first: `path` must match a `NAV` href exactly or `navIndexFor` returns 0.
+ */
 export function splitLocale(pathname: string): { locale: Locale; path: string } {
-  const m = pathname.match(/^\/(en|zh)(\/.*)?$/);
-  if (!m) return { locale: DEFAULT_LOCALE, path: pathname || "/" };
-  return { locale: m[1] as Locale, path: m[2] && m[2] !== "/" ? m[2] : "/" };
+  const clean = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  const m = clean.match(/^\/(en|zh)(\/.*)?$/);
+  if (!m) return { locale: DEFAULT_LOCALE, path: clean || "/" };
+  return { locale: m[1] as Locale, path: m[2] || "/" };
 }
 
 export const LOCALE_LABEL: Record<Locale, string> = { en: "EN", zh: "中文" };

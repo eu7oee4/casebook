@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pet Social Platform — Product Research &amp; AI Strategy</title>
+    <meta name="robots" content="noindex" />
+    <!--
+      The site is exported as static files, so the locale choice that used to live
+      in `proxy.ts` (Accept-Language, server side) happens here instead. This runs
+      before anything paints; without JavaScript the links below are the way in.
+    -->
+    <script>
+      (function () {
+        var langs = navigator.languages || [navigator.language || ""];
+        var zh = Array.prototype.some.call(langs, function (l) {
+          return /^zh/i.test(l || "");
+        });
+        location.replace(zh ? "/zh/" : "/en/");
+      })();
+    </script>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-content: center;
+        gap: 0.75rem;
+        font: 400 1rem/1.6 ui-sans-serif, system-ui, sans-serif;
+        background: #fbfaf8;
+        color: #1c1a17;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <p><a href="/en/">Pet Social Platform — Product Research &amp; AI Strategy</a></p>
+      <p><a href="/zh/">宠物社交平台 — 产品研究与 AI 策略</a></p>
+    </noscript>
+  </body>
+</html>
