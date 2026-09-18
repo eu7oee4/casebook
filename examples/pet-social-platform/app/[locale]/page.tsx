@@ -14,7 +14,12 @@ import { isLocale, localePath, tr, DEFAULT_LOCALE } from "@/lib/i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  return { title: locale === "zh" ? "总览" : "Overview" };
+  // `absolute`, because a page sitting next to the layout that defines `title.template`
+  // does not get the template applied — without this the tab and every shared link read
+  // just "Overview", with no case name. Spelled out to match what the template produces.
+  return {
+    title: { absolute: locale === "zh" ? "总览 — 宠物社交平台案例" : "Overview — Pet Social Platform Case" },
+  };
 }
 
 export default async function OverviewPage({ params }: { params: Promise<{ locale: string }> }) {
