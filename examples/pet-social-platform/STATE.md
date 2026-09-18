@@ -9,10 +9,18 @@ research chapters researched — and PIPL 单独同意 written into 07 as a fift
 
 ## Where it stands
 - Site complete: **ten chapters**, EN / 中文, design system finished, `npm run check` passes.
-- **Publishing (2026-09-18): the site builds to static files; the repo is public, the site is not live yet.**
+- **Publishing (2026-09-18): the site is LIVE at https://pet-social-platform.rf6ywwdjgn.workers.dev**
   Workspace pushed to **https://github.com/eu7oee4/casebook** (public, 21 commits; the older commits' author
-  email was rewritten to the GitHub noreply address before the push, commit dates untouched). Next: Cloudflare
-  Pages. The author is buying a domain; mainland bucket after the ICP filing, if they file.
+  email was rewritten to the GitHub noreply address before the push, commit dates untouched).
+  - Host: Cloudflare Workers static assets (not the legacy Pages workflow), config in `wrangler.jsonc`,
+    deployed with `npx wrangler deploy` from this folder. 131 files, ~5 MB.
+  - **Not yet connected to Git**, so a push does not redeploy — run `npm run build && npx wrangler deploy`
+    after content changes. Connecting the repo in the Cloudflare dashboard is still open; the dashboard's
+    "Connect GitHub" flow kept bouncing back to GitHub's app page, which is why this went out from the CLI.
+  - Verified live: `/` redirects by browser language · `/zh/`, `/en/risks/` render · `/zh/market` → 307 to
+    `/zh/market/` · unknown path → 404.html · fonts and `_next` assets 200.
+  - Next: a domain (mainland registrar, `.com`/`.cn` — `.dev`/`.app`/`.io` cannot be ICP-filed), then a
+    custom domain on this Worker; a `workers.dev` subdomain is unreliable from the mainland.
   Rationale and the host comparison are in the workspace's `docs/deploy.md`. What changed here — no content,
   no component:
   - `next.config.ts` — `output: "export"`, `trailingSlash: true`. `npm run check` now also writes `out/` (5.2 MB).

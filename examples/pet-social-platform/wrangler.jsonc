@@ -1,0 +1,11 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pet-social-platform",
+  "compatibility_date": "2026-09-18",
+  // The site is a static export; there is no Worker script, only files.
+  // `not_found_handling` serves Next's exported 404.html for unknown paths.
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
