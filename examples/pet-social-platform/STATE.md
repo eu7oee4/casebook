@@ -9,8 +9,10 @@ research chapters researched — and PIPL 单独同意 written into 07 as a fift
 
 ## Where it stands
 - Site complete: **ten chapters**, EN / 中文, design system finished, `npm run check` passes.
-- **Publishing (2026-09-18): the site builds to static files and is ready to upload; nothing is live yet.**
-  The author is buying a domain; the plan is Cloudflare Pages now, mainland bucket after the ICP filing.
+- **Publishing (2026-09-18): the site builds to static files; the repo is public, the site is not live yet.**
+  Workspace pushed to **https://github.com/eu7oee4/casebook** (public, 21 commits; the older commits' author
+  email was rewritten to the GitHub noreply address before the push, commit dates untouched). Next: Cloudflare
+  Pages. The author is buying a domain; mainland bucket after the ICP filing, if they file.
   Rationale and the host comparison are in the workspace's `docs/deploy.md`. What changed here — no content,
   no component:
   - `next.config.ts` — `output: "export"`, `trailingSlash: true`. `npm run check` now also writes `out/` (5.2 MB).
