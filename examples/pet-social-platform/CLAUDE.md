@@ -151,7 +151,16 @@ Work one chapter at a time. Do not commit unless asked.
 npm run dev      # http://localhost:3000/en or /zh — `/` itself 404s in dev, see below
 npm run check    # tsc + eslint + next build (the build now also writes out/)
 npx serve out    # preview the exported site exactly as a host will serve it
+
+# Publish. The site is LIVE; a git push does NOT redeploy it, this command does.
+npm run build && npx wrangler deploy
 ```
+
+**The site is public.** It is deployed as Cloudflare Workers static assets (config in `wrangler.jsonc`) at
+https://pet-social-platform.rf6ywwdjgn.workers.dev — and on `pet.eu7oee4.com` once that domain clears review.
+**Content that is committed but not deployed is not published**: after changing anything a reader sees, run
+the deploy command above, or say so in the session summary if the author should run it. `docs/deploy.md`
+covers hosting, the domain and anything that would need a server.
 
 **The site is a static export** (`output: "export"`, `trailingSlash: true` in `next.config.ts`), so the same
 `out/` folder runs on any static host and can move between them later. Two consequences when working here:

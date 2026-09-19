@@ -37,8 +37,8 @@ research chapters researched — and PIPL 单独同意 written into 07 as a fift
   The tenth chapter, 09 风险与未解, adds no research and no source — it renders what the other nine already found.
 - **09 风险与未解 built (2026-09-17) — the tenth chapter, and the first that renders what the research argues
   *against* the case.** Everything was decided on 2026-09-17 before the build; the spec, the EN + ZH drafts it
-  was built from, and the build record are in `research/09-risks.md`. **Committed — see the log.** Still
-  outstanding: **not yet reviewed in a browser by the author** (flag 9).
+  was built from, and the build record are in `research/09-risks.md`. **Committed — see the log. Reviewed in a
+  browser by the author 2026-09-19, on the live site, no changes asked for** (flag 9, closed).
   - **New**: `data/risks.ts`, `app/[locale]/risks/page.tsx` at `/risks`, exported from `data/research.ts`.
     **Renumbered**: `lib/nav.ts` (new 09 row, Insights → `index: "10"`), the Insights `PageHeader`, 01's
     "prioritised in chapter 10", and `overview.readingPath`, whose "08–09" entry split into 08 and 09–10 —
@@ -417,11 +417,12 @@ research chapters researched — and PIPL 单独同意 written into 07 as a fift
      populated) or keep 52 and reword the caption plus decide whether an empty labelled quadrant should still
      be drawn — the latter is UI copy, so nothing was touched. Reasoning in `research/10-insights.md` → Data
      changes (the file was `09-insights.md` until the 2026-09-17 renumbering).
-  9. (from 09 Risks, 2026-09-17) **The new chapter has not been looked at in a browser.** `npm run check`
-     passes and both locales were verified in the prerendered output, but nothing was eyeballed. Three things
-     to look at: the four-column 先证伪什么 table (widest on the site — it scrolls horizontally under ~640px,
-     as every `DataTable` does), the two `DataTable`s whose first column stacks a label above a provenance
-     badge, and whether 「表达出的意图 → 预订」 wraps acceptably in the `/local` metric grid at the longer label.
+  9. (from 09 Risks, 2026-09-17 — **closed: reviewed in a browser by the author 2026-09-19 on the live site,
+     no changes asked for**) The chapter had only ever been verified in the prerendered output. The three
+     things flagged to look at were: the four-column 先证伪什么 table (widest on the site — it scrolls
+     horizontally under ~640px, as every `DataTable` does), the two `DataTable`s whose first column stacks a
+     label above a provenance badge, and whether 「表达出的意图 → 预订」 wraps acceptably in the `/local`
+     metric grid at the longer label.
   8. (from 02, 2026-09-10) KPI grid switched to 2 columns (rows 2 / 2 / 1) at the author's request after badges
      overlapped at zoom; `npm run check` passes, not eyeballed in a browser (no Chrome extension in this session).
   (The `SpendTrend.tsx` hard-coded Y domain was fixed 2026-09-06 with author approval: domain/ticks are now
@@ -429,13 +430,11 @@ research chapters researched — and PIPL 单独同意 written into 07 as a fift
   badges now truncate to their column width and bottom-align across a metric row.)
 
 ## Next steps (in order)
-0. **Look at 09 风险与未解 in a browser** (`/en/risks`, `/zh/risks`) and at the relabelled metric on
-   `/local` — flag 9. It is built, checked, verified in both prerendered locales and committed, but not
-   eyeballed. Worth doing against `npx serve out` now, which also checks the export.
-0b. **Publish it** (2026-09-18, author's call, in progress): buy a `.com` at a mainland registrar → Cloudflare
-   Pages, build command `npm run build`, output `out`, root `examples/pet-social-platform` → subdomain
-   `pet.<domain>`. Start the ICP filing in parallel; when it clears, the same `out/` goes to a mainland
-   bucket and DNS repoints, URL unchanged. Steps and the reasoning are in `docs/deploy.md`.
+0. **Put the site on `pet.eu7oee4.com`.** The domain was bought 2026-09-19 at Tencent Cloud / DNSPod
+   (registrar 帝思普), so it is filing-eligible; on that day it was still in 域名命名审核 and not usable yet.
+   The site is live meanwhile on `workers.dev`, which is unreliable from the mainland, so this is what stands
+   between the case and being sendable to an interviewer. Steps, and why the nameservers have to move to
+   Cloudflare, are in `docs/deploy.md` → "Putting a domain on it".
 1. **The research pass itself is complete — all nine research chapters are ☑ in `research/plan.md`**, and the
    tenth chapter is built. What is left on the site is the two older UI flags (2 and 8, both from before this
    research pass), **one open author question** — the empty Quick wins quadrant (flag 7) — and the browser

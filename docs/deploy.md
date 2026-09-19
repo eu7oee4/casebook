@@ -53,6 +53,31 @@ Give each case its own subdomain (`pet.example.com`), not a path (`example.com/c
 DNS record and needs no `basePath`; a path needs `basePath` in every case, and every absolute URL in the site
 becomes a place to get it wrong.
 
+A freshly registered domain sits in 域名命名审核 for a few hours to a few days and does not resolve until it
+clears. Nothing below can be done before then.
+
+### Putting a domain on it
+
+**The nameservers have to move to Cloudflare.** A custom domain on a Worker or a Pages project requires the
+domain to be a zone in the same Cloudflare account, on Cloudflare's own nameservers — the CNAME-only setup is
+an enterprise feature. So the registrar stays where it is (which is what the ICP filing cares about) but DNS
+service moves:
+
+1. Cloudflare dashboard → **Add a site** → the apex domain (`example.com`, not the subdomain) → **Free**.
+2. Cloudflare gives two nameservers.
+3. At the registrar (DNSPod / Aliyun console) → the domain's DNS settings → replace the nameservers with those
+   two. Propagation is usually minutes, occasionally up to 48 hours.
+4. Once Cloudflare shows the zone **Active**: the Worker → **Settings → Domains & Routes → Add custom domain**
+   → `pet.example.com`. The DNS record and the TLS certificate are created automatically.
+
+Moving nameservers drops whatever records the old DNS host was serving, so re-create them in Cloudflare. For a
+domain bought for this purpose there are none, which is the easy case — do this before pointing mail or
+anything else at the domain, not after.
+
+This does **not** block an ICP filing later: the filing is tied to the registrar and to a mainland hosting
+provider, not to who answers DNS. When the filing clears and the static files move to a mainland bucket, the
+nameservers move back and the URL stays the same.
+
 ## Anything that needs a server
 
 A case is static, but a hub site around the cases may not be — a chat greeter, a contact form, analytics that
